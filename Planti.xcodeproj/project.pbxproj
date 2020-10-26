@@ -1,0 +1,606 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9D2547221A0054FCED /* PlantiApp.swift */; };
+		8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9F2547221A0054FCED /* ContentView.swift */; };
+		8FBBDDA22547221E0054FCED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA12547221E0054FCED /* Assets.xcassets */; };
+		8FBBDDA52547221E0054FCED /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA42547221E0054FCED /* Preview Assets.xcassets */; };
+		8FBBDDA72547221E0054FCED /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA62547221E0054FCED /* Persistence.swift */; };
+		8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */; };
+		8FBBDDB52547221E0054FCED /* PlantiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDB42547221E0054FCED /* PlantiTests.swift */; };
+		8FBBDDC02547221E0054FCED /* PlantiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDBF2547221E0054FCED /* PlantiUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8FBBDDB12547221E0054FCED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8FBBDD922547221A0054FCED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FBBDD992547221A0054FCED;
+			remoteInfo = Planti;
+		};
+		8FBBDDBC2547221E0054FCED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8FBBDD922547221A0054FCED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8FBBDD992547221A0054FCED;
+			remoteInfo = Planti;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8FBBDD9A2547221A0054FCED /* Planti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planti.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FBBDD9D2547221A0054FCED /* PlantiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiApp.swift; sourceTree = "<group>"; };
+		8FBBDD9F2547221A0054FCED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8FBBDDA12547221E0054FCED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8FBBDDA42547221E0054FCED /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8FBBDDA62547221E0054FCED /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		8FBBDDA92547221E0054FCED /* Planti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Planti.xcdatamodel; sourceTree = "<group>"; };
+		8FBBDDAB2547221E0054FCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FBBDDB02547221E0054FCED /* PlantiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FBBDDB42547221E0054FCED /* PlantiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiTests.swift; sourceTree = "<group>"; };
+		8FBBDDB62547221E0054FCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FBBDDBB2547221E0054FCED /* PlantiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FBBDDBF2547221E0054FCED /* PlantiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiUITests.swift; sourceTree = "<group>"; };
+		8FBBDDC12547221E0054FCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8FBBDD972547221A0054FCED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FBBDDAD2547221E0054FCED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FBBDDB82547221E0054FCED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8FBBDD912547221A0054FCED = {
+			isa = PBXGroup;
+			children = (
+				8FBBDD9C2547221A0054FCED /* Planti */,
+				8FBBDDB32547221E0054FCED /* PlantiTests */,
+				8FBBDDBE2547221E0054FCED /* PlantiUITests */,
+				8FBBDD9B2547221A0054FCED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8FBBDD9B2547221A0054FCED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBDD9A2547221A0054FCED /* Planti.app */,
+				8FBBDDB02547221E0054FCED /* PlantiTests.xctest */,
+				8FBBDDBB2547221E0054FCED /* PlantiUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8FBBDD9C2547221A0054FCED /* Planti */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBDD9D2547221A0054FCED /* PlantiApp.swift */,
+				8FBBDD9F2547221A0054FCED /* ContentView.swift */,
+				8FBBDDA12547221E0054FCED /* Assets.xcassets */,
+				8FBBDDA62547221E0054FCED /* Persistence.swift */,
+				8FBBDDAB2547221E0054FCED /* Info.plist */,
+				8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */,
+				8FBBDDA32547221E0054FCED /* Preview Content */,
+			);
+			path = Planti;
+			sourceTree = "<group>";
+		};
+		8FBBDDA32547221E0054FCED /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBDDA42547221E0054FCED /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8FBBDDB32547221E0054FCED /* PlantiTests */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBDDB42547221E0054FCED /* PlantiTests.swift */,
+				8FBBDDB62547221E0054FCED /* Info.plist */,
+			);
+			path = PlantiTests;
+			sourceTree = "<group>";
+		};
+		8FBBDDBE2547221E0054FCED /* PlantiUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBDDBF2547221E0054FCED /* PlantiUITests.swift */,
+				8FBBDDC12547221E0054FCED /* Info.plist */,
+			);
+			path = PlantiUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8FBBDD992547221A0054FCED /* Planti */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FBBDDC42547221E0054FCED /* Build configuration list for PBXNativeTarget "Planti" */;
+			buildPhases = (
+				8FBBDD962547221A0054FCED /* Sources */,
+				8FBBDD972547221A0054FCED /* Frameworks */,
+				8FBBDD982547221A0054FCED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Planti;
+			productName = Planti;
+			productReference = 8FBBDD9A2547221A0054FCED /* Planti.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8FBBDDAF2547221E0054FCED /* PlantiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FBBDDC72547221E0054FCED /* Build configuration list for PBXNativeTarget "PlantiTests" */;
+			buildPhases = (
+				8FBBDDAC2547221E0054FCED /* Sources */,
+				8FBBDDAD2547221E0054FCED /* Frameworks */,
+				8FBBDDAE2547221E0054FCED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8FBBDDB22547221E0054FCED /* PBXTargetDependency */,
+			);
+			name = PlantiTests;
+			productName = PlantiTests;
+			productReference = 8FBBDDB02547221E0054FCED /* PlantiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8FBBDDBA2547221E0054FCED /* PlantiUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8FBBDDCA2547221E0054FCED /* Build configuration list for PBXNativeTarget "PlantiUITests" */;
+			buildPhases = (
+				8FBBDDB72547221E0054FCED /* Sources */,
+				8FBBDDB82547221E0054FCED /* Frameworks */,
+				8FBBDDB92547221E0054FCED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8FBBDDBD2547221E0054FCED /* PBXTargetDependency */,
+			);
+			name = PlantiUITests;
+			productName = PlantiUITests;
+			productReference = 8FBBDDBB2547221E0054FCED /* PlantiUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8FBBDD922547221A0054FCED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					8FBBDD992547221A0054FCED = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					8FBBDDAF2547221E0054FCED = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 8FBBDD992547221A0054FCED;
+					};
+					8FBBDDBA2547221E0054FCED = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 8FBBDD992547221A0054FCED;
+					};
+				};
+			};
+			buildConfigurationList = 8FBBDD952547221A0054FCED /* Build configuration list for PBXProject "Planti" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8FBBDD912547221A0054FCED;
+			productRefGroup = 8FBBDD9B2547221A0054FCED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8FBBDD992547221A0054FCED /* Planti */,
+				8FBBDDAF2547221E0054FCED /* PlantiTests */,
+				8FBBDDBA2547221E0054FCED /* PlantiUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8FBBDD982547221A0054FCED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FBBDDA52547221E0054FCED /* Preview Assets.xcassets in Resources */,
+				8FBBDDA22547221E0054FCED /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FBBDDAE2547221E0054FCED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FBBDDB92547221E0054FCED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8FBBDD962547221A0054FCED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FBBDDA72547221E0054FCED /* Persistence.swift in Sources */,
+				8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */,
+				8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */,
+				8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FBBDDAC2547221E0054FCED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FBBDDB52547221E0054FCED /* PlantiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8FBBDDB72547221E0054FCED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FBBDDC02547221E0054FCED /* PlantiUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8FBBDDB22547221E0054FCED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8FBBDD992547221A0054FCED /* Planti */;
+			targetProxy = 8FBBDDB12547221E0054FCED /* PBXContainerItemProxy */;
+		};
+		8FBBDDBD2547221E0054FCED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8FBBDD992547221A0054FCED /* Planti */;
+			targetProxy = 8FBBDDBC2547221E0054FCED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8FBBDDC22547221E0054FCED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8FBBDDC32547221E0054FCED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8FBBDDC52547221E0054FCED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Planti/Preview Content\"";
+				DEVELOPMENT_TEAM = 95MCTJ87K3;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Planti/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.dominikwieners.Planti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8FBBDDC62547221E0054FCED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Planti/Preview Content\"";
+				DEVELOPMENT_TEAM = 95MCTJ87K3;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Planti/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.dominikwieners.Planti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8FBBDDC82547221E0054FCED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95MCTJ87K3;
+				INFOPLIST_FILE = PlantiTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.dominikwieners.PlantiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Planti.app/Planti";
+			};
+			name = Debug;
+		};
+		8FBBDDC92547221E0054FCED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95MCTJ87K3;
+				INFOPLIST_FILE = PlantiTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.dominikwieners.PlantiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Planti.app/Planti";
+			};
+			name = Release;
+		};
+		8FBBDDCB2547221E0054FCED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95MCTJ87K3;
+				INFOPLIST_FILE = PlantiUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.dominikwieners.PlantiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Planti;
+			};
+			name = Debug;
+		};
+		8FBBDDCC2547221E0054FCED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 95MCTJ87K3;
+				INFOPLIST_FILE = PlantiUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.dominikwieners.PlantiUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Planti;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8FBBDD952547221A0054FCED /* Build configuration list for PBXProject "Planti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FBBDDC22547221E0054FCED /* Debug */,
+				8FBBDDC32547221E0054FCED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8FBBDDC42547221E0054FCED /* Build configuration list for PBXNativeTarget "Planti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FBBDDC52547221E0054FCED /* Debug */,
+				8FBBDDC62547221E0054FCED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8FBBDDC72547221E0054FCED /* Build configuration list for PBXNativeTarget "PlantiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FBBDDC82547221E0054FCED /* Debug */,
+				8FBBDDC92547221E0054FCED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8FBBDDCA2547221E0054FCED /* Build configuration list for PBXNativeTarget "PlantiUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8FBBDDCB2547221E0054FCED /* Debug */,
+				8FBBDDCC2547221E0054FCED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8FBBDDA92547221E0054FCED /* Planti.xcdatamodel */,
+			);
+			currentVersion = 8FBBDDA92547221E0054FCED /* Planti.xcdatamodel */;
+			path = Planti.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8FBBDD922547221A0054FCED /* Project object */;
+}
