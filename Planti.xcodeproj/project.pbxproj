@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F3FD34925648DF4003E8BB0 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3FD34825648DF4003E8BB0 /* View + Extension.swift */; };
 		8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9D2547221A0054FCED /* PlantiApp.swift */; };
 		8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9F2547221A0054FCED /* ContentView.swift */; };
 		8FBBDDA22547221E0054FCED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA12547221E0054FCED /* Assets.xcassets */; };
@@ -15,6 +16,9 @@
 		8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */; };
 		8FBBDDB52547221E0054FCED /* PlantiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDB42547221E0054FCED /* PlantiTests.swift */; };
 		8FBBDDC02547221E0054FCED /* PlantiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDBF2547221E0054FCED /* PlantiUITests.swift */; };
+		8FDAAA3525648719006C6FAA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3425648719006C6FAA /* ImagePicker.swift */; };
+		8FDAAA3D25648A3A006C6FAA /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3C25648A3A006C6FAA /* Color + Extension.swift */; };
+		8FDAAA4225648AA0006C6FAA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA4125648AA0006C6FAA /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F3FD34825648DF4003E8BB0 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
 		8FBBDD9A2547221A0054FCED /* Planti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBBDD9D2547221A0054FCED /* PlantiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiApp.swift; sourceTree = "<group>"; };
 		8FBBDD9F2547221A0054FCED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +54,9 @@
 		8FBBDDBB2547221E0054FCED /* PlantiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBBDDBF2547221E0054FCED /* PlantiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiUITests.swift; sourceTree = "<group>"; };
 		8FBBDDC12547221E0054FCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FDAAA3425648719006C6FAA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		8FDAAA3C25648A3A006C6FAA /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
+		8FDAAA4125648AA0006C6FAA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +107,11 @@
 		8FBBDD9C2547221A0054FCED /* Planti */ = {
 			isa = PBXGroup;
 			children = (
+				8FDAAA3325647D09006C6FAA /* Servises */,
+				8FDAAA3225647CF5006C6FAA /* Extensions */,
+				8FDAAA3025647CA5006C6FAA /* ViewModels */,
+				8FDAAA2F25647C8F006C6FAA /* Models */,
+				8FDAAA2E25647C7B006C6FAA /* Views */,
 				8FBBDD9D2547221A0054FCED /* PlantiApp.swift */,
 				8FBBDD9F2547221A0054FCED /* ContentView.swift */,
 				8FBBDDA12547221E0054FCED /* Assets.xcassets */,
@@ -134,6 +147,61 @@
 				8FBBDDC12547221E0054FCED /* Info.plist */,
 			);
 			path = PlantiUITests;
+			sourceTree = "<group>";
+		};
+		8FDAAA2E25647C7B006C6FAA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8FDAAA4625648AA8006C6FAA /* Home */,
+				8FDAAA3125647CB9006C6FAA /* UIKitViews */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8FDAAA2F25647C8F006C6FAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8FDAAA3025647CA5006C6FAA /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8FDAAA3125647CB9006C6FAA /* UIKitViews */ = {
+			isa = PBXGroup;
+			children = (
+				8FDAAA3425648719006C6FAA /* ImagePicker.swift */,
+			);
+			path = UIKitViews;
+			sourceTree = "<group>";
+		};
+		8FDAAA3225647CF5006C6FAA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8FDAAA3C25648A3A006C6FAA /* Color + Extension.swift */,
+				8F3FD34825648DF4003E8BB0 /* View + Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8FDAAA3325647D09006C6FAA /* Servises */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Servises;
+			sourceTree = "<group>";
+		};
+		8FDAAA4625648AA8006C6FAA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8FDAAA4125648AA0006C6FAA /* HomeView.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +334,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FBBDDA72547221E0054FCED /* Persistence.swift in Sources */,
+				8FDAAA4225648AA0006C6FAA /* HomeView.swift in Sources */,
 				8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */,
+				8FDAAA3525648719006C6FAA /* ImagePicker.swift in Sources */,
+				8F3FD34925648DF4003E8BB0 /* View + Extension.swift in Sources */,
 				8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */,
 				8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */,
+				8FDAAA3D25648A3A006C6FAA /* Color + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
