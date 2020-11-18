@@ -13,23 +13,114 @@ import SwiftUI
 
 struct CameraView : UIViewControllerRepresentable {
     
-    typealias UIViewControllerType = CameraViewController
- 
+    @Binding var results: [VNClassificationObservation]
+    
+    class Coordinator: NSObject, UINavigationControllerDelegate, MLCameraDelegate{
+        
+        let parent: CameraView
+        
+        init(_ parent: CameraView) {
+            self.parent = parent
+        }
+        
+        func mlCameraHasResults(results: [VNClassificationObservation]) {
+            parent.results = results
+        }
+    }
+    
     func makeUIViewController(context: Context) -> CameraViewController {
         let controller = CameraViewController()
+        controller.delegate = context.coordinator
         return controller
     }
     
     func updateUIViewController(_ uiViewController: CameraViewController, context: Context) {}
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+}
+
+protocol MLCameraDelegate{
+    func mlCameraHasResults(results: [VNClassificationObservation])
 }
 
 
 class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    var captureSession: AVCaptureSession!
-    var previewLayer: AVCaptureVideoPreviewLayer!
+    private var captureSession: AVCaptureSession!
+    private var previewLayer: AVCaptureVideoPreviewLayer!
     
     private let videoDataOutput = AVCaptureVideoDataOutput()
+    
+    
+  
+    var delegate: MLCameraDelegate?
+
+    lazy var classificationRequest: VNCoreMLRequest = {
+        do {
+            let model = try VNCoreMLModel(for: MobileNetV2().model)
+            
+            let request = VNCoreMLRequest(model: model) { [weak self] request, error in
+                self?.processClassifications(for: request, error: error)
+            }
+            request.imageCropAndScaleOption = .centerCrop
+            return request
+        }catch {
+            fatalError("Failed to load Vission ML model")
+        }
+    }()
+    
+    
+    
+    func captureOutput(
+        _ output: AVCaptureOutput,
+        didOutput sampleBuffer: CMSampleBuffer,
+        from connection: AVCaptureConnection) {
+        
+        guard let frame = CMSampleBufferGetImageBuffer(sampleBuffer) else {
+            debugPrint("unable to get image from sample buffer")
+            return
+        }
+        
+        self.updateClassifications(in: frame)
+    }
+    
+    
+    
+    func updateClassifications(in image: CVPixelBuffer) {
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let handler = VNImageRequestHandler(cvPixelBuffer: image, orientation: .right, options: [:])
+            do {
+                try handler.perform([self.classificationRequest])
+            } catch {
+                print("Failed to perform classification.\n\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
+    
+    func processClassifications( for request: VNRequest, error: Error?) {
+        DispatchQueue.main.async {
+            guard let results = request.results else {
+                return
+            }
+            
+            
+            let classifications = results as! [VNClassificationObservation]
+            
+            if !classifications.isEmpty {
+                if classifications.first!.confidence > 0.6{
+                    self.delegate?.mlCameraHasResults(results: classifications)
+                }
+            }
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         captureSession = AVCaptureSession()
@@ -77,13 +168,13 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     
     override func viewWillDisappear(_ animated: Bool) {
-           super.viewWillDisappear(animated)
-
-           if captureSession?.isRunning == true {
-               captureSession.stopRunning()
-           }
-       }
-
+        super.viewWillDisappear(animated)
+        
+        if captureSession?.isRunning == true {
+            captureSession.stopRunning()
+        }
+    }
+    
     
     
     

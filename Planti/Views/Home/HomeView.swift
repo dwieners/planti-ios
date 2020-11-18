@@ -10,13 +10,14 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var showModalView = false
+
     
     var body: some View {
         NavigationView{
             ScrollView {
                 NavigationLink(
-                    destination: CameraView().navigationBarTitle("Kamera", displayMode: .inline))
-                {
+                    destination: VideoClassifiyerView()
+                ){
                     VStack(alignment: .leading, spacing: 16) {
                         HStack{
                             Text("Failed to retrieve total cases count")

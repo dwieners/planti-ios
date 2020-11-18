@@ -20,6 +20,8 @@
 		8FDAAA3525648719006C6FAA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3425648719006C6FAA /* ImagePicker.swift */; };
 		8FDAAA3D25648A3A006C6FAA /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3C25648A3A006C6FAA /* Color + Extension.swift */; };
 		8FDAAA4225648AA0006C6FAA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA4125648AA0006C6FAA /* HomeView.swift */; };
+		8FE83C9E25653E0D006E1208 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8FE83C9D25653E0D006E1208 /* MobileNetV2.mlmodel */; };
+		8FE83CA3256548FC006E1208 /* VideoClassifiyerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE83CA2256548FC006E1208 /* VideoClassifiyerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		8FDAAA3425648719006C6FAA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8FDAAA3C25648A3A006C6FAA /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		8FDAAA4125648AA0006C6FAA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		8FE83C9D25653E0D006E1208 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
+		8FE83CA2256548FC006E1208 /* VideoClassifiyerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoClassifiyerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +123,7 @@
 				8FBBDDA12547221E0054FCED /* Assets.xcassets */,
 				8FBBDDA62547221E0054FCED /* Persistence.swift */,
 				8FBBDDAB2547221E0054FCED /* Info.plist */,
+				8FE83C9D25653E0D006E1208 /* MobileNetV2.mlmodel */,
 				8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */,
 				8FBBDDA32547221E0054FCED /* Preview Content */,
 			);
@@ -156,6 +161,7 @@
 			children = (
 				8FDAAA4625648AA8006C6FAA /* Home */,
 				8FDAAA3125647CB9006C6FAA /* UIKitViews */,
+				8FE83CA2256548FC006E1208 /* VideoClassifiyerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -340,10 +346,12 @@
 				8FDAAA4225648AA0006C6FAA /* HomeView.swift in Sources */,
 				8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */,
 				8FDAAA3525648719006C6FAA /* ImagePicker.swift in Sources */,
+				8FE83CA3256548FC006E1208 /* VideoClassifiyerView.swift in Sources */,
 				8F3FD34925648DF4003E8BB0 /* View + Extension.swift in Sources */,
 				8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */,
 				8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */,
 				8FDAAA3D25648A3A006C6FAA /* Color + Extension.swift in Sources */,
+				8FE83C9E25653E0D006E1208 /* MobileNetV2.mlmodel in Sources */,
 				8F3FD34E256523A2003E8BB0 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
