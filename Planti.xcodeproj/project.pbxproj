@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8F3FD34925648DF4003E8BB0 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3FD34825648DF4003E8BB0 /* View + Extension.swift */; };
+		8F3FD34E256523A2003E8BB0 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3FD34D256523A2003E8BB0 /* CameraView.swift */; };
 		8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9D2547221A0054FCED /* PlantiApp.swift */; };
 		8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9F2547221A0054FCED /* ContentView.swift */; };
 		8FBBDDA22547221E0054FCED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA12547221E0054FCED /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		8F3FD34825648DF4003E8BB0 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
+		8F3FD34D256523A2003E8BB0 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		8FBBDD9A2547221A0054FCED /* Planti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBBDD9D2547221A0054FCED /* PlantiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiApp.swift; sourceTree = "<group>"; };
 		8FBBDD9F2547221A0054FCED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				8FDAAA3425648719006C6FAA /* ImagePicker.swift */,
+				8F3FD34D256523A2003E8BB0 /* CameraView.swift */,
 			);
 			path = UIKitViews;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */,
 				8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */,
 				8FDAAA3D25648A3A006C6FAA /* Color + Extension.swift in Sources */,
+				8F3FD34E256523A2003E8BB0 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,7 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Planti/Preview Content\"";
-				DEVELOPMENT_TEAM = 95MCTJ87K3;
+				DEVELOPMENT_TEAM = N48XQ82EDP;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Planti/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -521,7 +525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Planti/Preview Content\"";
-				DEVELOPMENT_TEAM = 95MCTJ87K3;
+				DEVELOPMENT_TEAM = N48XQ82EDP;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Planti/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

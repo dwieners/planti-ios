@@ -17,13 +17,7 @@ struct ContentView: View {
     private var items: FetchedResults<Item>
 
     var body: some View {
-        NavigationView{
-            ScrollView {
-                
-                Text("Hallowelt")
-            }.frame(maxWidth: .infinity).background(Color.green)
-            .navigationBarTitle("Home")
-        }
+        HomeView()
     }
 
     private func addItem() {

@@ -14,14 +14,17 @@ struct HomeView: View {
     var body: some View {
         NavigationView{
             ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    HStack{
-                        Text("Failed to retrieve total cases count")
-                    }.frame(minWidth: 0, maxWidth: .infinity)
+                NavigationLink(
+                    destination: CameraView().navigationBarTitle("Kamera", displayMode: .inline))
+                {
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack{
+                            Text("Failed to retrieve total cases count")
+                        }.frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .cardContained()
+                    .padding()
                 }
-                .cardContained()
-                .padding()
-                .buttonStyle(PlainButtonStyle())
                 .navigationTitle(Text("Planti"))
                 .navigationBarItems(
                     leading:
