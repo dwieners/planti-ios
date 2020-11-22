@@ -10,7 +10,7 @@ import CoreML
 import UIKit
 import Vision
 
-struct VideoClassifiyerView: View {
+struct CameraLiveView: View {
  
     @State private var results: [VNClassificationObservation] = []
     
@@ -39,6 +39,6 @@ struct VideoClassifiyerView: View {
 
 struct VideoClassifiyerView_Previews: PreviewProvider {
     static var previews: some View {
-        VideoClassifiyerView()
+        CameraLiveView()
     }
 }

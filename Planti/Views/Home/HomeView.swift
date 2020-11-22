@@ -16,17 +16,41 @@ struct HomeView: View {
         NavigationView{
             ScrollView {
                 NavigationLink(
-                    destination: VideoClassifiyerView()
+                    destination: CameraLiveView()
+                ){
+                    
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack{
+                            Text("Kamera Live").foregroundColor(.white)
+                        }.frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .cardContained(background: .green, cornerRadius: 8)
+                    .padding([.top, .horizontal])
+                    
+                }
+                NavigationLink(
+                    destination: Text("Hallo")
                 ){
                     VStack(alignment: .leading, spacing: 16) {
                         HStack{
-                            Text("Failed to retrieve total cases count")
+                            Text("Gallerie & Kamera")
                         }.frame(minWidth: 0, maxWidth: .infinity)
                     }
                     .cardContained()
-                    .padding()
+                    .padding([.top, .horizontal])
                 }
-                .navigationTitle(Text("Planti"))
+                NavigationLink(
+                    destination: ImageSelectionRestView()
+                ){
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack{
+                            Text("Rest API")
+                        }.frame(minWidth: 0, maxWidth: .infinity)
+                    }
+                    .cardContained()
+                    .padding([.top, .horizontal])
+                }
+                .navigationTitle(Text("Home"))
                 .navigationBarItems(
                     leading:
                         Button(action: {

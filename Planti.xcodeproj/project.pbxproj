@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8F3FD34925648DF4003E8BB0 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3FD34825648DF4003E8BB0 /* View + Extension.swift */; };
 		8F3FD34E256523A2003E8BB0 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3FD34D256523A2003E8BB0 /* CameraView.swift */; };
+		8F4CA3A1256A9B37002ABFCA /* ImageSelectionRestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4CA3A0256A9B37002ABFCA /* ImageSelectionRestView.swift */; };
 		8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9D2547221A0054FCED /* PlantiApp.swift */; };
 		8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9F2547221A0054FCED /* ContentView.swift */; };
 		8FBBDDA22547221E0054FCED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA12547221E0054FCED /* Assets.xcassets */; };
@@ -17,11 +18,11 @@
 		8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */; };
 		8FBBDDB52547221E0054FCED /* PlantiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDB42547221E0054FCED /* PlantiTests.swift */; };
 		8FBBDDC02547221E0054FCED /* PlantiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDDBF2547221E0054FCED /* PlantiUITests.swift */; };
-		8FDAAA3525648719006C6FAA /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3425648719006C6FAA /* ImagePicker.swift */; };
+		8FDAAA3525648719006C6FAA /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3425648719006C6FAA /* ImagePickerView.swift */; };
 		8FDAAA3D25648A3A006C6FAA /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3C25648A3A006C6FAA /* Color + Extension.swift */; };
 		8FDAAA4225648AA0006C6FAA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA4125648AA0006C6FAA /* HomeView.swift */; };
 		8FE83C9E25653E0D006E1208 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8FE83C9D25653E0D006E1208 /* MobileNetV2.mlmodel */; };
-		8FE83CA3256548FC006E1208 /* VideoClassifiyerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE83CA2256548FC006E1208 /* VideoClassifiyerView.swift */; };
+		8FE83CA3256548FC006E1208 /* CameraLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE83CA2256548FC006E1208 /* CameraLiveView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		8F3FD34825648DF4003E8BB0 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
 		8F3FD34D256523A2003E8BB0 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		8F4CA3A0256A9B37002ABFCA /* ImageSelectionRestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionRestView.swift; sourceTree = "<group>"; };
 		8FBBDD9A2547221A0054FCED /* Planti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBBDD9D2547221A0054FCED /* PlantiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiApp.swift; sourceTree = "<group>"; };
 		8FBBDD9F2547221A0054FCED /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,11 +60,11 @@
 		8FBBDDBB2547221E0054FCED /* PlantiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlantiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FBBDDBF2547221E0054FCED /* PlantiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiUITests.swift; sourceTree = "<group>"; };
 		8FBBDDC12547221E0054FCED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8FDAAA3425648719006C6FAA /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		8FDAAA3425648719006C6FAA /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		8FDAAA3C25648A3A006C6FAA /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
 		8FDAAA4125648AA0006C6FAA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		8FE83C9D25653E0D006E1208 /* MobileNetV2.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNetV2.mlmodel; sourceTree = "<group>"; };
-		8FE83CA2256548FC006E1208 /* VideoClassifiyerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoClassifiyerView.swift; sourceTree = "<group>"; };
+		8FE83CA2256548FC006E1208 /* CameraLiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraLiveView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F4CA39F256A9AF9002ABFCA /* RestView */ = {
+			isa = PBXGroup;
+			children = (
+				8F4CA3A0256A9B37002ABFCA /* ImageSelectionRestView.swift */,
+			);
+			path = RestView;
+			sourceTree = "<group>";
+		};
 		8FBBDD912547221A0054FCED = {
 			isa = PBXGroup;
 			children = (
@@ -159,9 +169,10 @@
 		8FDAAA2E25647C7B006C6FAA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8F4CA39F256A9AF9002ABFCA /* RestView */,
+				8FF7AACF256A98E400FBA6CF /* CameraLiveView */,
 				8FDAAA4625648AA8006C6FAA /* Home */,
 				8FDAAA3125647CB9006C6FAA /* UIKitViews */,
-				8FE83CA2256548FC006E1208 /* VideoClassifiyerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,7 +194,7 @@
 		8FDAAA3125647CB9006C6FAA /* UIKitViews */ = {
 			isa = PBXGroup;
 			children = (
-				8FDAAA3425648719006C6FAA /* ImagePicker.swift */,
+				8FDAAA3425648719006C6FAA /* ImagePickerView.swift */,
 				8F3FD34D256523A2003E8BB0 /* CameraView.swift */,
 			);
 			path = UIKitViews;
@@ -211,6 +222,14 @@
 				8FDAAA4125648AA0006C6FAA /* HomeView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		8FF7AACF256A98E400FBA6CF /* CameraLiveView */ = {
+			isa = PBXGroup;
+			children = (
+				8FE83CA2256548FC006E1208 /* CameraLiveView.swift */,
+			);
+			path = CameraLiveView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,13 +364,14 @@
 				8FBBDDA72547221E0054FCED /* Persistence.swift in Sources */,
 				8FDAAA4225648AA0006C6FAA /* HomeView.swift in Sources */,
 				8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */,
-				8FDAAA3525648719006C6FAA /* ImagePicker.swift in Sources */,
-				8FE83CA3256548FC006E1208 /* VideoClassifiyerView.swift in Sources */,
+				8FDAAA3525648719006C6FAA /* ImagePickerView.swift in Sources */,
+				8FE83CA3256548FC006E1208 /* CameraLiveView.swift in Sources */,
 				8F3FD34925648DF4003E8BB0 /* View + Extension.swift in Sources */,
 				8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */,
 				8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */,
 				8FDAAA3D25648A3A006C6FAA /* Color + Extension.swift in Sources */,
 				8FE83C9E25653E0D006E1208 /* MobileNetV2.mlmodel in Sources */,
+				8F4CA3A1256A9B37002ABFCA /* ImageSelectionRestView.swift in Sources */,
 				8F3FD34E256523A2003E8BB0 /* CameraView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

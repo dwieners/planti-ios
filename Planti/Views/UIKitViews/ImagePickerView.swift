@@ -7,16 +7,18 @@
 
 import SwiftUI
 
-struct ImagePicker: UIViewControllerRepresentable {
+struct ImagePickerView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
+    
+    var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @Binding var image: UIImage?
     
     
     class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        let parent: ImagePicker
+        let parent: ImagePickerView
         
-        init(_ parent: ImagePicker) {
+        init(_ parent: ImagePickerView) {
             self.parent = parent
         }
         
@@ -29,13 +31,14 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
     }
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePickerView>) -> UIImagePickerController {
         let picker = UIImagePickerController()
+        picker.sourceType = sourceType
         picker.delegate = context.coordinator
         return picker
     }
     
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePickerView>) {
         
     }
     
