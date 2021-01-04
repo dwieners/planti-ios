@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct TestView: View {
     
     @State private var showModalView = false
 
@@ -29,7 +29,7 @@ struct HomeView: View {
                     
                 }
                 NavigationLink(
-                    destination: Text("Hallo")
+                    destination: ImageSelectionView()
                 ){
                     VStack(alignment: .leading, spacing: 16) {
                         HStack{
@@ -40,7 +40,7 @@ struct HomeView: View {
                     .padding([.top, .horizontal])
                 }
                 NavigationLink(
-                    destination: ImageSelectionRestView()
+                    destination: Text("Test")
                 ){
                     VStack(alignment: .leading, spacing: 16) {
                         HStack{
@@ -74,8 +74,8 @@ struct HomeView: View {
 }
 
 
-struct HomeView_Previews: PreviewProvider {
+struct TestView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        TestView()
     }
 }
