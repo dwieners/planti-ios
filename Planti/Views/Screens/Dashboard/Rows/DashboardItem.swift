@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DashboardViewItem: View {
+struct DashboardItem: View {
     
     var title:String
     var image: Image
@@ -26,6 +26,7 @@ struct DashboardViewItem: View {
                         .frame(height: 58)
                 }
             }
+            .foregroundColor(.label)
             .cardContained()
             .shadow(color: Color/*@START_MENU_TOKEN@*/.black/*@END_MENU_TOKEN@*/.opacity(0.2), radius: 20, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 5)
         }else{
@@ -49,8 +50,12 @@ struct DashboardViewItem: View {
 struct DashboardViewItem_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-        DashboardViewItem(title: "Pflanzenübersicht", image: Image(systemName: "tray.2.fill"))
-        DashboardViewItem(title: "Rangliste", image: Image(systemName: "rosette"), small: true)
+            DashboardItem(title: "Pflanzenübersicht", image: Image(systemName: "tray.2.fill"))
+                .previewAsComponent()
+            
+            DashboardItem(title: "Rangliste", image: Image(systemName: "rosette"), small: true)
+                .previewAsComponent()
+            
         }
     }
 }

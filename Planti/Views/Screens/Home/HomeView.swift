@@ -23,13 +23,9 @@ struct HomeView: View {
     
     let data = [
         PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
+        PlantRecoard(title: "Sonnnenblume", scientificName: "Bellis perennis", keyVisual: "roses"),
         PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
-        PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
-        PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
-        PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
-        PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
-        PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
-        PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower")
+        PlantRecoard(title: "Sonnnenblume", scientificName: "Bellis perennis", keyVisual: "flower")
     ]
     
     @ObservedObject var searchBar: SearchBar = SearchBar()
@@ -41,73 +37,46 @@ struct HomeView: View {
     ]
     
     var body: some View {
+        
         NavigationView{
             ZStack{
                 ScrollView{
                     LazyVGrid(columns: columns){
-                        ForEach(data, id: \.id) { item in
-                            LazyVStack{
-                                Image(item.keyVisual)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(8)
-                                LazyVStack{
-                                    Text(item.title)
-                                        .font(.headline)
-                                        .foregroundColor(.primary)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    Spacer().frame(height: 4)
-                                    Text(item.scientificName)
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                }
-                                .padding(8)
-                            }.padding(.bottom, 8)
+                        ForEach(
+                            data.filter{
+                                searchBar.text.isEmpty ||
+                                    $0.title.localizedStandardContains(searchBar.text)
+                            }, id: \.id) { item in
+                            NavigationLink(
+                                destination: PlantView(),
+                                label: {
+                                    PlantRecordItem(item: item)
+                                })
                         }
                         Spacer().frame(height: 50)
                     }
                     .padding()
-                    .zIndex(0)
                 }
                 
                 VStack {
                     Spacer()
-                    Button(action: {
-                       activeSheet = .selection
-                    }, label: {
-                        LazyVStack{
-                            HStack{
-                                Image(systemName: "camera.viewfinder")
-                                    .resizable()
-                                    .foregroundColor(.white)
-                                    .frame(width: 28, height: 28, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                Text("Pflanze identifizieren")
-                                    .font(.headline)
-                                    .foregroundColor(.white)
-                            }
-                        }.frame(height: 50)
-                    })
-                    .background(Color.green)
-                    .cornerRadius(25)
-                    .padding(.horizontal, 32)
+                    FloatingClassifyButton(image: Image(systemName: "camera.viewfinder"), label: "Pflanze bestimmen", activeSheet: $activeSheet)
+                        .padding(.horizontal, 32)
                 }
-                .padding(.bottom, 8)
-                .zIndex(1)
+                .padding(.bottom, 16)
                 .ignoresSafeArea(.keyboard, edges: /*@START_MENU_TOKEN@*/.bottom/*@END_MENU_TOKEN@*/)
                 
             }
-            .navigationBarTitle("Suche", displayMode: .inline)
+            .navigationBarTitle("Suche")
             .add(self.searchBar)
             .navigationBarItems(
                 leading:
                     Button(action: {
                         activeSheet = .avatar
                     }, label: {
-                        Image(systemName: "person.circle.fill")
-                            .foregroundColor(.green)
+                        Image(systemName: "person.circle.fill").resizable()
                     })
-          
+                
                 
             )
             .fullScreenCover(item: $activeSheet){ item in
@@ -119,18 +88,16 @@ struct HomeView: View {
                     AvatarView(activeSheet: $activeSheet)
                 }
             }
-        }
-
+        }.accentColor(.green)
     }
     
-    
+
+
+
 }
 
 struct PlantSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        Group{
-            HomeView().environment(\.colorScheme, .light)
-            HomeView() .environment(\.colorScheme, .dark)
-        }
+        HomeView()
     }
 }

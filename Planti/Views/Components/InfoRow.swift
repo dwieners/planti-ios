@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct InfoRow: View {
+    var title: String
+    var description: String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading){
+            HStack(alignment: .top){
+                VStack(alignment: .leading){
+                    Text(title).font(.headline).foregroundColor(.primary).padding(.bottom, 2)
+                    Text(description).font(.body).foregroundColor(.secondary)
+                }
+                Spacer()
+                //Image(systemName: "chevron.right").foregroundColor(.secondary)
+            }
+        }.padding(.vertical)
     }
 }
 
 struct InfoRow_Previews: PreviewProvider {
     static var previews: some View {
-        InfoRow()
+        InfoRow(title: "Meine Entdeckungen", description: "Siehe hier, welche Pflanzen du zuletzt entdeckt hast.")
+            .previewLayout(.sizeThatFits)
     }
 }

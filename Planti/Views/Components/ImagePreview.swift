@@ -6,15 +6,33 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct ImagePreview: View {
+    
+    @Binding var uiImage: UIImage?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center) {
+            if let inputImage = uiImage {
+                Image(uiImage: inputImage)
+                    .resizable()
+                    .scaledToFit()
+                
+            } else {
+                Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+
+            }
+        }
+        .frame( maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 struct ImagePreview_Previews: PreviewProvider {
     static var previews: some View {
-        ImagePreview()
+        ImagePreview(uiImage: .constant(nil))
+            .previewLayout(.sizeThatFits)
     }
 }

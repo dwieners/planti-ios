@@ -15,7 +15,7 @@ struct PlantShape: Identifiable {
 }
 
 
-struct SelectionDashboardView: View {
+struct PredictionDashboardView: View {
     
     @Binding var activeSheet: Sheet?
     
@@ -54,20 +54,22 @@ struct SelectionDashboardView: View {
                 }
             }
             .padding(.horizontal)
-            .navigationBarTitle("Pflanzenform", displayMode: .inline)
+            .navigationBarTitle("Pflanzenform")
             .background(Color.secondarySystemBackground.ignoresSafeArea(.all))
             .navigationBarItems(leading: Button(action: {
                 activeSheet = nil
             }, label: {
                 Text("Schließen")
+                   
             }))
-        }
+          
+        }.accentColor(.green)
     }
     
 }
 
 struct SelectionDashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectionDashboardView(activeSheet: .constant(.settings))
+        PredictionDashboardView(activeSheet: .constant(.settings))
     }
 }

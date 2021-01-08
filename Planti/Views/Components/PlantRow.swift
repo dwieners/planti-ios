@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct PlantModel:Identifiable{
+struct PlantModel:Identifiable, Hashable{
     var id = UUID()
     var image: UIImage
     var name: String
@@ -33,16 +33,12 @@ struct PlantRow: View {
 struct PlantRow_Previews: PreviewProvider {
     static var previews: some View {
         
-     
-        PlantRow(plant: dummyData[0])
-            .previewLayout(.sizeThatFits)
+        PlantRow(plant: dummyData[0]).previewAsComponent()
     }
 }
 
 
 let dummyData = [
     PlantModel(image: UIImage(named: "roses")!, name: "Rose", type: "Bellis peneris"),
-    PlantModel(image: UIImage(named: "roses")!, name: "Rose", type: "Bellis peneris"),
-    PlantModel(image: UIImage(named: "roses")!, name: "Rose", type: "Bellis peneris"),
-    PlantModel(image: UIImage(named: "roses")!, name: "Rose", type: "Bellis peneris")
+    PlantModel(image: UIImage(named: "flower")!, name: "Gänseblümchen", type: "Bellis peneris"),
 ]

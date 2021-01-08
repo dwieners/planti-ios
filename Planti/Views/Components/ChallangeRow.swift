@@ -12,10 +12,11 @@ struct ChallangeRow: View {
     var iconColor: Color
     var title: String
     var hasDivder: Bool = true
+    var hasChevron: Bool = true
     
     var body: some View {
         HStack {
-            HStack(alignment: .center) {
+            
                 Image(systemName: iconName)
                     .frame(width: 20, height: 20)
                     .foregroundColor(.white)
@@ -23,19 +24,8 @@ struct ChallangeRow: View {
                     .background(iconColor)
                     .cornerRadius(8.0)
                     .padding(.trailing, 8)
-            }
             VStack(alignment: .leading){
-                Spacer().frame(height: 8)
-                HStack(){
                     Text(title)
-                    Spacer()
-                    Image(systemName: "chevron.right").foregroundColor(.secondary).padding()
-                }.padding(.vertical, 8)
-                if(hasDivder){
-                    Divider()
-                }else{
-                    Spacer().frame(height: 8)
-                }
             }
         }
     }

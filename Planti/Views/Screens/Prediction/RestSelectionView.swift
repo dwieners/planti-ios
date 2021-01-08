@@ -46,51 +46,10 @@ struct RestSelectionView: View {
             InfoCard(image: Image(systemName: "stethoscope"), text: "Gerne untersuchen wir deine Entdeckte Pflanze. Mache hierzu einfach ein Foto oder Verwende eines aus deiner Gallerie.")
             .padding()
             
-            VStack(alignment: .center) {
-                if let inputImage = inputImage {
-                    Image(uiImage: inputImage)
-                        .resizable()
-                        .scaledToFit()
-                    
-                } else {
-                    Image(systemName: "photo")
-                        .resizable()
-                        .scaledToFit()
-
-                }
-            }
-            .frame( maxWidth: .infinity, maxHeight: .infinity)
+            ImagePreview(uiImage: $inputImage)
             .padding()
-            
-            
-            
-            VStack {
 
-                HStack {
-                    Button(action: {
-                        activeSheet = .camera
-                    }
-                    , label: {
-                        Image(systemName: "camera.fill").resizable().scaledToFit().frame(height: 32)
-                    })
-                    .padding(32)
-                    .background(Color.tertiarySystemBackground)
-                    .foregroundColor(.label)
-                    .cornerRadius(20, corners: [.topLeft, .bottomLeft])
-                    
-                    
-                    Button(action: {
-                        activeSheet = .picker
-                    }
-                    , label: {
-                        Image(systemName: "photo.fill.on.rectangle.fill").resizable().scaledToFit().frame(height: 32)
-                    })
-                    .padding(32)
-                    .background(Color.tertiarySystemBackground)
-                    .foregroundColor(.label)
-                    .cornerRadius(20, corners: [.topRight, .bottomRight])
-                }.padding()
-            } .frame( maxWidth: .infinity)
+            ImageSourceButton(activeSheet: $activeSheet)
             
             NavigationLink(destination: PredictionView(prediction: classifiedItem), isActive: $hasPrediction){
                Spacer().fixedSize()
@@ -100,16 +59,11 @@ struct RestSelectionView: View {
         }
         .navigationBarTitle(item.title, displayMode: .inline)
         .navigationBarItems(trailing:
-                
                 Button(action: {
                     classifyImage()
                 }, label: {
                     Text("Bestimmen")
                 })
-        
-                                
-     
-        
         )
         .background(Color.secondarySystemBackground.ignoresSafeArea(.all))
         .fullScreenCover(item: $activeSheet){ item in
@@ -140,6 +94,7 @@ struct RestSelectionView_Previews: PreviewProvider {
         NavigationView{
             RestSelectionView(item: PlantShape(title: "Blüte", keyVisual: "flower"))
         }
+        .accentColor(.green)
     }
 }
 

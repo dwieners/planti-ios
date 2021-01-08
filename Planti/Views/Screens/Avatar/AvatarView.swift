@@ -7,22 +7,22 @@
 
 import SwiftUI
 
-struct ProfilView: View {
+struct AvatarView: View {
     
-    @Binding var actionSheet: Sheet?
+    @Binding var activeSheet: Sheet?
     
     var body: some View {
         NavigationView{
-            Text("Avatar")
+            Text("🚧 Hier wird noch gebaut")
                 .navigationBarTitle("Dein Avatar")
                 .navigationBarItems(
                     leading:
                         Button(
                             action: {
-                                actionSheet = nil
+                                activeSheet = nil
                             },
                             label: {
-                                Image(systemName: "xmark").foregroundColor(.green)
+                                Text("Schließen").foregroundColor(.green)
                             }
                         )
                 )
@@ -34,7 +34,6 @@ struct ProfilView: View {
 
 struct ProfilView_Previews: PreviewProvider {
     static var previews: some View {
-        
-        ProfilView()
+        AvatarView(activeSheet: .constant(.avatar))
     }
 }

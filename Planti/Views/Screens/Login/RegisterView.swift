@@ -30,22 +30,24 @@ struct RegisterView: View {
                     }
                    
                 }.listStyle(GroupedListStyle())
-            }.navigationBarTitle("Account erstellen", displayMode: .inline)
+            }.navigationBarTitle("Account erstellen", displayMode: .large)
             .navigationBarItems(leading:
                                     Button(action: {
                                         showModal.toggle()
                                     }, label: {
                                         Image(systemName: "xmark")
+                                       
                                     }),
                                 trailing: Button(action: {
                                     showModal.toggle()
                                     auth.login()
                                 }, label: {
                                     Text("Anmelden")
+                                       
                                 })
             )
 
-        }
+        }.accentColor(.green)
     }
 }
 

@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct RootView: View {
-    
-    
-    
+
     var body: some View {
         TabView {
             HomeView()
@@ -34,6 +32,9 @@ struct RootView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView().environment(\.colorScheme, .dark)
+        Group {
+            RootView()
+            RootView().colorScheme(.dark)
+        }
     }
 }

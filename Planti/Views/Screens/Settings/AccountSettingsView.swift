@@ -39,14 +39,15 @@ struct AccountSettingsView: View {
             }
         }
         .listStyle(GroupedListStyle())
-        .navigationTitle("Benutzerkonto")
+        .navigationBarTitle("Benutzerkonto")
     }
+    
 }
 
 struct AccoutSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             AccountSettingsView()
-        }
+        }.previewAsScreen()
     }
 }

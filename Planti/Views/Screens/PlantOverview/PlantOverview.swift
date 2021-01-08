@@ -8,10 +8,27 @@
 import SwiftUI
 
 struct PlantOverview: View {
+    
+    @ObservedObject var searchBar: SearchBar = SearchBar()
+    
+    
+//    ForEach(dummyData, id: \.id) { item in
+//        PlantRow(plant: item)
+//    }
+    
     var body: some View {
+        List(
+            dummyData.filter{
+                searchBar.text.isEmpty ||
+                $0.name.localizedStandardContains(searchBar.text)
+            }
+        ){ plant in
+            PlantRow(plant: plant)
+        }
+         
         
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
             .navigationBarTitle("Pflanzenübersicht")
+            .add(self.searchBar)
             
     }
 }
@@ -21,5 +38,7 @@ struct PlantOverview_Previews: PreviewProvider {
         NavigationView{
             PlantOverview()
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .previewAsScreen()
     }
 }
