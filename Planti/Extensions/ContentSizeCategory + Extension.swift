@@ -1,5 +1,5 @@
 //
-//  ContentSizeCategory.swift
+//  ContentSizeCategory + Extension.swift
 //  Planti
 //
 //  Created by Dominik Wieners on 05.01.21.

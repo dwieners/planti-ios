@@ -8,63 +8,50 @@
 import SwiftUI
 
 struct PredictionView: View {
+    @Binding var predictionSheet: Sheet?
+    @EnvironmentObject var plantiNetViewModel: PlantiNetViewModel
+ 
     
-    var prediction: PlantPrediction?
-    @State private var plantInfo: PlantInfo?
+    func formatPrediction(prediction: Double) -> String {
+        return String(format: "%.5f", prediction)
+    }
     
-    
-
-    func loadInfo(label: String){
-        PlantiService.shared.info(label: label) { res in
-            print(res)
-            switch (res){
-            case .failure(let err):
-                print(err.localizedDescription)
-                break;
-            case .success(let info):
-                self.plantInfo = info
-                print(info)
-            }
-            
+    func loadPlantPredictionResult(item: PlantiNetViewModel) -> [PlantPrediction] {
+        if let predictions = plantiNetViewModel.predictions {
+            print(predictions)
+            return predictions.predictions
+        }else{
+            return []
         }
     }
     
-    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                if let plantInfo = plantInfo, let pre = prediction {
-                    LazyVStack(alignment: .leading){
-                        HStack{
-                        Text(plantInfo.title).font(.title).foregroundColor(.white)
-                            Spacer()
-                            Text("\(Double(pre.prediction)!, specifier: "%.0f")%").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).foregroundColor(.white)
-                        }
-                    }
-                    .padding()
-                    .background(Color.black)
-                    Text(plantInfo.description).font(.body).padding()
-                } else {
-                    Text("No Prediction")
-                }
+        VStack{
+            ForEach(loadPlantPredictionResult(item: plantiNetViewModel), id: \.id) { result in
+                Text("Result: \(result.item.title)")
             }
-            .frame(width: .infinity)
-            .navigationTitle("Ergebnis")
-            .onAppear(perform: {
-                guard let pre = prediction else { return }
-                loadInfo(label: pre.label)
-            })
+                
         }
-        
-        
+        .navigationBarTitle("Ergebnis", displayMode: .inline)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(trailing: Button(action: {
+            predictionSheet = nil
+        }, label: {
+            Text("Fertig")
+        }))
+        .accentColor(.green)
+     
     }
 }
 
 struct ClassifiedView_Previews: PreviewProvider {
+
+    
     static var previews: some View {
-        let prediction = PlantPrediction(label: "allium_ursinum", prediction: "89.01829528808594")
         NavigationView {
-            PredictionView(prediction: prediction)
-        }.navigationBarTitle("Ergebnis", displayMode: .inline)
+            PredictionView(predictionSheet: .constant(nil))
+                .environmentObject(PlantiNetViewModel())
+        }
+        .navigationBarTitle("Ergebnis", displayMode: .inline)
     }
 }

@@ -17,13 +17,15 @@ struct PlantShape: Identifiable {
 
 struct PredictionDashboardView: View {
     
-    @Binding var activeSheet: Sheet?
+    @Binding var predictionSheet: Sheet?
+    
     
     let data = [
-        PlantShape(title: "Blüte", keyVisual: "flower"),
-        PlantShape(title: "Blatt", keyVisual: "leaf"),
-        PlantShape(title: "Frucht", keyVisual: "fruit"),
-        PlantShape(title: "Rinde", keyVisual: "bark")
+        PlantShape(title: "Wildblume", keyVisual: "flower"),
+        PlantShape(title: "Baum", keyVisual: "bark"),
+        PlantShape(title: "Gräser", keyVisual: "leaf"),
+        PlantShape(title: "Farn", keyVisual: "fruit"),
+    
     ]
   
     
@@ -39,7 +41,7 @@ struct PredictionDashboardView: View {
                 LazyVGrid(columns: columns, spacing: 16) {
                     ForEach(data, id: \.id) { item in
                         NavigationLink(
-                            destination: RestSelectionView(item: item),
+                            destination: SelectionView(item: item, predictionSheet: $predictionSheet),
                             label: {
                                 LazyVStack{
                                     Image(item.keyVisual).resizable().scaledToFit().frame(minWidth: 100, maxWidth: 200, minHeight: 150, maxHeight: 200).cornerRadius(10)
@@ -57,19 +59,21 @@ struct PredictionDashboardView: View {
             .navigationBarTitle("Pflanzenform")
             .background(Color.secondarySystemBackground.ignoresSafeArea(.all))
             .navigationBarItems(leading: Button(action: {
-                activeSheet = nil
+                predictionSheet = nil
             }, label: {
                 Text("Schließen")
                    
             }))
           
-        }.accentColor(.green)
+        }
+        .accentColor(.green)
+
     }
     
 }
 
 struct SelectionDashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        PredictionDashboardView(activeSheet: .constant(.settings))
+        PredictionDashboardView(predictionSheet: .constant(nil))
     }
 }

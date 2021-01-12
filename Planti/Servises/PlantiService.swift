@@ -8,22 +8,39 @@
 import Foundation
 import UIKit
 
-
-struct PlantInfo: Decodable{
+///
+///# PlantInfo
+///
+struct PlantInfo: Codable, Identifiable{
+    let id: Int
     let title: String
+    let image: String
+    let scientific_name: String
+    let taxonomy: String
     let description: String
 }
 
 
-struct PlantPrediction: Decodable {
-    let label: String
-    let prediction: String
+///
+/// # Predictions
+///
+struct PlantPrediction: Codable, Identifiable{
+    let id: String
+    let item: PlantItem
+    let prediction: Double
 }
 
-struct PlantPredicationResult: Decodable {
-    let predictions: [PlantPrediction]
-    let success: Bool
+struct PlantItem: Codable {
+    let image: String
+    let key: String
+    let scientific_name: String
+    let title: String
 }
+
+struct PlantPredicationResult: Codable {
+    let predictions: [PlantPrediction]
+}
+
 
 struct Media {
     let key: String
@@ -57,11 +74,9 @@ class PlantiService {
     /// - Parameters:
     ///   - label: String
     ///   - completion: PlantInfo
-    func info(label: String, completion: @escaping (Result<PlantInfo, Error>) -> Void){
+    func info(key: String, completion: @escaping (Result<PlantInfo, Error>) -> Void){
         
-        print("Begginnninggnn")
-        
-        let endpoint = Endpoint.info(label: label)
+        let endpoint = Endpoint.plants(key: key)
         
         var request = URLRequest(url: endpoint.url)
         request.httpMethod = "GET"
@@ -101,11 +116,11 @@ class PlantiService {
     /// - Parameters:
     ///   - image: UIImage
     ///   - completion: PlantPredictionResult
-    func classify(withImage image: UIImage, completion: @escaping (Result<PlantPredicationResult, Error>) -> Void){
+    func classify(with image: UIImage, completion: @escaping (Result<PlantPredicationResult, Error>) -> Void){
         
         guard let mediaImage = Media(withImage: image, for: "img") else {return }
         
-        let endpoint = Endpoint.classify
+        let endpoint = Endpoint.classify(model: .plantinet)
         
         var request = URLRequest(url: endpoint.url)
         request.httpMethod = "POST"
@@ -133,6 +148,8 @@ class PlantiService {
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
                 print(json)
                 
+                print(data)
+                
                 let prediction = try JSONDecoder().decode(PlantPredicationResult.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(prediction))
@@ -143,49 +160,17 @@ class PlantiService {
                     completion(.failure(jsonError))
                 }
             }
-            //            if let resonse = response {
-            //                print(resonse)
-            //            }
-            //
-            //            if let data = data {
-            //                do {
-            //                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-            //                    print(json)
-            //                } catch {
+
         }.resume()
     }
     
+
     
-    
-    func loadData(){
-        print("Hallo")
-        guard let url = URL(string: "http://192.168.0.80:5000/") else {
-            print("Invalid URL")
-            return
-        }
-        let request = URLRequest(url: url)
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                do {
-                    if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                        print(json)
-                    }
-                }catch let error as NSError {
-                    print(error)
-                }
-            }
-            
-        }.resume()
-    }
-    
-    
-    
-    func generateBoundary() -> String {
+    private func generateBoundary() -> String {
         return "Boundary-\(NSUUID().uuidString)"
     }
     
-    func createDataBody(withParameters params: Parameters?, media: [Media]?, boundary: String) -> Data {
+    private func createDataBody(withParameters params: Parameters?, media: [Media]?, boundary: String) -> Data {
         
         let lineBreak = "\r\n"
         var body = Data()

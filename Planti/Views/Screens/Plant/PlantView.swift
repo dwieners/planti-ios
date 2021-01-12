@@ -9,80 +9,125 @@ import SwiftUI
 
 struct PlantView: View {
     
-       var body: some View{
-           
-           ZStack(alignment: .top, content: {
-               
-               ScrollView(.vertical, showsIndicators: false, content: {
-                   
-                   VStack{
-                       
-                       // now going to do strechy header....
-                       // follow me...
-                       
-                       GeometryReader{g in
+    
+    var key:String
+    
+    @ObservedObject private var plantViewModel = PlantViewModel()
+    
+    var body: some View{
+        VStack{
+            ZStack {
+                if plantViewModel.isLoading {
+                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+                } else {
+                    if let plant = plantViewModel.plant {
+                        PlantViewContent(plant: plant)
+                    }
+                    
+                }
+            }
+        }
+        .frame(minWidth: 0,
+               maxWidth: .infinity,
+               minHeight: 0,
+               maxHeight: .infinity,
+               alignment: .topLeading)
+        .edgesIgnoringSafeArea(.top)
+        .navigationBarTitle(Text("Details"), displayMode: .inline)
+        .onAppear(perform: {
+            plantViewModel.loadInfo(key: key)
+        })
+    }
+    
+}
+
+
+struct PlantViewContent : View {
+    
+    var plant: PlantInfo
+    
+    @State private  var image: UIImage = UIImage()
+    @ObservedObject private var imageLoader: ImageLoader
+    
+    init(plant: PlantInfo) {
+        self.plant = plant
+        self.imageLoader = ImageLoader(urlString: plant.image)
+    }
+    
+    var body: some View {
+        ZStack(alignment: .top, content: {
+            
+            ScrollView(.vertical, showsIndicators: false, content: {
+                
+                VStack{
+                    
+                    // now going to do strechy header....
+                    // follow me...
+                    
+                    GeometryReader{g in
                         ZStack{
-                               Image("flower")
-                               .resizable()
-                               // fixing the view to the top will give strechy effect...
-                              //  increasing height by drag amount....
-                               .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
-                               .frame(height: g.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + g.frame(in: .global).minY  : UIScreen.main.bounds.height / 2.2)
-                              
+                            Image(uiImage: image)
+                                .resizable()
+                                // fixing the view to the top will give strechy effect...
+                                //  increasing height by drag amount....
+                                .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
+                                .frame(height: g.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + g.frame(in: .global).minY  : UIScreen.main.bounds.height / 2.2)
+                                .onReceive(imageLoader.didChange){ data in
+                                    self.image = UIImage(data: data) ?? UIImage()
+                                }
+                                
+                            
                             VStack {
                                 Spacer()
                                 HStack{
                                     VStack(alignment: .leading){
-                                        Text("Gänseblümchen")
+                                        Text(plant.title)
                                             .font(.title)
                                             .fontWeight(.bold)
-                                            
-                    
-                                        Text("Bellis perennis")
+                                        
+                                        
+                                        Text(plant.scientific_name)
                                             .font(.headline)
                                     }
                                     Spacer()
                                     
-                               
+                                    
                                 }.padding()
                                 .background(BlurView(style: .prominent))
                             }    .offset(y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0)
                             .frame(height: g.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + g.frame(in: .global).minY  : UIScreen.main.bounds.height / 2.2)
                             
                         }
-                           
-                       }
-                       // fixing default height...
-                       .frame(height: UIScreen.main.bounds.height / 2.2)
-                           
-                  
-                
-                        LazyVStack(alignment: .leading){
-                            VStack(alignment: .leading){
-                                Text("Taxonomie").font(.headline).padding(.bottom, 4)
-                                Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet").font(.body)
-                            }.padding(8)
-                            Divider()
-                            VStack(alignment: .leading){
-                                Text("Beschreibung").font(.headline).padding(.bottom, 4)
-                                Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet").font(.body)
-                            }.padding(8)
-                                  
-                               
-                        }.padding()
+                        
+                    }
+                    // fixing default height...
+                    .frame(height: UIScreen.main.bounds.height / 2.2)
                     
-                   
-                       
-                       Spacer()
-                   }
-               })
-               
-           
-           })
-           .edgesIgnoringSafeArea(.top)
-           .navigationBarTitle(Text("Gänseblümchen"), displayMode: .inline)
-       }
-   
+                    
+                    
+                    LazyVStack(alignment: .leading){
+                        VStack(alignment: .leading){
+                            Text("Taxonomie").font(.headline).padding(.bottom, 4)
+                            Text(plant.taxonomy).font(.body)
+                        }.padding(8)
+                        Divider()
+                        VStack(alignment: .leading){
+                            Text("Beschreibung").font(.headline).padding(.bottom, 4)
+                            Text(plant.description).font(.body)
+                        }.padding(8)
+                        
+                        
+                    }.padding()
+                    
+                    
+                    
+                    Spacer()
+                }
+            })
+            
+            
+        })
+    }
 }
 
 // CardView...
@@ -169,6 +214,6 @@ struct BlurView : UIViewRepresentable {
 struct PlantView_Previews: PreviewProvider {
     static var previews: some View {
         
-        PlantView().previewAsScreen()
+        PlantView(key: "bellis_perennis").previewAsScreen()
     }
 }

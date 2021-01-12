@@ -20,7 +20,7 @@ struct ImageSourceButton: View {
                 , label: {
                     Image(systemName: "camera.fill").resizable().scaledToFit().frame(height: 32)
                 })
-                .padding(32)
+                .padding(24)
                 .background(Color.tertiarySystemBackground)
                 .foregroundColor(.label)
                 .cornerRadius(20, corners: [.topLeft, .bottomLeft])
@@ -32,12 +32,12 @@ struct ImageSourceButton: View {
                 , label: {
                     Image(systemName: "photo.fill.on.rectangle.fill").resizable().scaledToFit().frame(height: 32)
                 })
-                .padding(32)
+                .padding(24)
                 .background(Color.tertiarySystemBackground)
                 .foregroundColor(.label)
                 .cornerRadius(20, corners: [.topRight, .bottomRight])
-            }.padding()
-        } .frame( maxWidth: .infinity)
+            }
+        }
     }
 }
 

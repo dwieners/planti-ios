@@ -30,12 +30,14 @@ struct PlantRecordItem: View {
             }
             .padding([.horizontal, .top], 8)
         }.padding(.bottom, 16)
-
+        
     }
 }
 
 struct PlantRecordItem_Previews: PreviewProvider {
     static var previews: some View {
-        PlantRecordItem(item: PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower") ).previewAsComponent()
+        PlantRecordItem(item: PlantRecoard(
+                            key: "bellis_perennis",
+                            title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower") ).previewAsComponent()
     }
 }

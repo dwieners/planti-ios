@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PlantRecoard: Identifiable {
     var id = UUID()
+    var key: String
     var title: String
     var scientificName: String
     var keyVisual: String
@@ -22,10 +23,10 @@ struct HomeView: View {
     
     
     let data = [
-        PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
-        PlantRecoard(title: "Sonnnenblume", scientificName: "Bellis perennis", keyVisual: "roses"),
-        PlantRecoard(title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
-        PlantRecoard(title: "Sonnnenblume", scientificName: "Bellis perennis", keyVisual: "flower")
+        PlantRecoard(key: "bellis_perennis", title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
+        PlantRecoard(key: "allium_ursinum", title: "Sonnnenblume", scientificName: "Bellis perennis", keyVisual: "roses"),
+        PlantRecoard( key: "helianthus_annuus" ,title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower"),
+        PlantRecoard(key: "papaver_rhoeas", title: "Sonnnenblume", scientificName: "Bellis perennis", keyVisual: "flower")
     ]
     
     @ObservedObject var searchBar: SearchBar = SearchBar()
@@ -48,7 +49,7 @@ struct HomeView: View {
                                     $0.title.localizedStandardContains(searchBar.text)
                             }, id: \.id) { item in
                             NavigationLink(
-                                destination: PlantView(),
+                                destination: PlantView(key: item.key),
                                 label: {
                                     PlantRecordItem(item: item)
                                 })
@@ -81,7 +82,7 @@ struct HomeView: View {
             )
             .fullScreenCover(item: $activeSheet){ item in
                 if item == .selection {
-                    PredictionDashboardView(activeSheet: $activeSheet)
+                    PredictionDashboardView(predictionSheet: $activeSheet)
                 }
                 
                 if item == .avatar {
