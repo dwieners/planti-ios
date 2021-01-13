@@ -9,8 +9,11 @@ import SwiftUI
 
 enum Endpoint {
     case classify(model: Classifier)
-    case plants(key: String)
     case allPlants
+    case overviewPlants
+    case plants(key: String)
+  
+    
 }
 
 enum Classifier: String {
@@ -25,6 +28,8 @@ extension Endpoint {
             return .makeForEndpoint("classify/\(model)")
         case .allPlants:
             return .makeForEndpoint("plants/all")
+        case .overviewPlants:
+            return .makeForEndpoint("plants/overview")
         case .plants(let key):
             return .makeForEndpoint("plants/\(key)")
         }

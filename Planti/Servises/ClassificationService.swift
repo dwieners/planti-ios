@@ -1,5 +1,5 @@
 //
-//  PlantiService.swift
+//  ClassificationService.swift
 //  Planti
 //
 //  Created by Dominik Wieners on 10.12.20.
@@ -8,17 +8,6 @@
 import Foundation
 import UIKit
 
-///
-///# PlantInfo
-///
-struct PlantInfo: Codable, Identifiable{
-    let id: Int
-    let title: String
-    let image: String
-    let scientific_name: String
-    let taxonomy: String
-    let description: String
-}
 
 
 ///
@@ -28,13 +17,6 @@ struct PlantPrediction: Codable, Identifiable{
     let id: String
     let item: PlantItem
     let prediction: Double
-}
-
-struct PlantItem: Codable {
-    let image: String
-    let key: String
-    let scientific_name: String
-    let title: String
 }
 
 struct PlantPredicationResult: Codable {
@@ -64,51 +46,10 @@ typealias Parameters = [String: String]
 
 
 
-class PlantiService {
+class ClassificationService {
     
-    static let shared = PlantiService()
+    static let shared = ClassificationService()
     
-    
-    
-    /// Request Infos by label of CNN
-    /// - Parameters:
-    ///   - label: String
-    ///   - completion: PlantInfo
-    func info(key: String, completion: @escaping (Result<PlantInfo, Error>) -> Void){
-        
-        let endpoint = Endpoint.plants(key: key)
-        
-        var request = URLRequest(url: endpoint.url)
-        request.httpMethod = "GET"
-        
-        let session = URLSession.shared
-        session.dataTask(with: request){ (data, response, error) in
-            
-            if let error = error {
-                DispatchQueue.main.async {
-                    completion(.failure(error))
-                }
-                return
-            }
-            
-            do {
-                guard let data = data else { return }
-                
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
-                
-                let info = try JSONDecoder().decode(PlantInfo.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(info))
-                }
-                
-            } catch let jsonError {
-                DispatchQueue.main.async {
-                    completion(.failure(jsonError))
-                }
-            }
-        }.resume()
-    }
     
     
     

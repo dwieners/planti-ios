@@ -19,7 +19,7 @@ class PlantiNetViewModel : ObservableObject {
     /// Classify Image with PlantiNet ML Model
     /// - Parameter image: UImage
     func classifyImage(image: UIImage){
-        PlantiService.shared.classify(with: image) { res in
+        ClassificationService.shared.classify(with: image) { res in
             self.isLoading = true
             switch (res){
             case .failure(let err):

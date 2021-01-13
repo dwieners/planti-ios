@@ -15,7 +15,7 @@ class PlantViewModel: ObservableObject {
     
     func loadInfo(key: String){
         isLoading = true
-        PlantiService.shared.info(key: key){ res in
+        PlantService.shared.details(key: key){ res in
             switch (res) {
             case .success(let info):
                 self.plant = info
