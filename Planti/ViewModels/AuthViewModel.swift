@@ -8,10 +8,27 @@
 import SwiftUI
 
 class AuthViewModel: ObservableObject {
+    
+    @Published var token: AuthResponse?
+    
     @Published var isAuth = false
     @Published var isLoading = false
     
-  
+    
+    func register(username: String, password: String){
+        AuthService.shared.register(username: username, password: password){ res in
+            switch (res){
+            case .success(let auth):
+                print(auth)
+            case .failure(let error):
+                print(error)
+            }
+            
+        } urlResponse: { response in
+            debugPrint("🌎[\(response.statusCode) Status] \(HTTPURLResponse.localizedString(forStatusCode: response.statusCode ))")
+        }
+    }
+    
     
     func login(){
         var seconds = 1
@@ -26,6 +43,6 @@ class AuthViewModel: ObservableObject {
                 print(seconds)
             }
         }
-     
+        
     }
 }

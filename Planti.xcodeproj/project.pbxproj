@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,8 @@
 		8F34CD0625A07C850042DEF2 /* PlantRecordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F34CD0525A07C850042DEF2 /* PlantRecordItem.swift */; };
 		8F3888D5256BBA95002D89CF /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3888D4256BBA95002D89CF /* UIImage + Extension.swift */; };
 		8F3B45F725B4D520005982C1 /* SelectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3B45F625B4D520005982C1 /* SelectionViewModel.swift */; };
+		8F3B460325B5AF54005982C1 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 8F3B460225B5AF54005982C1 /* SwiftKeychainWrapper */; };
+		8F3B460825B5B2D3005982C1 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3B460725B5B2D3005982C1 /* AuthService.swift */; };
 		8F3FD34925648DF4003E8BB0 /* View + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3FD34825648DF4003E8BB0 /* View + Extension.swift */; };
 		8F3FD34E256523A2003E8BB0 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3FD34D256523A2003E8BB0 /* CameraView.swift */; };
 		8F4B8AF6257E3B7F0003CDD7 /* ChallangeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4B8AF5257E3B7F0003CDD7 /* ChallangeRow.swift */; };
@@ -99,6 +101,7 @@
 		8F34CD0525A07C850042DEF2 /* PlantRecordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantRecordItem.swift; sourceTree = "<group>"; };
 		8F3888D4256BBA95002D89CF /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
 		8F3B45F625B4D520005982C1 /* SelectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewModel.swift; sourceTree = "<group>"; };
+		8F3B460725B5B2D3005982C1 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		8F3FD34825648DF4003E8BB0 /* View + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View + Extension.swift"; sourceTree = "<group>"; };
 		8F3FD34D256523A2003E8BB0 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		8F4B8AF5257E3B7F0003CDD7 /* ChallangeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallangeRow.swift; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F3B460325B5AF54005982C1 /* SwiftKeychainWrapper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +452,7 @@
 			children = (
 				8F89A3FE258288A400197DBD /* ClassificationService.swift */,
 				8FEDC5CF25AE74120052908A /* PlantService.swift */,
+				8F3B460725B5B2D3005982C1 /* AuthService.swift */,
 			);
 			path = Servises;
 			sourceTree = "<group>";
@@ -522,6 +527,9 @@
 			dependencies = (
 			);
 			name = Planti;
+			packageProductDependencies = (
+				8F3B460225B5AF54005982C1 /* SwiftKeychainWrapper */,
+			);
 			productName = Planti;
 			productReference = 8FBBDD9A2547221A0054FCED /* Planti.app */;
 			productType = "com.apple.product-type.application";
@@ -593,6 +601,9 @@
 				Base,
 			);
 			mainGroup = 8FBBDD912547221A0054FCED;
+			packageReferences = (
+				8F3B460125B5AF54005982C1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 8FBBDD9B2547221A0054FCED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -648,6 +659,7 @@
 				8F7ACAB7259FF1E50002146E /* SettingsView.swift in Sources */,
 				8F5E2AA325AD1C8600B6C402 /* PlantViewModel.swift in Sources */,
 				8F4B8AF6257E3B7F0003CDD7 /* ChallangeRow.swift in Sources */,
+				8F3B460825B5B2D3005982C1 /* AuthService.swift in Sources */,
 				8FFFA73F257D309700EA3C01 /* PlantRow.swift in Sources */,
 				8F622CB225A47E1300801FD0 /* MissionItem.swift in Sources */,
 				8FAA519D25A07DC500B9FFBA /* FloatingButton.swift in Sources */,
@@ -1012,6 +1024,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F3B460125B5AF54005982C1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F3B460225B5AF54005982C1 /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F3B460125B5AF54005982C1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */ = {

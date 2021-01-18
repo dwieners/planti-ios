@@ -81,7 +81,10 @@ class PlantService {
     /// - Parameters:
     ///   - label: String
     ///   - completion: PlantInfo
-    func details(key: String, completion: @escaping (Result<PlantInfo, Error>) -> Void){
+    func details(
+        key: String,
+        completion: @escaping (Result<PlantInfo, Error>) -> Void,
+        urlResponse: @escaping (HTTPURLResponse) -> Void?){
         
         let endpoint = Endpoint.plants(key: key)
         
@@ -90,6 +93,12 @@ class PlantService {
         
         let session = URLSession.shared
         session.dataTask(with: request){ (data, response, error) in
+            
+            if let response = response as? HTTPURLResponse {
+                DispatchQueue.main.async {
+                    urlResponse(response)
+                }
+            }
             
             if let error = error {
                 DispatchQueue.main.async {

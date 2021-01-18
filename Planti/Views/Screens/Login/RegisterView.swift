@@ -10,43 +10,45 @@ import SwiftUI
 struct RegisterView: View {
     @EnvironmentObject var auth: AuthViewModel
     @Binding var showModal: Bool
-    @ObservedObject var user = UserViewModel()
-
+    @ObservedObject var userViewModel = UserViewModel()
+    
     var body: some View {
         NavigationView{
             VStack{
                 List{
                     Section(header: Text("Profil")){
-                        TextField("Username", text: $user.user.username)
+                        TextField("Username", text: $userViewModel.user.username)
                         
                     }
                     Section(header: Text("Deine Email")){
-                        TextField("EMail", text: $user.user.email)
+                        TextField("EMail", text: $userViewModel.user.email)
                         
                     }
                     Section(header: Text("Password")){
-                        TextField("Password", text: $user.user.password)
-                        TextField("Password wiederholen", text: $user.user.password)
+                        TextField("Password", text: $userViewModel.user.password)
+                        TextField("Password wiederholen", text: $userViewModel.user.password)
                     }
-                   
+                    
                 }.listStyle(GroupedListStyle())
             }.navigationBarTitle("Account erstellen", displayMode: .large)
-            .navigationBarItems(leading:
-                                    Button(action: {
-                                        showModal.toggle()
-                                    }, label: {
-                                        Image(systemName: "xmark")
-                                       
-                                    }),
-                                trailing: Button(action: {
-                                    showModal.toggle()
-                                    auth.login()                   
-                                }, label: {
-                                    Text("Anmelden")
-                                       
-                                })
+            .navigationBarItems(
+                leading:
+                    Button(action: {
+                        showModal.toggle()
+                    }, label: {
+                        Image(systemName: "xmark")
+                        
+                    }),
+                trailing: Button(action: {
+                   // showModal.toggle()
+                    auth.register(username: userViewModel.user.username, password: userViewModel.user.password)
+                    // auth.login()
+                }, label: {
+                    Text("Anmelden")
+                    
+                })
             )
-
+            
         }.accentColor(.green)
     }
 }

@@ -26,7 +26,11 @@ class PlantViewModel: ObservableObject {
                 self.isLoading = false
                 break;
             }
+        } urlResponse: { response in
+            debugPrint("🌎[\(response.statusCode) Status] \(HTTPURLResponse.localizedString(forStatusCode: response.statusCode ))")
         }
+
+       
     }
     
 }

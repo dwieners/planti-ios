@@ -8,12 +8,15 @@
 import SwiftUI
 
 enum Endpoint {
+    //----------------------------
     case classify(model: Classifier)
+    //-------------------------------
     case allPlants
     case overviewPlants
     case plants(key: String)
-  
-    
+    //-------------------------------
+    case register
+    case login
 }
 
 enum Classifier: String {
@@ -32,8 +35,12 @@ extension Endpoint {
             return .makeForEndpoint("plants/overview")
         case .plants(let key):
             return .makeForEndpoint("plants/\(key)")
+        case .register:
+            return .makeForEndpoint("auth/register")
+        case .login:
+            return .makeForEndpoint("auth/login")
         }
-    
+        
     }
 }
 
