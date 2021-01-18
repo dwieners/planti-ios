@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
+import Combine
 
 class PlantOverviewViewModel : ObservableObject {
     
-    @Published var plants =  [PlantItem]()
-    
+    @Published var plants: [PlantItem] = []
+  
     @Published var isLoading : Bool = false
     
     func loadOverview(){

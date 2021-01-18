@@ -11,7 +11,9 @@ struct PlantOverview: View {
     
     @ObservedObject var searchBar: SearchBar = SearchBar()
     
-    @ObservedObject var overview: PlantOverviewViewModel = PlantOverviewViewModel()
+    @EnvironmentObject var overview: PlantOverviewViewModel
+    
+
     
     
 //    ForEach(dummyData, id: \.id) { item in
@@ -31,15 +33,14 @@ struct PlantOverview: View {
                 label: {
                     PlantRow(plant: plant)
                 })
-           
-            
         }
          .navigationBarTitle("Pflanzenübersicht")
         .add(self.searchBar)
         .onAppear(perform: {
-            overview.loadOverview()
+            if overview.plants.isEmpty {
+                overview.loadOverview()
+            }
         })
-            
     }
 }
 
@@ -47,6 +48,7 @@ struct PlantOverview_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
             PlantOverview()
+                .environmentObject(PlantOverviewViewModel())
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .previewAsScreen()

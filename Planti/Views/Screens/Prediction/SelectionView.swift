@@ -18,62 +18,70 @@ enum Tab {
 
 
 struct SelectionView: View {
-    var item: PlantShape
     
-    @State var selection: Tab = .flower
-    @State private var activeSheet: Sheet?
-    @State private var inputFlower: UIImage?
-    @State private var inputLeaf: UIImage?
-    @State private var hasFinalPrediction = false
     
-    @Binding var predictionSheet: Sheet?
+    @EnvironmentObject private var selectionViewModel: SelectionViewModel
     @EnvironmentObject private var plantiNetViewModel: PlantiNetViewModel
 
-    var body: some View {
-        
-        VStack(alignment: .leading) {
-            TabView(selection: $selection){
-                VStack{
-                    InfoCard(image: Image(systemName: "stethoscope"), text: "Fotografiere die gesamte blüte als Draufsicht")
-                        .padding()
-                    
-                    SelectionContentView(
-                        type: $selection,
-                        selectedImage: $inputFlower,
-                        activeSheet: $activeSheet
-                    )
-                }
-            }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-            
-            NavigationLink(destination: PredictionView(predictionSheet: $predictionSheet), isActive: $plantiNetViewModel.hasPrediction){
-               Spacer().fixedSize()
-            }
-            
+    @Binding var predictionSheet: Sheet?
+    
+    
+    
+    func getTitle(plantShape: PlantShape?) -> String {
+        if let shape = plantShape {
+            return shape.title
+        }else {
+            return "Unbekannt"
         }
-        .navigationBarTitle(item.title, displayMode: .inline)
-        .background(Color.secondarySystemBackground.ignoresSafeArea(.all))
-        .fullScreenCover(item: $activeSheet){ item in
-            if selection == Tab.flower {
-                if item == .picker {
-                    ImagePickerView( sourceType: .photoLibrary, image: $inputFlower)
+    }
+    
+    func demo(plantShape: PlantShape?) -> Bool {
+        if let ps = plantShape {
+            switch ps.type {
+            case.wildflower :
+                return true
+            default:
+                return false
+            }
+        } else {
+            return false
+        }
+    }
+    
+    
+    var body: some View {
+        if demo(plantShape: selectionViewModel.plantShape) {
+            VStack(alignment: .leading) {
+                TabView(selection: $selectionViewModel.selection){
+                    VStack{
+                        InfoCard(image: Image(systemName: "stethoscope"), text: "Fotografiere die gesamte blüte als Draufsicht")
+                            .padding()
+                        SelectionContentView()
+                    }
                 }
-                if item == .camera {
-                    ImagePickerView( sourceType: .camera , image: $inputFlower)
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+                
+                NavigationLink(destination: PredictionView(predictionSheet: $predictionSheet), isActive: $plantiNetViewModel.hasPrediction){
+                   Spacer().fixedSize()
+                }
+                
+            }
+            .navigationBarTitle( getTitle(plantShape: selectionViewModel.plantShape) , displayMode: .inline)
+            .background(Color.secondarySystemBackground.ignoresSafeArea(.all))
+            .fullScreenCover(item: $selectionViewModel.imageSheet){ item in
+                if selectionViewModel.selection == Tab.flower {
+                    if item == .picker {
+                        ImagePickerView( sourceType: .photoLibrary, image: $selectionViewModel.flowerImage)
+                    }
+                    if item == .camera {
+                        ImagePickerView( sourceType: .camera , image: $selectionViewModel.flowerImage)
+                    }
                 }
             }
-            
-            if selection == Tab.leaf {
-                if item == .picker {
-                    ImagePickerView( sourceType: .photoLibrary, image: $inputLeaf)
-                }
-                if item == .camera {
-                    ImagePickerView( sourceType: .camera , image: $inputLeaf)
-                }
-            }
-            
-           
+        }else{
+            Text("🚧 Hier wird noch gebaut")
+                .navigationBarTitle( getTitle(plantShape: selectionViewModel.plantShape) , displayMode: .inline)
         }
     
     }
@@ -87,7 +95,9 @@ struct SelectionView: View {
 struct SelectionView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            SelectionView(item: PlantShape(title: "Blüte", keyVisual: "flower"), predictionSheet: .constant(nil))
+            SelectionView( predictionSheet: .constant(nil))
+                .environmentObject(SelectionViewModel())
+                .environmentObject(PlantiNetViewModel())
         }
         .accentColor(.green)
     }

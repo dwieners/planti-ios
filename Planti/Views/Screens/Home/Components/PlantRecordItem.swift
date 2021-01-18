@@ -22,7 +22,6 @@ struct PlantRecordItem: View {
                     .font(.headline)
                     .foregroundColor(.primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Spacer().frame(height: 4)
                 Text(item.scientificName)
                     .font(.caption)
                     .foregroundColor(.secondary)

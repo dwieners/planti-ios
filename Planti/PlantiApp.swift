@@ -11,13 +11,14 @@ import SwiftUI
 struct PlantiApp: App {
     let persistenceController = PersistenceController.shared
     let auth = AuthViewModel()
-    let plantiNet = PlantiNetViewModel()
+
+    let plantOverview = PlantOverviewViewModel()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(auth)
-                .environmentObject(plantiNet)
+                .environmentObject(plantOverview)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
          
         }

@@ -93,6 +93,7 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
             .environmentObject(PlantiNetViewModel())
             .environmentObject(AuthViewModel())
+            .environmentObject(PlantOverviewViewModel())
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

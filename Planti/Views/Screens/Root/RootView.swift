@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RootView: View {
 
+
     var body: some View {
         TabView {
             HomeView()
@@ -25,8 +26,8 @@ struct RootView: View {
                         Text("Übersicht")
                     }
                 }
-        }.accentColor(.green)
-        
+        }
+        .accentColor(.green)
     }
 }
 

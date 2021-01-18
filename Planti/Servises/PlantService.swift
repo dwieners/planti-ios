@@ -7,13 +7,16 @@
 
 import Foundation
 
-
+///
+///# PlantItem
+///
 struct PlantItem: Codable, Identifiable {
     let id: Int
     let key: String
-    let image: String
     let title: String
     let scientific_name: String
+    let image: String
+
 }
 
 ///

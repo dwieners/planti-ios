@@ -40,7 +40,7 @@ struct RegisterView: View {
                                     }),
                                 trailing: Button(action: {
                                     showModal.toggle()
-                                    auth.login()
+                                    auth.login()                   
                                 }, label: {
                                     Text("Anmelden")
                                        

@@ -31,11 +31,9 @@ struct HomeView: View {
     
     @ObservedObject var searchBar: SearchBar = SearchBar()
     
+
+    var columns = Array(repeating: GridItem(.flexible(), spacing: 20), count: 2)
     
-    let columns = [
-        GridItem(.flexible(), spacing: 16),
-        GridItem(.flexible())
-    ]
     
     var body: some View {
         
@@ -61,7 +59,9 @@ struct HomeView: View {
                 
                 VStack {
                     Spacer()
-                    FloatingClassifyButton(image: Image(systemName: "camera.viewfinder"), label: "Pflanze bestimmen", activeSheet: $activeSheet)
+                    FloatingButton(action: {
+                        activeSheet = .selection
+                    }, image: Image(systemName: "camera.viewfinder"), label: "Pflanze bestimmen")
                         .padding(.horizontal, 32)
                 }
                 .padding(.bottom, 16)
@@ -82,7 +82,9 @@ struct HomeView: View {
             )
             .fullScreenCover(item: $activeSheet){ item in
                 if item == .selection {
-                    PredictionDashboardView(predictionSheet: $activeSheet)
+                    SelectionDashboardView(predictionSheet: $activeSheet)
+                        .environmentObject(SelectionViewModel())
+                        .environmentObject(PlantiNetViewModel())
                 }
                 
                 if item == .avatar {

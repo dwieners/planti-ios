@@ -8,44 +8,73 @@
 import SwiftUI
 
 struct SelectionContentView: View {
-    @Binding var type: Tab
-    @Binding var selectedImage: UIImage?
-    @Binding var activeSheet:Sheet?
     
+    
+    @EnvironmentObject private var selectionViewModel: SelectionViewModel
     @EnvironmentObject private var plantiNetViewModel: PlantiNetViewModel
-   
-  
+    
+    @State private var isLoading = false
+    @State private var spin = false
+    
+    var foreverAnimation: Animation {
+        Animation.linear(duration: 2.0)
+            .repeatForever(autoreverses: false)
+    }
+    
     var body: some View{
         VStack{
-            ImagePreview(uiImage: $selectedImage)
-            .padding()
+            ImagePreview(uiImage: $selectionViewModel.flowerImage)
+                .padding()
             ZStack{
                 LazyVStack{
-                    ImageSourceButton(activeSheet: $activeSheet)
-                }
+                    ImageSourceButton(activeSheet: $selectionViewModel.imageSheet)
+                }.zIndex(2)
                 LazyVStack(alignment: .trailing) {
                     Button(action: {
-                        if let image = selectedImage {
-                            plantiNetViewModel.classifyImage(image: image)
+                        if let image = selectionViewModel.flowerImage {
+                            plantiNetViewModel.classifyImage(uiImage: image)
+                        }
+                    }){
+                        if isLoading {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 24)
+                                .foregroundColor(.white)
+                                .rotationEffect(Angle(degrees: spin ? 360.0 : 0))
+                                .animation(foreverAnimation)
+                                .onDisappear(perform: {
+                                    self.spin = false
+                                })
+                                .onAppear(perform: {
+                                    self.spin = true
+                                })
+                        } else {
+                            Image(systemName: "arrow.right")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 24)
+                                .foregroundColor(.white)
                         }
                         
-                    }, label: {
-                        Image(systemName: "arrow.right")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 24)
-                            .foregroundColor(.white)
-                          
-                    })
+                    }
                     .padding(16)
-                    .background(Color.green)
+                    .background( Color.green)
                     .mask(Capsule())
                     .padding()
+                    .onReceive(plantiNetViewModel.$isLoading, perform: { v in
+                        withAnimation(.default) {
+                            isLoading = v
+                        }
+                    })
+                    .zIndex(1)
                 }
-            }.frame(minWidth: 0,
-                    maxWidth: .infinity,
-                    alignment: .bottomLeading)
-       
+            }
+            .frame(minWidth: 0,
+                   maxWidth: .infinity,
+                   alignment: .bottomLeading)
+            
+            
         }
     }
     
@@ -53,10 +82,8 @@ struct SelectionContentView: View {
 }
 struct SelectionContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SelectionContentView(
-            type: .constant(.flower),
-            selectedImage: .constant(UIImage(systemName: "flower")!),
-            activeSheet: .constant(.picker)
-        )
+        SelectionContentView()
+            .environmentObject(SelectionViewModel())
+            .environmentObject(PlantiNetViewModel())
     }
 }

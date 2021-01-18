@@ -27,14 +27,17 @@ struct PredictionView: View {
     
     var body: some View {
         
-   
+        
         ScrollView{
             InfoCard(image: Image(systemName: "checkmark.seal.fill"), text: "Toll gemacht! Wir haben ein Ergebnis erzielt!")
                 .padding()
+            
+            
             ForEach(loadPlantPredictionResult(item: plantiNetViewModel), id: \.id) { result in
                 NavigationLink(
-                    destination: PlantView(key: result.item.key),
+                    destination: PlantView(key: result.item.key, predictionSheet: $predictionSheet),
                     label: {
+                        
                         LazyVStack(alignment: .leading) {
                             HStack{
                                 VStack(alignment: .leading) {
@@ -43,28 +46,25 @@ struct PredictionView: View {
                                 }
                                 Spacer()
                                 Text("\(String(format: "%.5f%", result.prediction)) %")
+                                
                             }
                             .foregroundColor(.label)
-                            .padding()
-                            Divider()
+                            .padding([.horizontal])
+                            
                         }
+                        
                     })
-            
+                Divider()
+                
                 
             }
             
         }
         .navigationBarTitle("Ergebnis", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(trailing: Button(action: {
-            predictionSheet = nil
-        }, label: {
-            Text("Fertig")
-        }))
         .accentColor(.green)
         .background(Color.secondarySystemBackground.ignoresSafeArea())
-        
-        
+  
     }
 }
 
