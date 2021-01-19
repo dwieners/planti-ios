@@ -1,5 +1,5 @@
 //
-//  RegisterView.swift
+//  RegistrationView.swift
 //  Planti
 //
 //  Created by Dominik Wieners on 05.12.20.
@@ -8,17 +8,8 @@
 import SwiftUI
 import SwiftKeychainWrapper
 
-enum RegistrationSheet: Identifiable {
-    var id: Int {
-        self.hashValue
-    }
-    case emptyUsernameOrPassword;
-    case shortPasswort;
-    case userAlreadyExist;
-    
-}
 
-struct RegisterView: View {
+struct RegistrationView: View {
     
     @EnvironmentObject var authViewModel: AuthViewModel
     @EnvironmentObject var registrationViewModel: RegistrationViewModel
@@ -95,9 +86,9 @@ struct RegisterView: View {
     }
 }
 
-struct RegisterView_Previews: PreviewProvider {
+struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterView(activeSheet: .constant(.register))
+        RegistrationView(activeSheet: .constant(.register))
             .environmentObject(AuthViewModel())
             .environmentObject(RegistrationViewModel())
     }

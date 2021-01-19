@@ -8,16 +8,6 @@
 import SwiftUI
 
 
-enum LoginAlerts: Identifiable {
-    var id: Int {
-        self.hashValue
-    }
-    case emptyUsernameOrPassword;
-    case shortPasswort;
-    case userDosentExist;
-    case wrongPassword;
-}
-
 
 
 struct LoginView: View {
@@ -29,31 +19,7 @@ struct LoginView: View {
     
     @Binding var activeSheet: Sheet?
     
-    @State private var loginAlerts: LoginAlerts?
-    
-    
-    func isValidLogin(username: String, password: String)->Bool{
-        if username == "" || password == "" {
-            loginAlerts = .emptyUsernameOrPassword
-            return false
-        }
-        return true
-    }
-    
-    func checkResponseCode(code: Int){
-        switch code {
-        case 401:
-            loginAlerts = .wrongPassword
-            break
-        case 403:
-            loginAlerts = .userDosentExist
-            break
-        default:
-            loginAlerts = nil
-        }
-    }
-  
-    
+
     var foreverAnimation: Animation {
         Animation.linear(duration: 2.0)
             .repeatForever(autoreverses: false)
@@ -81,9 +47,7 @@ struct LoginView: View {
                     }),
                 trailing:
                     Button(action: {
-                        if isValidLogin(username: userViewModel.user.username, password: userViewModel.user.password){
-                            loginViewModel.login(username: userViewModel.user.username, password: userViewModel.user.password)
-                        }
+                      loginViewModel.login(username: userViewModel.user.username, password: userViewModel.user.password)
                     }, label: {
                         Text("Anmelden")
                     }))
@@ -95,7 +59,7 @@ struct LoginView: View {
             }
         }
         .accentColor(.green)
-        .alert(item: $loginAlerts) { item in
+        .alert(item: $loginViewModel.loginAlerts) { item in
             switch (item) {
             case .emptyUsernameOrPassword:
                 return  Alert(

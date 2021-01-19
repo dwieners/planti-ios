@@ -70,7 +70,7 @@ struct AuthView: View {
         }.padding()
         .sheet(item: $activeSheet){ item in
             if item == .register {
-                RegisterView(activeSheet: $activeSheet)
+                RegistrationView(activeSheet: $activeSheet)
                     .environmentObject(RegistrationViewModel())
             }
             

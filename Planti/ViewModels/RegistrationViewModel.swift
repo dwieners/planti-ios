@@ -8,12 +8,22 @@
 import Foundation
 import SwiftKeychainWrapper
 
+enum RegistrationAlerts: Identifiable {
+    var id: Int {
+        self.hashValue
+    }
+    case emptyUsernameOrPassword;
+    case shortPasswort;
+    case userAlreadyExist;
+}
+
+
 class RegistrationViewModel: ObservableObject {
     
     
     @Published var token: String?
     @Published var isLoading = false
-    @Published var registrationSheet: RegistrationSheet?
+    @Published var registrationSheet: RegistrationAlerts?
     
     
     func isValidLogin(username: String, password: String)->Bool{
