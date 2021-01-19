@@ -9,16 +9,17 @@ import SwiftUI
 
 struct AuthView: View {
     
-    //@EnvironmentObject var auth: AuthViewModel
-    
-    @State var showingDetail = false
+    @State var activeSheet: Sheet?
     
     var body: some View {
         
         VStack{
             Text("Finde heraus, was in deiner Gegend wächst und gedeiht.").font(.largeTitle).bold()
             Spacer()
-            Button(action: {self.showingDetail.toggle()}, label: {
+            Button(
+                action: {
+                    self.activeSheet = .register
+            }, label: {
                 LazyVStack {
                  Text("Account erstellen")
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -34,13 +35,12 @@ struct AuthView: View {
             Spacer().frame(height: 32)
             LazyVStack{
                 Button(action: {
-                    
+                    self.activeSheet = .login
                 }) {
                     LazyVStack {
                         Text("Anmelden")
                             .foregroundColor(.green)
                             .fontWeight(.bold)
-                            
                             .padding(.vertical,10)
                             .padding(.horizontal,25)
                         
@@ -68,8 +68,16 @@ struct AuthView: View {
                 Spacer().frame(height: 16)
             }
         }.padding()
-        .sheet(isPresented: $showingDetail) {
-            RegisterView(showModal: self.$showingDetail)
+        .sheet(item: $activeSheet){ item in
+            if item == .register {
+                RegisterView(activeSheet: $activeSheet)
+                    .environmentObject(RegistrationViewModel())
+            }
+            
+            if item == .login {
+                LoginView(activeSheet: $activeSheet)
+                    .environmentObject(LoginViewModel())
+            }
         }
         
         

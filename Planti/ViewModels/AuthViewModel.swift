@@ -6,43 +6,28 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
 class AuthViewModel: ObservableObject {
     
-    @Published var token: AuthResponse?
+    @Published var token: String?
+   
     
-    @Published var isAuth = false
-    @Published var isLoading = false
+   
     
-    
-    func register(username: String, password: String){
-        AuthService.shared.register(username: username, password: password){ res in
-            switch (res){
-            case .success(let auth):
-                print(auth)
-            case .failure(let error):
-                print(error)
-            }
-            
-        } urlResponse: { response in
-            debugPrint("🌎[\(response.statusCode) Status] \(HTTPURLResponse.localizedString(forStatusCode: response.statusCode ))")
-        }
-    }
-    
-    
-    func login(){
-        var seconds = 1
-        isLoading = true
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            seconds -= 1
-            if seconds == 0 {
-                self.isLoading = false
-                self.isAuth = true
-                timer.invalidate()
-            } else {
-                print(seconds)
-            }
-        }
-        
-    }
+//    func login(){
+//        var seconds = 1
+//        isLoading = true
+//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+//            seconds -= 1
+//            if seconds == 0 {
+//                self.isLoading = false
+//                self.isAuth = true
+//                timer.invalidate()
+//            } else {
+//                print(seconds)
+//            }
+//        }
+//
+//    }
 }

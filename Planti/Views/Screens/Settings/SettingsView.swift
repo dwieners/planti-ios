@@ -10,7 +10,6 @@ import SwiftUI
 struct SettingsView: View {
     
     @Binding var activeSheet: Sheet?
-    
     @State private var alertSheet: Sheet?
     
     var body: some View {
@@ -22,7 +21,7 @@ struct SettingsView: View {
                 }
                 Section(header: Text("Einstellungen")){
                     NavigationLink(
-                        destination: AccountSettingsView(),
+                        destination: AccountSettingsView(activeSheet: $activeSheet),
                         label: {
                             Text("Benutzerkonto")
                         })

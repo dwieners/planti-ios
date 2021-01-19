@@ -6,8 +6,14 @@
 //
 
 import SwiftUI
+import SwiftKeychainWrapper
 
 struct AccountSettingsView: View {
+    
+    @Binding var activeSheet: Sheet?
+    @EnvironmentObject var auth: AuthViewModel
+    
+    
     var body: some View {
         List{
             Section(header: Text("Profil")){
@@ -30,9 +36,16 @@ struct AccountSettingsView: View {
                 }
             }
             Section(header: Text("Konto")){
-                LazyVStack{
-                    Text("Abmelden").foregroundColor(.green)
-                }
+                Button(action: {
+                    activeSheet = nil
+                    auth.token = nil
+                    KeychainWrapper.standard.removeObject(forKey: "token")
+                }, label: {
+                    LazyVStack{
+                        Text("Abmelden").foregroundColor(.green)
+                    }
+                })
+               
                 LazyVStack{
                     Text("Konto löschen").foregroundColor(.red)
                 }
@@ -47,7 +60,7 @@ struct AccountSettingsView: View {
 struct AccoutSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            AccountSettingsView()
+            AccountSettingsView(activeSheet: .constant(.settings))
         }.previewAsScreen()
     }
 }

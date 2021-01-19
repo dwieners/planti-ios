@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import SwiftKeychainWrapper
 
 enum Sheet: Identifiable {
     var id: Int {
@@ -18,34 +19,33 @@ enum Sheet: Identifiable {
     case avatar
     case selection
     case speech
+    case register
+    case login
 }
 
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var auth: AuthViewModel
-    
-    
+//    @FetchRequest(
+//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+//        animation: .default)
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-
-    
-    private var items: FetchedResults<Item>
+    // private var items: FetchedResults<Item>
 
     var body: some View {
-        if (auth.isAuth){
-            RootView()
-        }else{
-            ZStack {
-                if(auth.isLoading){
-                    ProgressView().progressViewStyle(CircularProgressViewStyle())
+        ZStack{
+            if auth.token != nil {
+                RootView()
+                    .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
                 }else{
                     AuthView()
-                }
+                        .zIndex(2.0)
             }
-        }
+        }.onAppear(perform: {
+            auth.token =  KeychainWrapper.standard.string(forKey: "token")
+            print(auth.token)
+        })
     }
 
 //    private func addItem() {

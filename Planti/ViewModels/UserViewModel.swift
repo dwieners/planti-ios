@@ -10,13 +10,12 @@ import SwiftUI
 
 struct User {
     var username: String
-    var email: String
     var password: String
 }
 
 
 class UserViewModel: ObservableObject {
     
-    @Published var user: User = User(username: "", email: "", password: "")
+    @Published var user: User = User(username: "", password: "")
     
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F1A36BC25B715830018E548 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A36BB25B715830018E548 /* LoginView.swift */; };
+		8F1A36C425B750E80018E548 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A36C325B750E80018E548 /* LoginViewModel.swift */; };
+		8F1A36C925B751C00018E548 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1A36C825B751C00018E548 /* RegistrationViewModel.swift */; };
 		8F1C56F725A09FC100366630 /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F1C56F625A09FC100366630 /* AccountSettingsView.swift */; };
 		8F2A784525A3D8C5003D4F6D /* ColorScheme + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A784425A3D8C5003D4F6D /* ColorScheme + Extension.swift */; };
 		8F2A784A25A3D921003D4F6D /* ContentSizeCategory + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2A784925A3D921003D4F6D /* ContentSizeCategory + Extension.swift */; };
@@ -91,6 +94,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F1A36BB25B715830018E548 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8F1A36C325B750E80018E548 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		8F1A36C825B751C00018E548 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		8F1C56F625A09FC100366630 /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		8F2A784425A3D8C5003D4F6D /* ColorScheme + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorScheme + Extension.swift"; sourceTree = "<group>"; };
 		8F2A784925A3D921003D4F6D /* ContentSizeCategory + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentSizeCategory + Extension.swift"; sourceTree = "<group>"; };
@@ -373,7 +379,7 @@
 				8FFEB025257E9E410024AF56 /* Prediction */,
 				8FEB8A40257E76F700FD4FD0 /* Avatar */,
 				8FBEBD42257E0D1D0062C789 /* Dashboard */,
-				8FFFA700257BB50000EA3C01 /* Login */,
+				8FFFA700257BB50000EA3C01 /* Auth */,
 				8FDAAA4625648AA8006C6FAA /* Home */,
 				8F62A80225A496640003D0D1 /* Root */,
 			);
@@ -417,6 +423,8 @@
 				8F5E2AAC25AE0BBE00B6C402 /* PlantiNetViewModel.swift */,
 				8FEDC5C725AE72B10052908A /* PlantOverviewViewModel.swift */,
 				8F3B45F625B4D520005982C1 /* SelectionViewModel.swift */,
+				8F1A36C325B750E80018E548 /* LoginViewModel.swift */,
+				8F1A36C825B751C00018E548 /* RegistrationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -493,13 +501,14 @@
 			path = Prediction;
 			sourceTree = "<group>";
 		};
-		8FFFA700257BB50000EA3C01 /* Login */ = {
+		8FFFA700257BB50000EA3C01 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				8FFFA701257BB54600EA3C01 /* AuthView.swift */,
 				8FFFA70E257BD56400EA3C01 /* RegisterView.swift */,
+				8F1A36BB25B715830018E548 /* LoginView.swift */,
 			);
-			path = Login;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		8FFFA735257D2FF000EA3C01 /* Components */ = {
@@ -647,6 +656,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FBEBD66257E23580062C789 /* InfoRow.swift in Sources */,
+				8F1A36C925B751C00018E548 /* RegistrationViewModel.swift in Sources */,
 				8FEDC5C825AE72B10052908A /* PlantOverviewViewModel.swift in Sources */,
 				8FBBDDA72547221E0054FCED /* Persistence.swift in Sources */,
 				8F2A785525A3DA67003D4F6D /* ComponentPreview.swift in Sources */,
@@ -664,6 +674,7 @@
 				8F622CB225A47E1300801FD0 /* MissionItem.swift in Sources */,
 				8FAA519D25A07DC500B9FFBA /* FloatingButton.swift in Sources */,
 				8FBEBD4D257E15850062C789 /* BarView.swift in Sources */,
+				8F1A36BC25B715830018E548 /* LoginView.swift in Sources */,
 				8F34CD0625A07C850042DEF2 /* PlantRecordItem.swift in Sources */,
 				8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */,
 				8F62A7F425A4818B0003D0D1 /* CircularProgressView.swift in Sources */,
@@ -690,6 +701,7 @@
 				8FB6E37F259D403900221EA0 /* SearchBar.swift in Sources */,
 				8F89A40425837EE700197DBD /* PredictionView.swift in Sources */,
 				8F5C22DB259FD96E0080FE03 /* DashboardItem.swift in Sources */,
+				8F1A36C425B750E80018E548 /* LoginViewModel.swift in Sources */,
 				8FC80C9825AD12C400E77D70 /* NumberFormater + Extension.swift in Sources */,
 				8F3888D5256BBA95002D89CF /* UIImage + Extension.swift in Sources */,
 				8F2A785D25A3DC15003D4F6D /* ScreenPreview.swift in Sources */,
