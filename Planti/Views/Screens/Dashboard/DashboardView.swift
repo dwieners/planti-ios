@@ -47,6 +47,32 @@ struct DashboardView: View {
                             .padding([.horizontal])
                            
                     })
+                VStack(alignment: .leading)
+                        {
+                            HStack(alignment: .center)
+                            {
+                                Image(systemName: "flame.fill")
+                                    .font(.system(size: 16, weight: .regular))
+                                    .padding(14)
+                                    .foregroundColor(.white)
+                                    .background(
+                                        Circle().fill(Color.green)
+                                    )
+                                Spacer()
+                                
+                                Text("2")
+                                    .font(.title)
+                                    .bold()
+                                
+                            }
+                            Text("Hallo")
+                                .bold()
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(Color(.secondaryLabel))
+                        }
+                        .padding()
+                        .background(Color(.secondarySystemGroupedBackground))
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
             }
             .navigationBarTitle("Übersicht")
             .navigationBarItems(trailing: Button(action: {

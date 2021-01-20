@@ -35,7 +35,8 @@ struct PredictionView: View {
             
             ForEach(loadPlantPredictionResult(item: plantiNetViewModel), id: \.id) { result in
                 NavigationLink(
-                    destination: PlantView(key: result.item.key, predictionSheet: $predictionSheet),
+                    destination: PlantView(key: result.item.key, predictionSheet: $predictionSheet).environmentObject(PlantViewModel())
+                    ,
                     label: {
                         
                         LazyVStack(alignment: .leading) {

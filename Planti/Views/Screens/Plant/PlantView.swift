@@ -31,15 +31,39 @@ struct PlantiIndicatorView: View {
 
 
 struct PlantView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @EnvironmentObject private var plantViewModel: PlantViewModel
     
+    @State private var isLoading:Bool = false
+    @State private var opacity:Double = 0
     
     var key:String
     var predictionSheet: Binding<Sheet?>?
     
-    @ObservedObject private var plantViewModel = PlantViewModel()
-    @State private var isLoading:Bool = false
-    @State private var opacity:Double = 0
-    @State private var showUploadAlert:Bool = false
+    
+    private func addItem() {
+        guard let plant = plantViewModel.plant, let plantImage = plantViewModel.uiImage else {
+            return
+        }
+        
+        let newItem = PlantRecord(context: viewContext)
+        newItem.timestamp = Date()
+        newItem.key = key
+        newItem.title = plant.title
+        newItem.scientific_name = plant.scientific_name
+        newItem.image = plantImage.jpegData(compressionQuality: 1.0)
+        
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+        }
+        
+    }
+    
     
     
     var body: some View{
@@ -63,6 +87,7 @@ struct PlantView: View {
                         VStack {
                             Spacer()
                             FloatingButton(action: {
+                                addItem()
                                 preSheet.wrappedValue = nil
                             },
                             image: Image(systemName: "checkmark.circle.fill"),
@@ -71,22 +96,6 @@ struct PlantView: View {
                             
                         }
                         .padding()
-                        .navigationBarItems(trailing: Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                            Button(action: {
-                                showUploadAlert.toggle()
-                            }, label: {
-                                Image(systemName: "tray.and.arrow.up").resizable().scaledToFit()
-                            })
-                            .alert(isPresented: $showUploadAlert) {
-                                Alert(
-                                    title: Text("Bilder hochladen?"),
-                                    message: Text("Mit deinen Bildern hilfst du uns Planti zu verbessern"),
-                                    primaryButton: .default(Text("Bilder spenden")) {
-                                        print("Bilder spenden")
-                                    },
-                                    secondaryButton: .cancel())
-                            }
-                        }))
                         .zIndex(3)
                     }
                     
@@ -112,17 +121,17 @@ struct PlantView: View {
 
 struct PlantViewContent : View {
     
-    var plant: PlantInfo
+    @EnvironmentObject private var plantViewModel: PlantViewModel
     
     @State private  var image: UIImage = UIImage()
     @State private var opacity:Double = 0.0
     
+    private var currentPlant: PlantInfo
+    
     @ObservedObject private var imageLoader: ImageLoader
     
-    
-    
     init(plant: PlantInfo) {
-        self.plant = plant
+        self.currentPlant = plant
         self.imageLoader = ImageLoader(urlString: plant.image)
     }
     
@@ -141,23 +150,22 @@ struct PlantViewContent : View {
                                         y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0
                                     )
                                     .onReceive(imageLoader.didChange){ data in
+                                        
                                         self.image = UIImage(data: data) ?? UIImage()
+                                        self.plantViewModel.uiImage = self.image
                                     }
                                     .frame(
                                         height: g.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + g.frame(in: .global).minY  : UIScreen.main.bounds.height / 2.2,
                                         alignment: .center
                                     )
-                                
-                                
-                                
                                 VStack {
                                     Spacer()
                                     HStack{
                                         VStack(alignment: .leading){
-                                            Text(plant.title)
+                                            Text(currentPlant.title)
                                                 .font(.title)
                                                 .fontWeight(.bold)
-                                            Text(plant.scientific_name)
+                                            Text(currentPlant.description)
                                                 .font(.headline)
                                         }
                                         Spacer()
@@ -181,12 +189,12 @@ struct PlantViewContent : View {
                         LazyVStack(alignment: .leading){
                             VStack(alignment: .leading){
                                 Text("Taxonomie").font(.headline).padding(.bottom, 4)
-                                Text(plant.taxonomy).font(.body)
+                                Text(currentPlant.taxonomy).font(.body)
                             }.padding(8)
                             Divider()
                             VStack(alignment: .leading){
                                 Text("Beschreibung").font(.headline).padding(.bottom, 4)
-                                Text(plant.description).font(.body)
+                                Text(currentPlant.description).font(.body)
                             }.padding(8)
                             
                         }.padding()
@@ -233,6 +241,7 @@ struct PlantView_Previews: PreviewProvider {
         
         NavigationView{
             PlantView(key: "bellis_perennis", predictionSheet: .constant(.selection))
+                .environmentObject(PlantViewModel())
         }
         .accentColor(.green)
     }

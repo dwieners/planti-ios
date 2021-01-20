@@ -28,10 +28,10 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var auth: AuthViewModel
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \PlantRecord.timestamp, ascending: true)],
         animation: .default)
 
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<PlantRecord>
 
     var body: some View {
         ZStack{
@@ -49,7 +49,7 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
+            let newItem = PlantRecord(context: viewContext)
             newItem.timestamp = Date()
             
 
@@ -64,21 +64,6 @@ struct ContentView: View {
         }
     }
     
-   
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            offsets.map { items[$0] }.forEach(viewContext.delete)
-//
-//            do {
-//                try viewContext.save()
-//            } catch {
-//                // Replace this implementation with code to handle the error appropriately.
-//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-//                let nsError = error as NSError
-//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-//            }
-//        }
-//    }
 }
 
 private let itemFormatter: DateFormatter = {
@@ -94,6 +79,5 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(PlantiNetViewModel())
             .environmentObject(AuthViewModel())
             .environmentObject(PlantOverviewViewModel())
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

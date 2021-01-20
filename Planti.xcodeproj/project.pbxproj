@@ -61,6 +61,8 @@
 		8FDAAA3525648719006C6FAA /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3425648719006C6FAA /* ImagePickerView.swift */; };
 		8FDAAA3D25648A3A006C6FAA /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA3C25648A3A006C6FAA /* Color + Extension.swift */; };
 		8FDAAA4225648AA0006C6FAA /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDAAA4125648AA0006C6FAA /* TestView.swift */; };
+		8FDE3BE025B861EC00A7E8FB /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 8FDE3BDF25B861EC00A7E8FB /* WaterfallGrid */; };
+		8FDE3BE625B868DB00A7E8FB /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 8FDE3BE525B868DB00A7E8FB /* SwiftUIX */; };
 		8FE83C9E25653E0D006E1208 /* MobileNetV2.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 8FE83C9D25653E0D006E1208 /* MobileNetV2.mlmodel */; };
 		8FE83CA3256548FC006E1208 /* CameraLiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FE83CA2256548FC006E1208 /* CameraLiveView.swift */; };
 		8FEB8A42257E770B00FD4FD0 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEB8A41257E770B00FD4FD0 /* AvatarView.swift */; };
@@ -173,7 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FDE3BE625B868DB00A7E8FB /* SwiftUIX in Frameworks */,
 				8F3B460325B5AF54005982C1 /* SwiftKeychainWrapper in Frameworks */,
+				8FDE3BE025B861EC00A7E8FB /* WaterfallGrid in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -546,6 +550,8 @@
 			name = Planti;
 			packageProductDependencies = (
 				8F3B460225B5AF54005982C1 /* SwiftKeychainWrapper */,
+				8FDE3BDF25B861EC00A7E8FB /* WaterfallGrid */,
+				8FDE3BE525B868DB00A7E8FB /* SwiftUIX */,
 			);
 			productName = Planti;
 			productReference = 8FBBDD9A2547221A0054FCED /* Planti.app */;
@@ -620,6 +626,8 @@
 			mainGroup = 8FBBDD912547221A0054FCED;
 			packageReferences = (
 				8F3B460125B5AF54005982C1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+				8FDE3BDE25B861EC00A7E8FB /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
+				8FDE3BE425B868DB00A7E8FB /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 8FBBDD9B2547221A0054FCED /* Products */;
 			projectDirPath = "";
@@ -1054,6 +1062,22 @@
 				minimumVersion = 4.0.1;
 			};
 		};
+		8FDE3BDE25B861EC00A7E8FB /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		8FDE3BE425B868DB00A7E8FB /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1061,6 +1085,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8F3B460125B5AF54005982C1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
+		};
+		8FDE3BDF25B861EC00A7E8FB /* WaterfallGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FDE3BDE25B861EC00A7E8FB /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
+			productName = WaterfallGrid;
+		};
+		8FDE3BE525B868DB00A7E8FB /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FDE3BE425B868DB00A7E8FB /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 /* End XCSwiftPackageProductDependency section */
 

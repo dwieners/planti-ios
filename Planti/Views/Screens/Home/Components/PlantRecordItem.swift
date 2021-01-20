@@ -6,37 +6,37 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct PlantRecordItem: View {
     
-    var item: PlantRecoard
+    var item: PlantRecord
     
     var body: some View {
         LazyVStack{
-            Image(item.keyVisual)
+            Image(uiImage: UIImage(data: item.image!)!)
                 .resizable()
                 .scaledToFit()
-                .cornerRadius(10)
+                .mask(RoundedCorner(radius: 10, corners: .allCorners))
             LazyVStack{
-                Text(item.title)
+                Text(item.title!)
                     .font(.headline)
                     .foregroundColor(.primary)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text(item.scientificName)
+                Text(item.scientific_name!)
                     .font(.caption)
                     .foregroundColor(.secondary)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .padding([.horizontal, .top], 8)
-        }.padding(.bottom, 16)
-        
+            .padding( 8)
+        }
+        .background(Color.systemBackground)
+        .contentShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }
 
-struct PlantRecordItem_Previews: PreviewProvider {
-    static var previews: some View {
-        PlantRecordItem(item: PlantRecoard(
-                            key: "bellis_perennis",
-                            title: "Gänseblümchen", scientificName: "Bellis perennis", keyVisual: "flower") ).previewAsComponent()
-    }
-}
+//struct PlantRecordItem_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PlantRecordItem(item: PlantRecord() ).previewAsComponent()
+//    }
+//}

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="key" optional="YES" attributeType="String"/>
-        <attribute name="scientific_name" optional="YES" attributeType="String"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+    <entity name="PlantRecord" representedClassName="PlantRecord" syncable="YES" codeGenerationType="class">
+        <attribute name="image" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="key" attributeType="String"/>
+        <attribute name="scientific_name" attributeType="String"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Item" positionX="-4698.696533203125" positionY="-2.855972290039062" width="128" height="118"/>
+        <element name="PlantRecord" positionX="-4698.696533203125" positionY="-2.855972290039062" width="128" height="104"/>
     </elements>
 </model>

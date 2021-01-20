@@ -29,7 +29,9 @@ struct PlantOverview: View {
             overview.plants.filter{searchBar.text.isEmpty || $0.title.localizedStandardContains(searchBar.text)}
         ){ plant in
             NavigationLink(
-                destination: PlantView(key: plant.key),
+                destination:
+                    PlantView(key: plant.key)
+                    .environmentObject(PlantViewModel()),
                 label: {
                     PlantRow(plant: plant)
                 })

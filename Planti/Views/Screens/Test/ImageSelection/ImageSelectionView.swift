@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreML
+import SwiftUIX
 
 struct ImageSelectionView: View {
     

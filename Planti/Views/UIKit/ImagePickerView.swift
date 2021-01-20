@@ -12,6 +12,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    
     @Binding var image: UIImage?
     
     
