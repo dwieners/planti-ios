@@ -212,6 +212,14 @@
 			path = Previews;
 			sourceTree = "<group>";
 		};
+		8F32DE1325B7A43100CA9145 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		8F4CA39F256A9AF9002ABFCA /* ImageSelection */ = {
 			isa = PBXGroup;
 			children = (
@@ -232,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				8FE83C9D25653E0D006E1208 /* MobileNetV2.mlmodel */,
-				8FBBDDA82547221E0054FCED /* Planti.xcdatamodeld */,
 			);
 			path = ML;
 			sourceTree = "<group>";
@@ -293,6 +300,7 @@
 		8FBBDD9C2547221A0054FCED /* Planti */ = {
 			isa = PBXGroup;
 			children = (
+				8F32DE1325B7A43100CA9145 /* Storage */,
 				8F62A7FE25A4962E0003D0D1 /* ML */,
 				8F2A785325A3DA4D003D4F6D /* Previews */,
 				8FDAAA3325647D09006C6FAA /* Servises */,

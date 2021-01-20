@@ -18,7 +18,15 @@ struct ImageSelectionView: View {
     @State private var classificationLabel: String?
     @State private var showClassifyerScreen = false
     
-    let model = MobileNetV2()
+    let model: MobileNetV2 = {
+        do {
+            let config = MLModelConfiguration()
+            return try MobileNetV2(configuration: config)
+        } catch {
+            print(error)
+            fatalError("Couldn't create MobileNetV2")
+        }
+    }()
     
     private func performImageClassification(){
         guard let img = inputImage else { return}

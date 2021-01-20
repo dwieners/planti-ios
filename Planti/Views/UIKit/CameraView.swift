@@ -54,13 +54,21 @@ class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBuff
     
     private let videoDataOutput = AVCaptureVideoDataOutput()
     
-    
-  
     var delegate: MLCameraDelegate?
+    
+    let mobileNet: MobileNetV2 = {
+        do {
+            let config = MLModelConfiguration()
+            return try MobileNetV2(configuration: config)
+        } catch {
+            print(error)
+            fatalError("Couldn't create MobileNetV2")
+        }
+    }()
 
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
-            let model = try VNCoreMLModel(for: MobileNetV2().model)
+            let model = try VNCoreMLModel(for: mobileNet.model)
             
             let request = VNCoreMLRequest(model: model) { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
