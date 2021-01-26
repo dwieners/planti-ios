@@ -8,10 +8,13 @@
 import Foundation
 
 
-
-
 struct AuthResponse: Codable {
     let token: String
+}
+
+enum FigureType: String, CaseIterable {
+    case WITCH = "WITCH";
+    case WIZARD = "WIZARD"
 }
 
 class AuthService {
@@ -19,10 +22,12 @@ class AuthService {
     
     static let shared = AuthService()
     
-    func register(username: String, password: String, completion: @escaping (Result<AuthResponse,Error>)->Void, urlResponse: @escaping (HTTPURLResponse) -> Void){
+    func register(username: String, password: String, figure_type: FigureType,
+                  completion: @escaping (Result<AuthResponse,Error>)->Void,
+                  urlResponse: @escaping (HTTPURLResponse) -> Void){
         
         // create body
-        let json = ["username": username, "password": password]
+        let json = ["username": username, "password": password, "figure_type": figure_type.rawValue]
         
         // create the endpoint url
         let endpoint = Endpoint.register

@@ -26,7 +26,7 @@ struct DashboardView: View {
                 LazyVStack{
                     HStack {
                         NavigationLink(
-                            destination: /*@START_MENU_TOKEN@*/Text("Destination")/*@END_MENU_TOKEN@*/,
+                            destination: RankingView().environmentObject(RankingViewModel()),
                             label: {
                                 DashboardItem(title: "Rangliste", image: Image(systemName: "rosette"), small: true)
                             }
@@ -47,32 +47,7 @@ struct DashboardView: View {
                             .padding([.horizontal])
                            
                     })
-                VStack(alignment: .leading)
-                        {
-                            HStack(alignment: .center)
-                            {
-                                Image(systemName: "flame.fill")
-                                    .font(.system(size: 16, weight: .regular))
-                                    .padding(14)
-                                    .foregroundColor(.white)
-                                    .background(
-                                        Circle().fill(Color.green)
-                                    )
-                                Spacer()
-                                
-                                Text("2")
-                                    .font(.title)
-                                    .bold()
-                                
-                            }
-                            Text("Hallo")
-                                .bold()
-                                .multilineTextAlignment(.leading)
-                                .foregroundColor(Color(.secondaryLabel))
-                        }
-                        .padding()
-                        .background(Color(.secondarySystemGroupedBackground))
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+               
             }
             .navigationBarTitle("Übersicht")
             .navigationBarItems(trailing: Button(action: {
@@ -100,3 +75,33 @@ struct DashboardView_Previews: PreviewProvider {
         DashboardView().previewAsScreen()
     }
 }
+
+
+
+
+//VStack(alignment: .leading)
+//        {
+//            HStack(alignment: .center)
+//            {
+//                Image(systemName: "flame.fill")
+//                    .font(.system(size: 16, weight: .regular))
+//                    .padding(14)
+//                    .foregroundColor(.white)
+//                    .background(
+//                        Circle().fill(Color.green)
+//                    )
+//                Spacer()
+//                
+//                Text("2")
+//                    .font(.title)
+//                    .bold()
+//                
+//            }
+//            Text("Hallo")
+//                .bold()
+//                .multilineTextAlignment(.leading)
+//                .foregroundColor(Color(.secondaryLabel))
+//        }
+//        .padding()
+//        .background(Color(.secondarySystemGroupedBackground))
+//        .clipShape(RoundedRectangle(cornerRadius: 12))

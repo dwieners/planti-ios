@@ -42,16 +42,21 @@ struct PlantView: View {
     
     
     private func addItem() {
-        guard let plant = plantViewModel.plant, let plantImage = plantViewModel.uiImage else {
+        
+        // load image from url and save to here
+        guard let plant = plantViewModel.plant else {
             return
         }
+        let url = URL(string: plant.image_url)
+        let data = try? Data(contentsOf: url!)
+        let uiImage = UIImage(data: data!)!
         
         let newItem = PlantRecord(context: viewContext)
         newItem.timestamp = Date()
         newItem.key = key
         newItem.title = plant.title
         newItem.scientific_name = plant.scientific_name
-        newItem.image = plantImage.jpegData(compressionQuality: 1.0)
+        newItem.image = uiImage.jpegData(compressionQuality: 1.0)
         
         do {
             try viewContext.save()
@@ -74,7 +79,7 @@ struct PlantView: View {
                         .zIndex(2)
                 } else {
                     if let plant = plantViewModel.plant {
-                        PlantViewContent(plant: plant)
+                        PlantViewContent(plantInfo: plant)
                             .opacity(opacity)
                             .onAppear(perform: {
                                 withAnimation(.default) {
@@ -122,85 +127,52 @@ struct PlantView: View {
 struct PlantViewContent : View {
     
     @EnvironmentObject private var plantViewModel: PlantViewModel
-    
-    @State private  var image: UIImage = UIImage()
     @State private var opacity:Double = 0.0
     
-    private var currentPlant: PlantInfo
-    
-    @ObservedObject private var imageLoader: ImageLoader
-    
-    init(plant: PlantInfo) {
-        self.currentPlant = plant
-        self.imageLoader = ImageLoader(urlString: plant.image)
-    }
+    var plantInfo: PlantInfo
     
     var body: some View {
         ZStack(alignment: .top) {
             ZStack{
                 ScrollView(.vertical, showsIndicators: false){
                     VStack{
-                        GeometryReader{g in
-                            ZStack{
-                                Image(uiImage: image)
-                                    .resizable()
-                                    // fixing the view to the top will give strechy effect...
-                                    //  increasing height by drag amount....
-                                    .offset(
-                                        y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0
-                                    )
-                                    .onReceive(imageLoader.didChange){ data in
-                                        
-                                        self.image = UIImage(data: data) ?? UIImage()
-                                        self.plantViewModel.uiImage = self.image
+                        
+                        ZStack{
+                            KeyVisualView(imageUrl: plantInfo.image_url)
+                            VStack {
+                                Spacer().frame(maxWidth: .infinity)
+                                HStack{
+                                    VStack(alignment: .leading){
+                                        Text(plantInfo.title)
+                                            .font(.title)
+                                            .fontWeight(.bold)
+                                        Text(plantInfo.scientific_name)
+                                            .font(.headline)
                                     }
-                                    .frame(
-                                        height: g.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + g.frame(in: .global).minY  : UIScreen.main.bounds.height / 2.2,
-                                        alignment: .center
-                                    )
-                                VStack {
                                     Spacer()
-                                    HStack{
-                                        VStack(alignment: .leading){
-                                            Text(currentPlant.title)
-                                                .font(.title)
-                                                .fontWeight(.bold)
-                                            Text(currentPlant.description)
-                                                .font(.headline)
-                                        }
-                                        Spacer()
-                                        
-                                    }.padding()
-                                    .background(BlurView(style: .prominent))
-                                }    .offset(
-                                    y: g.frame(in: .global).minY > 0 ? -g.frame(in: .global).minY : 0
-                                )
-                                .frame(
-                                    height: g.frame(in: .global).minY > 0 ? UIScreen.main.bounds.height / 2.2 + g.frame(in: .global).minY  : UIScreen.main.bounds.height / 2.2,
-                                    alignment: .center
                                     
-                                )
-                                
+                                }.padding()
+                                .background(BlurView(style: .prominent))
                             }
-                            
                         }
-                        // fixing default height...
-                        .frame(height: UIScreen.main.bounds.height / 2.2)
-                        LazyVStack(alignment: .leading){
-                            VStack(alignment: .leading){
-                                Text("Taxonomie").font(.headline).padding(.bottom, 4)
-                                Text(currentPlant.taxonomy).font(.body)
-                            }.padding(8)
-                            Divider()
-                            VStack(alignment: .leading){
-                                Text("Beschreibung").font(.headline).padding(.bottom, 4)
-                                Text(currentPlant.description).font(.body)
-                            }.padding(8)
-                            
-                        }.padding()
                         
                     }
+                    VStack(alignment: .leading){
+                        VStack(alignment: .leading){
+                            Text("Taxonomie").font(.headline).padding(.bottom, 4)
+                            Text(plantInfo.taxonomy)
+                        }.padding(8)
+                        Divider()
+                        VStack(alignment: .leading){
+                            Text("Beschreibung").font(.headline).padding(.bottom, 4)
+                            Text(plantInfo.description)
+                                .font(.body)
+                        }.padding(8)
+                        
+                    }.padding()
+                    
                 }
+                
             }
             .opacity(opacity)
             .onAppear(perform: {

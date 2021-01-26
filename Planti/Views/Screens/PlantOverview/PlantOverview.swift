@@ -13,17 +13,6 @@ struct PlantOverview: View {
     
     @EnvironmentObject var overview: PlantOverviewViewModel
     
-
-    
-    
-//    ForEach(dummyData, id: \.id) { item in
-//        PlantRow(plant: item)
-//    }
-    
-    // dummyData.filter{
-    //    searchBar.text.isEmpty ||
-    //    $0.name.localizedStandardContains(searchBar.text)
-    
     var body: some View {
         List(
             overview.plants.filter{searchBar.text.isEmpty || $0.title.localizedStandardContains(searchBar.text)}

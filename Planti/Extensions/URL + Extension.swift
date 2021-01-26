@@ -17,6 +17,8 @@ enum Endpoint {
     //-------------------------------
     case register
     case login
+    //-------------------------------
+    case ranking
 }
 
 enum Classifier: String {
@@ -39,6 +41,8 @@ extension Endpoint {
             return .makeForEndpoint("auth/register")
         case .login:
             return .makeForEndpoint("auth/login")
+        case .ranking:
+            return .makeForEndpoint("ranking/all")
         }
         
     }

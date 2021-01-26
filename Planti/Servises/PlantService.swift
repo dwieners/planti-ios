@@ -15,7 +15,7 @@ struct PlantItem: Codable, Identifiable {
     let key: String
     let title: String
     let scientific_name: String
-    let image: String
+    let image_url: String
 
 }
 
@@ -24,8 +24,9 @@ struct PlantItem: Codable, Identifiable {
 ///
 struct PlantInfo: Codable, Identifiable{
     let id: Int
+    let key: String
+    let image_url: String
     let title: String
-    let image: String
     let scientific_name: String
     let taxonomy: String
     let description: String
@@ -45,6 +46,9 @@ class PlantService {
         
         var request = URLRequest(url: endpoint.url)
         request.httpMethod = "GET"
+        
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")  // the request is JSON
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept") 
         
         let session = URLSession.shared
         session.dataTask(with: request){ (data, response, error) in
@@ -111,7 +115,6 @@ class PlantService {
                 guard let data = data else { return }
                 
                 let json = try JSONSerialization.jsonObject(with: data, options: [])
-                print(json)
                 
                 let info = try JSONDecoder().decode(PlantInfo.self, from: data)
                 DispatchQueue.main.async {

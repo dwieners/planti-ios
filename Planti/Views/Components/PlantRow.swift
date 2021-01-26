@@ -20,7 +20,7 @@ struct PlantRow: View {
     
     init(plant: PlantItem) {
         self.plant = plant
-        self.imageLoader = ImageLoader(urlString: plant.image)
+        self.imageLoader = ImageLoader(urlString: plant.image_url)
     }
     
     
@@ -52,7 +52,7 @@ struct PlantRow: View {
 struct PlantRow_Previews: PreviewProvider {
     static var previews: some View {
         
-        PlantRow(plant: PlantItem(id: 1, key: "bellis_perennis", title: "Gänseblümchen", scientific_name: "Bellis Perennis", image: "http://192.168.0.80:5000/api/plants/images/bellis_perennis.png"))
+        PlantRow(plant: PlantItem(id: 1, key: "bellis_perennis", title: "Gänseblümchen", scientific_name: "Bellis Perennis", image_url: "http://192.168.0.80:5000/api/plants/images/bellis_perennis.png"))
     }
 }
 

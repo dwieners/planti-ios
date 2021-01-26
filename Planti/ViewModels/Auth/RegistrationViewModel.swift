@@ -1,5 +1,5 @@
 //
-//  LoginViewModel.swift
+//  RegistrationViewModel.swift
 //  Planti
 //
 //  Created by Dominik Wieners on 19.01.21.
@@ -8,52 +8,48 @@
 import Foundation
 import SwiftKeychainWrapper
 
-enum LoginAlerts: Identifiable {
+enum RegistrationAlerts: Identifiable {
     var id: Int {
         self.hashValue
     }
     case emptyUsernameOrPassword;
     case shortPasswort;
-    case userDosentExist;
-    case wrongPassword;
+    case userAlreadyExist;
 }
 
 
-class LoginViewModel: ObservableObject {
+class RegistrationViewModel: ObservableObject {
+    
     
     @Published var token: String?
-    @Published var isLoading: Bool = false
-    @Published var loginAlerts: LoginAlerts?
+    @Published var isLoading = false
+    @Published var username: String = ""
+    @Published var password: String = ""
+    @Published var registrationSheet: RegistrationAlerts?
     
     
     func isValidLogin(username: String, password: String)->Bool{
         if username == "" || password == "" {
-            loginAlerts = .emptyUsernameOrPassword
+            registrationSheet = .emptyUsernameOrPassword
             return false
         }
         return true
     }
     
     func checkResponseCode(code: Int){
-        switch code {
-        case 401:
-            loginAlerts = .wrongPassword
-            break
-        case 403:
-            loginAlerts = .userDosentExist
-            break
-        default:
-            loginAlerts = nil
+        if code == 403 {
+            registrationSheet = .userAlreadyExist
         }
     }
     
-    
-    func login(username: String, password: String){
+    func register(username: String, password: String, figureType: FigureType){
         if isValidLogin(username: username, password: password){
             self.isLoading = true
-            AuthService.shared.login(username: username, password: password) { res in
+            AuthService.shared.register(username: username, password: password, figure_type: figureType){ res in
+                print("\(username),\(password),\(figureType.rawValue)")
                 switch (res){
                 case .success(let auth):
+                    print(auth)
                     debugPrint("🔑 [Token] \(auth.token)")
                     self.token = auth.token
                     KeychainWrapper.standard.set(auth.token, forKey: "token")
@@ -62,11 +58,11 @@ class LoginViewModel: ObservableObject {
                     debugPrint("🤬 [Error] \(error.localizedDescription)")
                     self.isLoading = false
                 }
+                
             } urlResponse: { response in
                 self.checkResponseCode(code: response.statusCode)
                 debugPrint("🌎[\(response.statusCode) Status] \(HTTPURLResponse.localizedString(forStatusCode: response.statusCode ))")
             }
         }
     }
-    
 }

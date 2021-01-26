@@ -55,6 +55,7 @@ struct LoginView: View {
         }
         .onReceive(loginViewModel.$token){ token in
             if let token = token {
+                print(token)
                 self.authViewModel.token = token
             }
         }

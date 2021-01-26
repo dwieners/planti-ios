@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import CoreLocation
 
 class SelectionViewModel: ObservableObject {
     
@@ -14,5 +15,6 @@ class SelectionViewModel: ObservableObject {
     @Published var selection: Tab = .flower
     @Published var imageSheet: Sheet?
     @Published var flowerImage: UIImage?
+    @Published var location: CLLocation?
     
 }

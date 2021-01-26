@@ -24,12 +24,14 @@ struct PlantShape: Identifiable {
 struct SelectionDashboardView: View {
     
    
-    @State var isShapeSelected: Bool = false
-
-    @Binding var predictionSheet:Sheet?
     @EnvironmentObject var selectionViewModel:SelectionViewModel
     
+    @ObservedObject var locationManager = LocationManager()
     
+    @Binding var predictionSheet:Sheet?
+    
+    @State var isShapeSelected: Bool = false
+
     let data = [
         PlantShape(title: "Wildblume", type: .wildflower, keyVisual: "flower"),
         PlantShape(title: "Baum", type: .tree , keyVisual: "bark"),
@@ -76,8 +78,11 @@ struct SelectionDashboardView: View {
                 predictionSheet = nil
             }, label: {
                 Text("Schließen")
-                   
             }))
+            .onAppear(perform: {
+                self.locationManager.startUpdating()
+                self.selectionViewModel.location = self.locationManager.lastKnownLocation
+            })
           
         }
         .accentColor(.green)

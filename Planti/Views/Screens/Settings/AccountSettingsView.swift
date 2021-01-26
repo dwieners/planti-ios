@@ -38,8 +38,7 @@ struct AccountSettingsView: View {
             Section(header: Text("Konto")){
                 Button(action: {
                     activeSheet = nil
-                    auth.token = nil
-                    KeychainWrapper.standard.removeObject(forKey: "token")
+                    auth.resetAuth()
                 }, label: {
                     LazyVStack{
                         Text("Abmelden").foregroundColor(.green)
