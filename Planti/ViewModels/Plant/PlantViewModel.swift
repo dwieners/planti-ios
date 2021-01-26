@@ -7,13 +7,15 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 
 class PlantViewModel: ObservableObject {
     
     @Published var plant: PlantInfo?
     @Published var isLoading = false
-    @Published var uiImage: UIImage?
+    
+   
     
     func loadInfo(key: String){
         isLoading = true

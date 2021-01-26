@@ -10,13 +10,13 @@ import UIKit
 extension UIImage {
     
     func resizeTo(size: CGSize) -> UIImage {
-        
         UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
         self.draw(in: CGRect(origin: CGPoint.zero, size: size))
         let resizedImmage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return resizedImmage
     }
+    
     
     func toCVPixelBuffer() -> CVPixelBuffer? {
         let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary

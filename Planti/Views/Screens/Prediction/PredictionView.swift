@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct PredictionView: View {
-    @Binding var predictionSheet: Sheet?
+    
+    @EnvironmentObject var selectionViewModel: SelectionViewModel
     @EnvironmentObject var plantiNetViewModel: PlantiNetViewModel
+    @EnvironmentObject var locationManager: LocationManager
+    
+    @Binding var predictionSheet: Sheet?
+
     
     
     func formatPrediction(prediction: Double) -> String {
@@ -35,7 +40,8 @@ struct PredictionView: View {
             
             ForEach(loadPlantPredictionResult(item: plantiNetViewModel), id: \.id) { result in
                 NavigationLink(
-                    destination: PlantView(key: result.item.key, predictionSheet: $predictionSheet).environmentObject(PlantViewModel())
+                    destination: PlantView(key: result.item.key, location: selectionViewModel.location, selectedImage: selectionViewModel.flowerImage, predictionSheet: $predictionSheet)
+                        .environmentObject(PlantViewModel())
                     ,
                     label: {
                         
@@ -62,9 +68,13 @@ struct PredictionView: View {
             
         }
         .navigationBarTitle("Ergebnis", displayMode: .inline)
+        .onAppear(perform: {
+            locationManager.stopUpdating()
+        })
         .navigationBarBackButtonHidden(true)
         .accentColor(.green)
         .background(Color.secondarySystemBackground.ignoresSafeArea())
+        
   
     }
 }
@@ -76,6 +86,8 @@ struct ClassifiedView_Previews: PreviewProvider {
         NavigationView {
             PredictionView(predictionSheet: .constant(nil))
                 .environmentObject(PlantiNetViewModel())
+                .environmentObject(SelectionViewModel())
+                .environmentObject(LocationManager())
         }
         .navigationBarTitle("Ergebnis", displayMode: .inline)
     }

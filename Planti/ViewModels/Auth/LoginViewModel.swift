@@ -58,7 +58,6 @@ class LoginViewModel: ObservableObject {
                 case .success(let auth):
                     debugPrint("🔑 [Token] \(auth.token)")
                     self.token = auth.token
-                    print(self.token)
                     KeychainWrapper.standard.set(auth.token, forKey: "token")
                     self.isLoading = false
                 case .failure(let error):

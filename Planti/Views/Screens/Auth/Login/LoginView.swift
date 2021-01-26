@@ -44,6 +44,8 @@ struct LoginView: View {
                         activeSheet = nil
                     }, label: {
                         Image(systemName: "xmark")
+                            .imageScale(.large)
+                            .frame(width: 44, height: 44, alignment: .leading)
                     }),
                 trailing:
                     Button(action: {

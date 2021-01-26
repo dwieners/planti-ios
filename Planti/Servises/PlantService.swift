@@ -114,8 +114,6 @@ class PlantService {
             do {
                 guard let data = data else { return }
                 
-                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                
                 let info = try JSONDecoder().decode(PlantInfo.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(info))

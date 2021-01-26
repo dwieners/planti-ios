@@ -139,9 +139,13 @@ struct HomeView: View {
                         }
                     }, label: {
                         if (items.count > 0) {
-                            Image(systemName: "cylinder.split.1x2.fill").resizable().scaledToFit()
+                            Image(systemName: "cylinder.split.1x2.fill")
+                                .imageScale(.large)
+                                .frame(width: 44, height: 44, alignment: .trailing)
                         } else {
-                            Image(systemName: "cylinder.split.1x2").resizable().scaledToFit()
+                            Image(systemName: "cylinder.split.1x2")
+                                .imageScale(.large)
+                                .frame(width: 44, height: 44, alignment: .trailing)
                         }
                     })
             ).alert(item: $homeAlerts, content: { item -> Alert in
@@ -165,6 +169,7 @@ struct HomeView: View {
                     SelectionDashboardView(predictionSheet: $activeSheet)
                         .environmentObject(SelectionViewModel())
                         .environmentObject(PlantiNetViewModel())
+                        .environmentObject(LocationManager())
                 }
                 
                 if item == .avatar {

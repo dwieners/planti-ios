@@ -1,55 +1,22 @@
 //
-//  ClassificationService.swift
+//  ObservationService.swift
 //  Planti
 //
-//  Created by Dominik Wieners on 10.12.20.
+//  Created by Dominik Wieners on 26.01.21.
 //
 
 import Foundation
 import UIKit
+import SwiftKeychainWrapper
 
-
-
-///
-/// # Predictions
-///
-struct PlantPrediction: Codable, Identifiable{
-    let id: String
-    let item: PlantItem
-    let prediction: Double
-}
-
-struct PlantPredicationResult: Codable {
-    let predictions: [PlantPrediction]
+struct StandardResponseMessage: Codable {
+    let message: String
 }
 
 
-struct Media {
-    let key: String
-    let filename: String
-    let data: Data
-    let mimeType: String
+class ObservationService {
     
-    init?(withImage image: UIImage, for key: String) {
-        self.key = key
-        self.mimeType = "image/jpeg"
-        self.filename = "\(arc4random()).jpeg"
-        
-        guard let data = image.jpegData(compressionQuality: 0.7) else {
-            return nil
-        }
-        self.data = data
-    }
-}
-
-typealias Parameters = [String: String]
-
-
-
-class ClassificationService {
-    
-    static let shared = ClassificationService()
-    
+    static var shared = ObservationService()
     
     
     
@@ -57,18 +24,29 @@ class ClassificationService {
     /// - Parameters:
     ///   - image: UIImage
     ///   - completion: PlantPredictionResult
-    func classify(with image: UIImage, completion: @escaping (Result<PlantPredicationResult, Error>) -> Void){
+    func observation(with image: UIImage, key: String, latitude: Double, longitude: Double,
+                     completion: @escaping (Result<StandardResponseMessage, Error>) -> Void){
         
+        // Set image for endpoint
         guard let mediaImage = Media(withImage: image, for: "img") else {return }
         
-        let endpoint = Endpoint.classify(model: .plantinet)
+        //endpoint
+        let endpoint = Endpoint.observation(key: key, latitude: latitude, longitude: longitude)
         
+        // Set request
         var request = URLRequest(url: endpoint.url)
         request.httpMethod = "POST"
         
         let boundary = generateBoundary()
         
+        // Get accessToken
+        let accessToken = KeychainWrapper.standard.string(forKey: "token")
+        debugPrint("[ACCESS TOKEN] \(accessToken!)")
+        
+        // Set Headers
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.setValue( accessToken, forHTTPHeaderField: "Authorization")
+        
         
         let dataBody = createDataBody(withParameters:nil, media: [mediaImage], boundary: boundary)
         request.httpBody = dataBody
@@ -86,9 +64,9 @@ class ClassificationService {
             do {
                 guard let data = data else { return }
                 
-                let prediction = try JSONDecoder().decode(PlantPredicationResult.self, from: data)
+                let standardResponse = try JSONDecoder().decode(StandardResponseMessage.self, from: data)
                 DispatchQueue.main.async {
-                    completion(.success(prediction))
+                    completion(.success(standardResponse))
                 }
                 
             } catch let jsonError {
@@ -100,7 +78,7 @@ class ClassificationService {
         }.resume()
     }
     
-
+    
     
     private func generateBoundary() -> String {
         return "Boundary-\(NSUUID().uuidString)"

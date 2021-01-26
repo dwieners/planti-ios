@@ -30,5 +30,5 @@ class RankingViewModel: ObservableObject {
             debugPrint("🌎[\(response.statusCode) Status] \(HTTPURLResponse.localizedString(forStatusCode: response.statusCode ))")
         }
         
-        }
+    }
 }

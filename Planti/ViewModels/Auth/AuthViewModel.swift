@@ -14,7 +14,7 @@ class AuthViewModel: ObservableObject {
     
     func resetAuth(){
         token = nil
-        KeychainWrapper.standard.removeObject(forKey: "token")
+        KeychainWrapper.standard.removeAllKeys()
     }
     
 }

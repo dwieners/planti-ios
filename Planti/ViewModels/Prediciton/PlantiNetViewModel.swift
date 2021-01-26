@@ -23,11 +23,10 @@ class PlantiNetViewModel : ObservableObject {
         ClassificationService.shared.classify(with: uiImage) { res in
             switch (res){
             case .failure(let err):
-                print(err.localizedDescription)
+                debugPrint(err.localizedDescription)
                 self.isLoading = false
                 break;
             case .success(let plant):
-                print(plant)
                 self.predictions = plant
                 if let prediction = plant.predictions.first {
                     debugPrint("🌼 [Predictions]: BEST (\(prediction))")

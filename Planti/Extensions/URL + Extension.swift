@@ -14,11 +14,14 @@ enum Endpoint {
     case allPlants
     case overviewPlants
     case plants(key: String)
+    case observation(key: String, latitude: Double, longitude: Double)
     //-------------------------------
     case register
     case login
     //-------------------------------
     case ranking
+    //-------------------------------
+    case profileMeScore
 }
 
 enum Classifier: String {
@@ -37,12 +40,16 @@ extension Endpoint {
             return .makeForEndpoint("plants/overview")
         case .plants(let key):
             return .makeForEndpoint("plants/\(key)")
+        case .observation(let key, let latitude, let longitude):
+            return .makeForEndpoint("observation/create/\(key)?lat=\(latitude)&lng=\(longitude)")
         case .register:
             return .makeForEndpoint("auth/register")
         case .login:
             return .makeForEndpoint("auth/login")
         case .ranking:
             return .makeForEndpoint("ranking/all")
+        case .profileMeScore:
+            return .makeForEndpoint("profile/me/score")
         }
         
     }

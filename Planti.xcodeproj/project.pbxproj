@@ -40,6 +40,10 @@
 		8F6A7AFA25BFA50E00622F2D /* RankingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7AF925BFA50E00622F2D /* RankingService.swift */; };
 		8F6A7B0725BFAA4000622F2D /* RankingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7B0625BFAA4000622F2D /* RankingView.swift */; };
 		8F6A7B0D25BFAAB200622F2D /* RankingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7B0C25BFAAB200622F2D /* RankingViewModel.swift */; };
+		8F6A7B1225C0644800622F2D /* ObservationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7B1125C0644800622F2D /* ObservationService.swift */; };
+		8F6A7B1725C0848700622F2D /* PlantiIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7B1625C0848700622F2D /* PlantiIndicatorView.swift */; };
+		8F6A7B1C25C087B800622F2D /* ObservationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7B1B25C087B800622F2D /* ObservationViewModel.swift */; };
+		8F6A7B2125C0D44500622F2D /* ProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6A7B2025C0D44500622F2D /* ProfileService.swift */; };
 		8F6B5E0E25A897E7001902FB /* PlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6B5E0D25A897E7001902FB /* PlantView.swift */; };
 		8F7ACAB7259FF1E50002146E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F7ACAB6259FF1E50002146E /* SettingsView.swift */; };
 		8F81BCE0257D5BBC007BA2C2 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F81BCDF257D5BBC007BA2C2 /* RootView.swift */; };
@@ -135,6 +139,10 @@
 		8F6A7AF925BFA50E00622F2D /* RankingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingService.swift; sourceTree = "<group>"; };
 		8F6A7B0625BFAA4000622F2D /* RankingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingView.swift; sourceTree = "<group>"; };
 		8F6A7B0C25BFAAB200622F2D /* RankingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewModel.swift; sourceTree = "<group>"; };
+		8F6A7B1125C0644800622F2D /* ObservationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationService.swift; sourceTree = "<group>"; };
+		8F6A7B1625C0848700622F2D /* PlantiIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantiIndicatorView.swift; sourceTree = "<group>"; };
+		8F6A7B1B25C087B800622F2D /* ObservationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservationViewModel.swift; sourceTree = "<group>"; };
+		8F6A7B2025C0D44500622F2D /* ProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileService.swift; sourceTree = "<group>"; };
 		8F6B5E0D25A897E7001902FB /* PlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantView.swift; sourceTree = "<group>"; };
 		8F7ACAB6259FF1E50002146E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		8F81BCDF257D5BBC007BA2C2 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -300,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				8F5E2AAC25AE0BBE00B6C402 /* PlantiNetViewModel.swift */,
+				8F6A7B1B25C087B800622F2D /* ObservationViewModel.swift */,
 			);
 			path = Prediciton;
 			sourceTree = "<group>";
@@ -460,6 +469,7 @@
 				8F511D1625A06EB900B5F36C /* InfoCard.swift */,
 				8F34CCFA25A07A3B0042DEF2 /* ImageSourceButton.swift */,
 				8FAB8E8B25BF68D000A9FA18 /* LargeButton.swift */,
+				8F6A7B1625C0848700622F2D /* PlantiIndicatorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -560,6 +570,8 @@
 				8FEDC5CF25AE74120052908A /* PlantService.swift */,
 				8F3B460725B5B2D3005982C1 /* AuthService.swift */,
 				8F6A7AF925BFA50E00622F2D /* RankingService.swift */,
+				8F6A7B1125C0644800622F2D /* ObservationService.swift */,
+				8F6A7B2025C0D44500622F2D /* ProfileService.swift */,
 			);
 			path = Servises;
 			sourceTree = "<group>";
@@ -795,6 +807,7 @@
 				8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */,
 				8FA4D5762576838D006869EA /* SelectionView.swift in Sources */,
 				8FBBDDAA2547221E0054FCED /* Planti.xcdatamodeld in Sources */,
+				8F6A7B1225C0644800622F2D /* ObservationService.swift in Sources */,
 				8F511D1725A06EB900B5F36C /* InfoCard.swift in Sources */,
 				8FFFA702257BB54600EA3C01 /* AuthView.swift in Sources */,
 				8FFFA723257BEAC900EA3C01 /* UserViewModel.swift in Sources */,
@@ -806,6 +819,8 @@
 				8F89A40425837EE700197DBD /* PredictionView.swift in Sources */,
 				8F6A7B0725BFAA4000622F2D /* RankingView.swift in Sources */,
 				8F5C22DB259FD96E0080FE03 /* DashboardItem.swift in Sources */,
+				8F6A7B1C25C087B800622F2D /* ObservationViewModel.swift in Sources */,
+				8F6A7B1725C0848700622F2D /* PlantiIndicatorView.swift in Sources */,
 				8F1A36C425B750E80018E548 /* LoginViewModel.swift in Sources */,
 				8FC80C9825AD12C400E77D70 /* NumberFormater + Extension.swift in Sources */,
 				8F3888D5256BBA95002D89CF /* UIImage + Extension.swift in Sources */,
@@ -821,6 +836,7 @@
 				8FEDC5D025AE74120052908A /* PlantService.swift in Sources */,
 				8F4CA3A1256A9B37002ABFCA /* ImageSelectionView.swift in Sources */,
 				8F6A7B0D25BFAAB200622F2D /* RankingViewModel.swift in Sources */,
+				8F6A7B2125C0D44500622F2D /* ProfileService.swift in Sources */,
 				8F5E2AB825AE142500B6C402 /* SelectionContentView.swift in Sources */,
 				8F2A784525A3D8C5003D4F6D /* ColorScheme + Extension.swift in Sources */,
 				8FFEB027257E9EA80024AF56 /* SelectionDashboardView.swift in Sources */,

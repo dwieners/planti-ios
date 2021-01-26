@@ -11,15 +11,18 @@ import CoreLocation
 class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     
     private let manager: CLLocationManager
+    private var timerCount: Int = 0
     
     @Published var lastKnownLocation: CLLocation?
+    @Published var isLoading: Bool = false
+    @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     
     init(manager: CLLocationManager = CLLocationManager()) {
         self.manager = manager
         super.init()
     }
-    
-    func startUpdating() {
+
+    func startUpdating(){
         self.manager.delegate = self
         self.manager.requestWhenInUseAuthorization()
         self.manager.startUpdatingLocation()
@@ -39,6 +42,5 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
             self.manager.startUpdatingLocation()
         }
     }
-    
     
 }
