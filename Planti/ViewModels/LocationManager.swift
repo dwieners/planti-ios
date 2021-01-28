@@ -21,7 +21,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
         self.manager = manager
         super.init()
     }
-
+    
     func startUpdating(){
         self.manager.delegate = self
         self.manager.requestWhenInUseAuthorization()
@@ -38,6 +38,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
+        self.authorizationStatus = status
         if status  == .authorizedWhenInUse {
             self.manager.startUpdatingLocation()
         }

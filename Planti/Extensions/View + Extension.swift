@@ -23,6 +23,11 @@ struct RoundedCorner: Shape {
 
 extension View {
     
+    /// Modifier for corners
+    /// - Parameters:
+    ///   - background: <#background description#>
+    ///   - cornerRadius: <#cornerRadius description#>
+    /// - Returns: <#description#>
     func cardContained(background: Color = Color.secondarySystemBackground, cornerRadius: CGFloat = 8) -> some View {
         self
             .padding(.all)
@@ -31,6 +36,11 @@ extension View {
     }
     
     
+    /// Modifiere for corner Radius
+    /// - Parameters:
+    ///   - radius: radius
+    ///   - corners: corner
+    /// - Returns: clipShape
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
@@ -44,8 +54,9 @@ extension View {
     }
     
     
-    // This function changes our View to UIView, then calls another function
-    // to convert the newly-made UIView to a UIImage.
+    
+    /// Modifier to add UIImages
+    /// - Returns: UIImage
     func asUIImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
         

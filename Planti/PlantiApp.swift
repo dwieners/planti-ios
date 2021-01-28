@@ -6,19 +6,22 @@
 //
 
 import SwiftUI
+import UIKit
 
 @main
 struct PlantiApp: App {
+    // Percistence
     let persistenceController = PersistenceController.shared
-    let auth = AuthViewModel()
-
-    let plantOverview = PlantOverviewViewModel()
-
+    
+    // View Models
+    let authViewModel = AuthViewModel()
+    let plantOverviewViewModel = PlantOverviewViewModel()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(auth)
-                .environmentObject(plantOverview)
+                .environmentObject(authViewModel)
+                .environmentObject(plantOverviewViewModel)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
          
         }

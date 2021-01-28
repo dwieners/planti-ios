@@ -37,6 +37,7 @@ struct PlantView: View {
    
     var body: some View{
         VStack{
+
             ZStack {
                 if plantViewModel.isLoading {
                     PlantiIndicatorView()
@@ -129,8 +130,10 @@ struct PlantViewContent : View {
     var predictionSheet: Binding<Sheet?>?
     
     
+    
+    // Actions
+    
     private func addItem() {
-        
         // load image from url and save to here
         guard let plant = plantViewModel.plant else {
             return
@@ -158,7 +161,6 @@ struct PlantViewContent : View {
             let nsError = error as NSError
             fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
-        
     }
     
     
@@ -188,6 +190,9 @@ struct PlantViewContent : View {
         }
     }
     
+    
+    
+    
  
     
     
@@ -198,36 +203,12 @@ struct PlantViewContent : View {
                     VStack{
                         ZStack{
                             KeyVisualView(imageUrl: plantInfo.image_url)
-                            VStack {
-                                Spacer().frame(maxWidth: .infinity)
-                                HStack{
-                                    VStack(alignment: .leading){
-                                        Text(plantInfo.title)
-                                            .font(.title)
-                                            .fontWeight(.bold)
-                                        Text(plantInfo.scientific_name)
-                                            .font(.headline)
-                                    }
-                                    Spacer()
-                                }.padding()
-                                .background(BlurView(style: .prominent))
-                            }
+                                .frame(width: .infinity, height: 400)
+                            PlantDescriptionView(plantInfo: plantInfo)
                         }
                         
                     }
-                    VStack(alignment: .leading){
-                        VStack(alignment: .leading){
-                            Text("Taxonomie").font(.headline).padding(.bottom, 4)
-                            Text(plantInfo.taxonomy)
-                        }.padding(8)
-                        Divider()
-                        VStack(alignment: .leading){
-                            Text("Beschreibung").font(.headline).padding(.bottom, 4)
-                            Text(plantInfo.description)
-                                .font(.body)
-                        }.padding(8)
-                        
-                    }.padding()
+                    PlantTextContentView(plantInfo: plantInfo)
                     if predictionSheet != nil {
                         Spacer().frame(height: 72)
                     }
@@ -268,22 +249,6 @@ struct PlantViewContent : View {
 
 
 
-struct BlurView : UIViewRepresentable {
-    
-    var style : UIBlurEffect.Style
-    
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        
-        let view = UIVisualEffectView(effect: UIBlurEffect(style: style))
-        
-        return view
-    }
-    
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-        
-    }
-}
-
 
 
 struct PlantView_Previews: PreviewProvider {
@@ -292,6 +257,7 @@ struct PlantView_Previews: PreviewProvider {
         NavigationView{
             PlantView(key: "bellis_perennis", predictionSheet: .constant(.selection))
                 .environmentObject(PlantViewModel())
+                .environmentObject(ObservationViewModel())
         }
         .accentColor(.green)
     }

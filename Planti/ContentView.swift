@@ -25,45 +25,28 @@ enum Sheet: Identifiable {
 
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
     @EnvironmentObject var auth: AuthViewModel
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \PlantRecord.timestamp, ascending: true)],
-        animation: .default)
-
-    private var items: FetchedResults<PlantRecord>
-
+    
+    
+    
+    
+    // # Actions
+    private func getToken() {
+        auth.token = KeychainWrapper.standard.string(forKey: "token")
+    }
+    
+    
     var body: some View {
         ZStack{
             if auth.token != nil {
                 RootView()
                     .zIndex(/*@START_MENU_TOKEN@*/1.0/*@END_MENU_TOKEN@*/)
-                }else{
-                    AuthView()
-                        .zIndex(2.0)
+            }else{
+                AuthView()
+                    .zIndex(2.0)
             }
-        }.onAppear(perform: {
-            auth.token =  KeychainWrapper.standard.string(forKey: "token")
-        })
+        }.onAppear(perform: getToken)
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = PlantRecord(context: viewContext)
-            newItem.timestamp = Date()
-            
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-    
 }
 
 private let itemFormatter: DateFormatter = {

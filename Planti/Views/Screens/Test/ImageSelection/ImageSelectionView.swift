@@ -8,13 +8,22 @@
 import SwiftUI
 import CoreML
 
+enum ImageSelectionSheet: Identifiable {
+    var id: Int {
+        self.hashValue
+    }
+    case picker
+    case camera
+}
+
+
+
 struct ImageSelectionView: View {
     
     @State private var inputImage: UIImage?
     @State private var image: Image?
-    @State private var showingImagePicker = false
-    @State private var showingCameraMode = false
     
+    @State private var imageSelectionSheet: ImageSelectionSheet?
     @State private var classificationLabel: String?
     @State private var showClassifyerScreen = false
     
@@ -66,8 +75,7 @@ struct ImageSelectionView: View {
             }
             Spacer()
             Button(action: {
-                showingCameraMode = false
-                showingImagePicker.toggle()
+                self.imageSelectionSheet = .camera
             }) {
                 HStack{
                      Image(systemName: "photo")
@@ -83,8 +91,7 @@ struct ImageSelectionView: View {
             }
           
             Button(action: {
-                showingCameraMode = true
-                showingImagePicker.toggle()
+                self.imageSelectionSheet = .picker
             }) {
                 HStack{
                     Image(systemName: "camera")
@@ -124,8 +131,17 @@ struct ImageSelectionView: View {
                 })
             
         }
-        .fullScreenCover(isPresented: $showingImagePicker, onDismiss: loadImage) {
-            ImagePickerView(sourceType: showingCameraMode ? .camera : .photoLibrary, image: $inputImage)
+        .fullScreenCover(item: $imageSelectionSheet, onDismiss: loadImage) { (item:ImageSelectionSheet) in
+            switch(item) {
+            case .picker:
+                ImagePickerView(sourceType: .photoLibrary, image: $inputImage)
+                    .accentColor(.green)
+            case .camera:
+                ImagePickerView(sourceType: .camera , image: $inputImage)
+                    .accentColor(.green)
+            }
+           
+            
         }
         .navigationTitle("Gallery & Image")
     }

@@ -7,13 +7,47 @@
 
 import Foundation
 import UIKit
+import CoreML
+
+
+
+
+
+
 class PlantiNetViewModel : ObservableObject {
     
     @Published var predictions : PlantPredicationResult?
-    
     @Published var isLoading : Bool = false
-    
     @Published var hasPrediction : Bool = false
+    @Published var isPlant : Bool = true
+    
+    
+    let model: PlantDetector = {
+        do {
+            let config = MLModelConfiguration()
+            return try PlantDetector(configuration: config)
+        } catch {
+            print(error)
+            fatalError("Couldn't create PlantDetector")
+        }
+    }()
+    
+    
+    func checkPlant(uiImage: UIImage){
+        let resizedImage = uiImage.resizeTo(size: CGSize(width: 224, height: 224))
+        guard let buffer = resizedImage.toCVPixelBuffer() else { return }
+        let output = try? model.prediction(image: buffer)
+        if let output = output {
+            switch (output.classLabel) {
+            case "is_plant" :
+                self.isPlant = true
+                break
+            default:
+                self.isPlant = false
+            }
+        }
+    }
+    
     
     
     /// Classify Image with PlantiNet ML Model

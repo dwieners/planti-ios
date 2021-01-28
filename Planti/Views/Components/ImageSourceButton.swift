@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ImageSourceButton: View {
     
-    @Binding var activeSheet: Sheet?
+    @Binding var activeSheet: SelectionSheet?
     
     var body: some View {
         VStack {

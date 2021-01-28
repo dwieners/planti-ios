@@ -84,30 +84,16 @@ struct HomeView: View {
                         }
                         .gridStyle(spacing: 16)
                         .padding(EdgeInsets(top: 16, leading: 20, bottom: 16, trailing: 20))
-                        
                         Spacer().frame(height: 50)
                     }.zIndex(1.0)
                 }else{
-                  
-                        VStack{
-                     
-                            Image("PlaceholderPlant").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.5)
-                            Text("Du hast noch keine Pflanzen gefunden")
-                                .padding(.top, 16)
-                                .font(.system(size: 17, design: .default))
-                                .multilineTextAlignment(.center)
-                                .lineLimit(50)
-                                .frame(width: UIScreen.main.bounds.width * 0.7)
-                        }.offset(CGSize(width: 0, height: -44))
-                        
-                    
+                      HomePlaceholderView()
                 }
                 
                 NavigationLink(destination: PlantView(key: selectedKey)
                                 .environmentObject(PlantViewModel()), isActive: $isActiveRecordItem ){
                     Spacer().fixedSize()
                 }
-                
                 
                 VStack {
                     Spacer()

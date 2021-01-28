@@ -9,12 +9,6 @@ import SwiftUI
 import UIKit
 
 
-enum Tab {
-    case flower
-    case leaf
-}
-
-
 
 
 struct SelectionView: View {
@@ -22,11 +16,10 @@ struct SelectionView: View {
     
     @EnvironmentObject private var selectionViewModel: SelectionViewModel
     @EnvironmentObject private var plantiNetViewModel: PlantiNetViewModel
-
+    
     @Binding var predictionSheet: Sheet?
     
-    
-    
+    // Actions
     func getTitle(plantShape: PlantShape?) -> String {
         if let shape = plantShape {
             return shape.title
@@ -48,13 +41,12 @@ struct SelectionView: View {
         }
     }
     
-    
     var body: some View {
         if demo(plantShape: selectionViewModel.plantShape) {
             VStack(alignment: .leading) {
                 TabView(selection: $selectionViewModel.selection){
                     VStack{
-                        InfoCard(image: Image(systemName: "stethoscope"), text: "Fotografiere die gesamte blüte als Draufsicht")
+                        InfoCard(image: Image(systemName: "stethoscope"), text: "Fotografiere die gesamte Blüte als Draufsicht-")
                             .padding()
                         SelectionContentView()
                     }
@@ -63,28 +55,36 @@ struct SelectionView: View {
                 .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
                 
                 NavigationLink(destination: PredictionView(predictionSheet: $predictionSheet), isActive: $plantiNetViewModel.hasPrediction){
-                   Spacer().fixedSize()
+                    Spacer().fixedSize()
                 }
                 
             }
             .navigationBarTitle( getTitle(plantShape: selectionViewModel.plantShape) , displayMode: .inline)
             .background(Color.secondarySystemBackground.ignoresSafeArea(.all))
-            .fullScreenCover(item: $selectionViewModel.imageSheet){ item in
-                if selectionViewModel.selection == Tab.flower {
-                    if item == .picker {
-                        ImagePickerView( sourceType: .photoLibrary, image: $selectionViewModel.flowerImage)
-                      
-                    }
-                    if item == .camera {
-                        ImagePickerView( sourceType: .camera , image: $selectionViewModel.flowerImage)
-                    }
+            .alert(item: $selectionViewModel.selectionAlerts, content: { (item:SelectionAlert) -> Alert in
+                switch item {
+                case .emptyImage:
+                    return Alert(title: Text("Bitte lade ein Bild hoch"))
                 }
+            })
+            .fullScreenCover(item: $selectionViewModel.selectionSheet){ (item:SelectionSheet) in
+                switch item {
+                case .picker:
+                    ImagePickerView( sourceType: .photoLibrary, image: $selectionViewModel.flowerImage)
+                        .accentColor(.green)
+                case .camera:
+                    ImagePickerView( sourceType: .camera , image: $selectionViewModel.flowerImage)
+                        .accentColor(.green)
+                case .invalid:
+                    InvalidPredictionView(selectionSheet: $selectionViewModel.selectionSheet)
+                }
+                
             }
         }else{
             Text("🚧 Hier wird noch gebaut")
                 .navigationBarTitle( getTitle(plantShape: selectionViewModel.plantShape) , displayMode: .inline)
         }
-    
+        
     }
     
 }

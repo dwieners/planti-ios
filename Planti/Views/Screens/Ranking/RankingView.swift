@@ -12,33 +12,16 @@ struct RankingView: View {
     @EnvironmentObject var auth: AuthViewModel
     @EnvironmentObject var rankingViewModel: RankingViewModel
     
+    
+    var items: Array<EnumeratedSequence<[UserRanking]>.Element> {
+        return Array(rankingViewModel.rankings.enumerated())
+    }
+    
+
     var body: some View {
         List {
-            ForEach(Array(rankingViewModel.rankings.enumerated()), id: \.offset){ index, item in
-                if !item.is_current {
-                    HStack {
-                        Text("\(index + 1)")
-                            .frame(width: 32, height: 32)
-                            .background(Color.secondarySystemBackground)
-                            .mask(Circle())
-                            .foregroundColor(Color.label)
-                        Text(item.user.username).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).padding(.horizontal)
-                        Spacer()
-                        Text("\(item.user.score) 💰")
-                    }.padding(.vertical)
-                } else {
-                    HStack {
-                        Text("\(index + 1)")
-                            .frame(width: 32, height: 32)
-                            .background(Color.label)
-                            .mask(Circle())
-                            .foregroundColor(Color.secondarySystemBackground)
-                        Text(item.user.username).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/).padding(.horizontal)
-                        Spacer()
-                        Text("\(item.user.score) 💰")
-                    }.padding(.vertical)
-                }
-                  
+            ForEach(items, id: \.offset){ index, item in
+                RankingRowView(index: index, item: item)
             }
         }
         .navigationBarTitle("Rangliste")
