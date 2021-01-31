@@ -19,9 +19,16 @@ struct RankingView: View {
     
 
     var body: some View {
-        List {
-            ForEach(items, id: \.offset){ index, item in
-                RankingRowView(index: index, item: item)
+        VStack {
+            if rankingViewModel.isLoading {
+                PlantiIndicatorView()
+            } else {
+                List {
+                    ForEach(items, id: \.offset){ index, item in
+                        RankingRowView(index: index, item: item)
+                    }
+                }
+          
             }
         }
         .navigationBarTitle("Rangliste")

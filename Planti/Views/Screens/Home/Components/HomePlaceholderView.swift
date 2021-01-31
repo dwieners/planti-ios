@@ -13,14 +13,14 @@ struct HomePlaceholderView: View {
     // Views
     
     var placeholderImage: some View {
-        Image("PlaceholderPlant").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.5)
+        Image("plant").resizable().scaledToFit().frame(width: UIScreen.main.bounds.width * 0.5)
     }
     
     
     var placeholderText: some View {
         Text("Du hast noch keine Pflanzen gefunden")
             .padding(.top, 16)
-            .font(.system(size: 17, design: .default))
+            .font(.system(size: 17, weight: .heavy, design: .default))
             .multilineTextAlignment(.center)
             .lineLimit(50)
             .frame(width: UIScreen.main.bounds.width * 0.7)

@@ -34,7 +34,7 @@ struct PredictionView: View {
         
         
         ScrollView{
-            InfoCard(image: Image(systemName: "checkmark.seal.fill"), text: "Toll gemacht! Wir haben ein Ergebnis erzielt!")
+            InfoCard(image: Image("check-mark"), text: "Toll gemacht! Wir haben ein Ergebnis erzielt!")
                 .padding()
             
             

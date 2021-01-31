@@ -90,7 +90,7 @@ struct PlantView: View {
                 
             case .dailyPoints:
                 return Alert(title: Text("Die Hexenmeister geben dir deinen Tagesbonus!"),
-                             message: Text("Du erhälst 5 Goldmünzen 💰"),
+                             message: Text("Du erhälst 5 Punkite 🤗"),
                              dismissButton: .default(Text("Alles klar!")) {
                                 if let predictionSheet = self.predictionSheet {
                                     predictionSheet.wrappedValue = nil

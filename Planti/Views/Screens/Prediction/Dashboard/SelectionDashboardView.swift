@@ -32,10 +32,10 @@ struct SelectionDashboardView: View {
     @State var isShapeSelected: Bool = false
     
     let data = [
-        PlantShape(title: "Wildblume", type: .wildflower, keyVisual: "flower"),
-        PlantShape(title: "Baum", type: .tree , keyVisual: "bark"),
-        PlantShape(title: "Gräser", type: .grasses , keyVisual: "leaf"),
-        PlantShape(title: "Farn", type: .fern ,keyVisual: "fruit"),
+        PlantShape(title: "Wildblume", type: .wildflower, keyVisual: "daisy"),
+        PlantShape(title: "Baum", type: .tree , keyVisual: "tree"),
+        PlantShape(title: "Gräser", type: .grasses , keyVisual: "grass"),
+        PlantShape(title: "Farn", type: .fern ,keyVisual: "fern"),
         
     ]
     

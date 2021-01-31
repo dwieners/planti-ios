@@ -24,7 +24,7 @@ struct RankingRowView: View {
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .padding(.horizontal)
             Spacer()
-            Text("\(item.user.score) 💰")
+            Text("\(item.user.score) Punkte").bold()
         }.padding(.vertical)
     }
 }

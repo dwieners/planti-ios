@@ -24,6 +24,7 @@ struct ImagePreview: View {
                 Image(systemName: "photo")
                     .resizable()
                     .scaledToFit()
+                    .opacity(0.1)
 
             }
         }

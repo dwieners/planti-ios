@@ -20,7 +20,7 @@ struct DashboardView: View {
                 NavigationLink(
                     destination: PlantOverview(),
                     label: {
-                        DashboardItem(title: "Pflanzenübersicht", image: Image(systemName: "tray.2.fill"))
+                        DashboardItem(title: "Pflanzenübersicht", image: Image("sprout"))
                             .padding([.horizontal, .top])
                     })
                 LazyVStack{
@@ -28,13 +28,13 @@ struct DashboardView: View {
                         NavigationLink(
                             destination: RankingView().environmentObject(RankingViewModel()),
                             label: {
-                                DashboardItem(title: "Rangliste", image: Image(systemName: "rosette"), small: true)
+                                DashboardItem(title: "Rangliste", image: Image("quality"), small: true)
                             }
                         )
                         NavigationLink(
                             destination: MissionView(),
                             label: {
-                                DashboardItem(title: "Missionen", image: Image(systemName: "crown"), small: true)
+                                DashboardItem(title: "Missionen", image: Image("mission"), small: true)
                             }
                         )
                     }
@@ -43,7 +43,7 @@ struct DashboardView: View {
                 NavigationLink(
                     destination: TestView(),
                     label: {
-                        DashboardItem(title: "Meine Tests", image: Image(systemName: "flame.fill"))
+                        DashboardItem(title: "Meine Tests", image:  Image("cauldron"))
                             .padding([.horizontal])
                            
                     })

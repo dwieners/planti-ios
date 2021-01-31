@@ -46,7 +46,7 @@ struct SelectionView: View {
             VStack(alignment: .leading) {
                 TabView(selection: $selectionViewModel.selection){
                     VStack{
-                        InfoCard(image: Image(systemName: "stethoscope"), text: "Fotografiere die gesamte Blüte als Draufsicht-")
+                        InfoCard(image: Image("stethoscope"), text: "Fotografiere die gesamte Blüte als Draufsicht-")
                             .padding()
                         SelectionContentView()
                     }

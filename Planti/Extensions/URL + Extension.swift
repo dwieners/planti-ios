@@ -21,7 +21,15 @@ enum Endpoint {
     //-------------------------------
     case ranking
     //-------------------------------
+    case profileMe
     case profileMeScore
+    case profileMeInventory
+    case profileMeMissions
+    case profileMeMission(id: Int)
+    case profileMeMissionsActivate(id: Int)
+    case profileMeMissionsTargetComplete(key: String)
+ 
+   
 }
 
 enum Classifier: String {
@@ -48,8 +56,20 @@ extension Endpoint {
             return .makeForEndpoint("auth/login")
         case .ranking:
             return .makeForEndpoint("ranking/all")
+        case .profileMe:
+            return .makeForEndpoint("profile/me")
         case .profileMeScore:
             return .makeForEndpoint("profile/me/score")
+        case .profileMeInventory:
+            return .makeForEndpoint("profile/me/inventory")
+        case .profileMeMissions:
+            return .makeForEndpoint("profile/me/missions")
+        case .profileMeMission(let id):
+            return .makeForEndpoint("profile/me/missions/\(id)")
+        case .profileMeMissionsActivate(let id):
+            return .makeForEndpoint("profile/me/missions/activate/\(id)")
+        case .profileMeMissionsTargetComplete(let key):
+            return .makeForEndpoint("profile/me/missions/target/complete/\(key)")
         }
         
     }

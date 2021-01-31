@@ -22,8 +22,12 @@ struct InvalidPredictionView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("😢")
-                    .font(.system(size: 144))
+                
+                Image("sadness")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 250)
+                    .padding()
                 Text("Das ist keine Pflanze")
                     .font(.system(size: 22))
                     .bold()
