@@ -23,7 +23,7 @@ struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \PlantRecord.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \PlantRecord.timestamp, ascending: false)],
         animation: .default)
     
     private var items: FetchedResults<PlantRecord>

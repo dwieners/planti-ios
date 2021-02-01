@@ -10,10 +10,14 @@ import CoreLocation
 import SwiftKeychainWrapper
 
 
+
+
+
 struct PlantView: View {
     @EnvironmentObject private var plantViewModel: PlantViewModel
     
     @ObservedObject private var observationViewModel = ObservationViewModel()
+    @ObservedObject private var missionTargetViewModel = MissionTargetViewModel()
     
     @State private var isLoading:Bool = false
     @State private var opacity:Double = 0
@@ -22,7 +26,7 @@ struct PlantView: View {
     var location: CLLocation?
     var selectedImage: UIImage?
     var predictionSheet: Binding<Sheet?>?
-    
+   
     
     var observationButton: some View {
         Button(action: {
@@ -34,18 +38,25 @@ struct PlantView: View {
         })
     }
     
-   
+    
+    func missionTargetDismiss() {
+        self.predictionSheet?.wrappedValue = nil
+    }
+    
+    
+    
     var body: some View{
         VStack{
-
+            
             ZStack {
                 if plantViewModel.isLoading {
                     PlantiIndicatorView()
                         .zIndex(2)
                 } else {
                     if let plant = plantViewModel.plant {
-                        PlantViewContent(plantInfo: plant, predictionSheet: predictionSheet)
+                        PlantViewContent(plantInfo: plant, predictionSheet: predictionSheet, selectedImage: selectedImage)
                             .environmentObject(observationViewModel)
+                            .environmentObject(missionTargetViewModel)
                             .opacity(opacity)
                             .onAppear(perform: {
                                 withAnimation(.default) {
@@ -91,11 +102,7 @@ struct PlantView: View {
             case .dailyPoints:
                 return Alert(title: Text("Die Hexenmeister geben dir deinen Tagesbonus!"),
                              message: Text("Du erhälst 5 Punkite 🤗"),
-                             dismissButton: .default(Text("Alles klar!")) {
-                                if let predictionSheet = self.predictionSheet {
-                                    predictionSheet.wrappedValue = nil
-                                }
-                             })
+                             dismissButton: .default(Text("Alles klar!")))
                 
             case .unlockedMission:
                 return Alert(title:Text("Eine neue Mission wurde Freigeschaltet"),
@@ -104,6 +111,11 @@ struct PlantView: View {
             
         })
         .navigationBarTitle(Text("Details"), displayMode: .inline)
+        .sheet(item: $missionTargetViewModel.missionTargetStatusSheet, onDismiss: missionTargetDismiss, content: { _ in
+               
+               return AnyView(MissionTargetCompleteView(missionComplete: missionTargetViewModel.completedTarget, sheet: $missionTargetViewModel.missionTargetStatusSheet))
+            
+        })
         .navigationBarItems(
             trailing:
                 self.predictionSheet != nil ?
@@ -123,14 +135,15 @@ struct PlantViewContent : View {
     
     @EnvironmentObject private var plantViewModel: PlantViewModel
     @EnvironmentObject private var observationViewModel: ObservationViewModel
+    @EnvironmentObject private var missionTargetViewModel: MissionTargetViewModel
     @Environment(\.managedObjectContext) private var viewContext
     @State private var opacity:Double = 0.0
-    
+     
     var plantInfo: PlantInfo
     var predictionSheet: Binding<Sheet?>?
+    var selectedImage: UIImage?
     
-    
-    
+
     // Actions
     
     private func addItem() {
@@ -138,20 +151,18 @@ struct PlantViewContent : View {
         guard let plant = plantViewModel.plant else {
             return
         }
-        
-        var uiImage = UIImage()
-        
-        if let url = URL(string: plant.image_url) {
-            let data = try? Data(contentsOf: url)
-            uiImage = UIImage(data: data!)!
-        }
+        //        if let url = URL(string: plant.image_url) {
+        //            let data = try? Data(contentsOf: url)
+        //            uiImage = UIImage(data: data!)!
+        //        }
+        guard let uiImage = selectedImage else { return }
         
         let newItem = PlantRecord(context: viewContext)
         newItem.timestamp = Date()
         newItem.key = plant.key
         newItem.title = plant.title
         newItem.scientific_name = plant.scientific_name
-        newItem.image = uiImage.jpegData(compressionQuality: 1.0)
+        newItem.image = uiImage.jpegData(compressionQuality: 0.5)
         
         do {
             try viewContext.save()
@@ -165,7 +176,17 @@ struct PlantViewContent : View {
     
     
     
-    func checkForDailyScore(sheet: Binding<Sheet?>) {
+    func checkMissions() {
+        guard let plant = plantViewModel.plant else {
+            return
+        }
+        missionTargetViewModel.checkMissions(key: plant.key)
+       
+    }
+    
+    
+    
+    func checkForDailyScore() {
         let current_timestamp = NSDate().timeIntervalSince1970
         let last_bonus_timestamp = KeychainWrapper.standard.string(forKey: "last_daily_bonus")
         if let last_bonus_timestamp = last_bonus_timestamp {
@@ -177,7 +198,6 @@ struct PlantViewContent : View {
             debugPrint("⏰ [TIME TO WAIT] \(String(format: "%3.0f", timeToWait < 0 ? 0 : timeToWait)) min")
             if min < 2 {
                 debugPrint("😢 [NO DAILY BONUS] Sorry")
-                sheet.wrappedValue = nil
             } else {
                 debugPrint("💰 [DAILY BONUS] 5 Points")
                 observationViewModel.getDailyBonus()
@@ -191,11 +211,6 @@ struct PlantViewContent : View {
     }
     
     
-    
-    
- 
-    
-    
     var body: some View {
         ZStack(alignment: .top) {
             ZStack{
@@ -203,7 +218,8 @@ struct PlantViewContent : View {
                     VStack{
                         ZStack{
                             KeyVisualView(imageUrl: plantInfo.image_url)
-                                .frame(width: .infinity, height: 400)
+                                .frame(height: 400)
+                                .frame(maxWidth: .infinity)
                             PlantDescriptionView(plantInfo: plantInfo)
                         }
                         
@@ -217,16 +233,25 @@ struct PlantViewContent : View {
                 if let predictionSheet = predictionSheet {
                     VStack {
                         Spacer()
-                        FloatingButton(action: {
-                            addItem()
-                            checkForDailyScore(sheet: predictionSheet)
-                        },
-                        image: Image(systemName: "checkmark.circle.fill"),
-                        label: "Bestätigen"
+                        FloatingButton(
+                            action: {
+                              checkMissions()
+                            },
+                            image: Image(systemName: "checkmark.circle.fill"),
+                            label: "Bestätigen"
                         )
                         
                     }
                     .padding()
+                    .onReceive(missionTargetViewModel.$missionsUpToDate, perform: { upToDate in
+                        if upToDate {
+                            addItem()
+                            predictionSheet.wrappedValue = nil
+                        }
+                    })
+                    .onAppear(perform: {
+                        self.checkForDailyScore()
+                    })
                     .zIndex(1)
                 }
                 
@@ -246,9 +271,6 @@ struct PlantViewContent : View {
     }
     
 }
-
-
-
 
 
 struct PlantView_Previews: PreviewProvider {

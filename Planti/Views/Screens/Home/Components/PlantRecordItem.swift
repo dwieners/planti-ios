@@ -19,14 +19,20 @@ struct PlantRecordItem: View {
                 .scaledToFit()
                 .mask(RoundedCorner(radius: 10, corners: .allCorners))
             LazyVStack{
-                Text(item.title!)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Text(item.scientific_name!)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack {
+                    Image("binoculars").resizable().scaledToFit().frame(height: 24)
+                    VStack {
+                        Text(item.title!)
+                            .font(.headline)
+                            .foregroundColor(.primary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        Text(item.scientific_name!)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                }
+                
             }
             .padding( 8)
         }

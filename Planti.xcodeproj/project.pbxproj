@@ -32,6 +32,8 @@
 		8F4B8AF6257E3B7F0003CDD7 /* ChallangeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4B8AF5257E3B7F0003CDD7 /* ChallangeRow.swift */; };
 		8F4CA3A1256A9B37002ABFCA /* ImageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4CA3A0256A9B37002ABFCA /* ImageSelectionView.swift */; };
 		8F4CFAF225C720AA005B7670 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4CFAF125C720AA005B7670 /* ScoreView.swift */; };
+		8F4CFAF725C82178005B7670 /* MissionTargetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4CFAF625C82178005B7670 /* MissionTargetViewModel.swift */; };
+		8F4CFAFF25C83ED5005B7670 /* MissionTargetCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4CFAFE25C83ED5005B7670 /* MissionTargetCompleteView.swift */; };
 		8F4EA6A425C389F900BA1577 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F4EA6A325C389F900BA1577 /* AvatarView.swift */; };
 		8F511D1725A06EB900B5F36C /* InfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F511D1625A06EB900B5F36C /* InfoCard.swift */; };
 		8F5C22DB259FD96E0080FE03 /* DashboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C22DA259FD96E0080FE03 /* DashboardItem.swift */; };
@@ -156,6 +158,8 @@
 		8F4B8AF5257E3B7F0003CDD7 /* ChallangeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallangeRow.swift; sourceTree = "<group>"; };
 		8F4CA3A0256A9B37002ABFCA /* ImageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectionView.swift; sourceTree = "<group>"; };
 		8F4CFAF125C720AA005B7670 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
+		8F4CFAF625C82178005B7670 /* MissionTargetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTargetViewModel.swift; sourceTree = "<group>"; };
+		8F4CFAFE25C83ED5005B7670 /* MissionTargetCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionTargetCompleteView.swift; sourceTree = "<group>"; };
 		8F4EA6A325C389F900BA1577 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		8F511D1625A06EB900B5F36C /* InfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCard.swift; sourceTree = "<group>"; };
 		8F5C22DA259FD96E0080FE03 /* DashboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardItem.swift; sourceTree = "<group>"; };
@@ -458,6 +462,7 @@
 				8F6A7B2525C1A1E700622F2D /* PlantDescriptionView.swift */,
 				8F6A7AF025BF989900622F2D /* KeyVisualView.swift */,
 				8F6A7B3A25C1AAA100622F2D /* PlantTextContentView.swift */,
+				8F4CFAFE25C83ED5005B7670 /* MissionTargetCompleteView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 			children = (
 				8F94D40825C5DF70008B532C /* MissionViewModel.swift */,
 				8F94D43A25C6FEC2008B532C /* MissionDetailViewModel.swift */,
+				8F4CFAF625C82178005B7670 /* MissionTargetViewModel.swift */,
 			);
 			path = Missions;
 			sourceTree = "<group>";
@@ -997,6 +1003,7 @@
 				8F94D42625C6E666008B532C /* MissionDetailView.swift in Sources */,
 				8FDE3BF425B8C94D00A7E8FB /* LocationManager.swift in Sources */,
 				8FAA519D25A07DC500B9FFBA /* FloatingButton.swift in Sources */,
+				8F4CFAFF25C83ED5005B7670 /* MissionTargetCompleteView.swift in Sources */,
 				8FBEBD4D257E15850062C789 /* BarView.swift in Sources */,
 				8F1A36BC25B715830018E548 /* LoginView.swift in Sources */,
 				8F4CFAF225C720AA005B7670 /* ScoreView.swift in Sources */,
@@ -1027,6 +1034,7 @@
 				8F6A7B1225C0644800622F2D /* ObservationService.swift in Sources */,
 				8F511D1725A06EB900B5F36C /* InfoCard.swift in Sources */,
 				8FFFA702257BB54600EA3C01 /* AuthView.swift in Sources */,
+				8F4CFAF725C82178005B7670 /* MissionTargetViewModel.swift in Sources */,
 				8F94D43B25C6FEC2008B532C /* MissionDetailViewModel.swift in Sources */,
 				8FFFA723257BEAC900EA3C01 /* UserViewModel.swift in Sources */,
 				8F2A784A25A3D921003D4F6D /* ContentSizeCategory + Extension.swift in Sources */,

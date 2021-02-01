@@ -30,7 +30,7 @@ struct RegisterFigureView: View {
         NavigationView {
             VStack{
                 InfoCard(
-                    image: Image(systemName: "person.fill.questionmark"), text: "Möchtest du lieber eine Hexe oder ein Zauberer sein?"
+                    image: Image("magic-wand"), text: "Möchtest du lieber eine Hexe oder ein Zauberer sein?"
                 )
                 Picker(selection: $selectedOptionIndex, label: Text("Strength")) {
                     ForEach(0 ..< figureOptions.count) {

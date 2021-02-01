@@ -53,10 +53,10 @@ struct MissionDetailView: View {
             }
             
         }
-        .navigationBarTitle(navTitle)
         .onAppear(perform: {
             missionDetailViewModel.loadMissionStatus(missionId: missionId)
         })
+        .navigationBarTitle(navTitle)
         
     }
 }

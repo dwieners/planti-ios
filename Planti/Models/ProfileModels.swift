@@ -149,3 +149,14 @@ struct MyMissionTargetStatus: Codable, Identifiable {
     let description: String?
     let is_completed: Bool
 }
+
+
+///
+/// # MyMissionCompleteStatus
+///
+
+struct MyMissionTargetCompleteStatus: Codable {
+    let mission_title: String
+    let target_title: String
+}
+

@@ -18,7 +18,12 @@ struct AvatarHeaderView: View {
             Text(name)
                 .font(.headline)
                 Spacer()
-                ScoreView(value: score)
+                Text("\(score) Punkte")
+                    .font(.headline)
+                    .padding()
+                    .background(Color.yellow)
+                    .foregroundColor(Color.black)
+                    .cornerRadius(10)
             }
         }
         .padding()

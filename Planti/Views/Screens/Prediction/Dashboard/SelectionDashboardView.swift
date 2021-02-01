@@ -104,13 +104,11 @@ struct SelectionDashboardView: View {
     }
     
     
-    var closeButton: some View {
-        Button(action: {
+    var cancleButton: some View {
+        CancelButton {
             locationManager.stopUpdating()
             predictionSheet = nil
-        }, label: {
-            Text("Schließen")
-        })
+        }
     }
     
     
@@ -133,7 +131,7 @@ struct SelectionDashboardView: View {
             }.padding(.horizontal)
             .background(Color.quaternarySystemFill.ignoresSafeArea(.all))
             .navigationBarTitle("Pflanzenform", displayMode: .automatic)
-            .navigationBarItems(leading: closeButton)
+            .navigationBarItems(leading: cancleButton)
             .onAppear(perform: getLocationsFromService)
         }.accentColor(.green)
         
