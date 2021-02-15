@@ -235,6 +235,7 @@ struct PlantViewContent : View {
                         Spacer()
                         FloatingButton(
                             action: {
+                              addItem()
                               checkMissions()
                             },
                             image: Image(systemName: "checkmark.circle.fill"),
@@ -245,7 +246,6 @@ struct PlantViewContent : View {
                     .padding()
                     .onReceive(missionTargetViewModel.$missionsUpToDate, perform: { upToDate in
                         if upToDate {
-                            addItem()
                             predictionSheet.wrappedValue = nil
                         }
                     })

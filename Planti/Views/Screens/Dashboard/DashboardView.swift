@@ -1,14 +1,11 @@
 //
-//  ProfileView.swift
+//  DashboardView.swift
 //  Planti
 //
 //  Created by Dominik Wieners on 07.12.20.
 //
 
 import SwiftUI
-
-
-
 
 struct DashboardView: View {
     
@@ -20,21 +17,32 @@ struct DashboardView: View {
                 NavigationLink(
                     destination: PlantOverview(),
                     label: {
-                        DashboardItem(title: "Pflanzenübersicht", image: Image("sprout"))
-                            .padding([.horizontal, .top])
+                        DashboardItem(
+                            title: "Pflanzenübersicht",
+                            image: Image("sprout")
+                        )
+                        .padding([.horizontal, .top])
                     })
                 LazyVStack{
                     HStack {
                         NavigationLink(
-                            destination: RankingView().environmentObject(RankingViewModel()),
+                            destination: RankingView()
+                                .environmentObject(RankingViewModel()
+                            ),
                             label: {
-                                DashboardItem(title: "Rangliste", image: Image("quality"), small: true)
+                                DashboardItem(
+                                    title: "Rangliste",
+                                    image: Image("quality"),
+                                    small: true)
                             }
                         )
                         NavigationLink(
                             destination: MissionView(),
                             label: {
-                                DashboardItem(title: "Missionen", image: Image("mission"), small: true)
+                                DashboardItem(
+                                    title: "Missionen",
+                                    image: Image("mission"),
+                                    small: true)
                             }
                         )
                     }
@@ -43,11 +51,14 @@ struct DashboardView: View {
                 NavigationLink(
                     destination: TestView(),
                     label: {
-                        DashboardItem(title: "Meine Tests", image:  Image("cauldron"))
-                            .padding([.horizontal])
-                           
+                        DashboardItem(
+                            title: "Meine Tests",
+                            image:  Image("cauldron")
+                        )
+                        .padding([.horizontal])
+                        
                     })
-               
+                
             }
             .navigationBarTitle("Übersicht")
             .navigationBarItems(trailing: Button(action: {
@@ -61,13 +72,10 @@ struct DashboardView: View {
                 }
             }
             
-            
         }.accentColor(.green)
         
     }
     
-
-      
 }
 
 struct DashboardView_Previews: PreviewProvider {
@@ -76,32 +84,3 @@ struct DashboardView_Previews: PreviewProvider {
     }
 }
 
-
-
-
-//VStack(alignment: .leading)
-//        {
-//            HStack(alignment: .center)
-//            {
-//                Image(systemName: "flame.fill")
-//                    .font(.system(size: 16, weight: .regular))
-//                    .padding(14)
-//                    .foregroundColor(.white)
-//                    .background(
-//                        Circle().fill(Color.green)
-//                    )
-//                Spacer()
-//                
-//                Text("2")
-//                    .font(.title)
-//                    .bold()
-//                
-//            }
-//            Text("Hallo")
-//                .bold()
-//                .multilineTextAlignment(.leading)
-//                .foregroundColor(Color(.secondaryLabel))
-//        }
-//        .padding()
-//        .background(Color(.secondarySystemGroupedBackground))
-//        .clipShape(RoundedRectangle(cornerRadius: 12))

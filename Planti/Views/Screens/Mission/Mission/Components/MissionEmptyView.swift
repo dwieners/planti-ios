@@ -46,6 +46,6 @@ struct MissionEmptyView: View {
 struct MissionEmptyView_Previews: PreviewProvider {
     static var previews: some View {
         MissionEmptyView(type: .NO_INACTIVE_MISSIONS, description: "Alle Missionen sind aktiv")
-            .previewLayout(.sizeThatFits)
+            .previewAsComponent()
     }
 }

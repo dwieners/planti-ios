@@ -21,13 +21,13 @@ struct AccountSettingsView: View {
                     LazyVStack(alignment: .trailing){
                         Text("Nutzername").foregroundColor(.green)
                     }.frame(width: 120)
-                    Text("Dominik").lineLimit(0)
+                    Text("Max").lineLimit(0)
                 }
                 HStack{
                     LazyVStack(alignment: .trailing){
                     Text("Benutzerkonto").foregroundColor(.green)
                     }.frame(width: 120)
-                    Text("dom.wieners@gmx.net").lineLimit(0)
+                    Text("max.mustermann@test.de").lineLimit(0)
                 }
             }
             Section(header: Text("Passwort")){

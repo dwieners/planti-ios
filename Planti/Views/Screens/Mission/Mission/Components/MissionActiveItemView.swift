@@ -17,7 +17,8 @@ struct MissionActiveItemView: View {
                 Text(item.title).font(.headline)
                     .foregroundColor(.primary)
                     .padding(.bottom, 2)
-                Text(item.description).font(.subheadline).foregroundColor(.secondary)
+                    .font(.system(size: 22))
+                Text(item.description).font(.subheadline).foregroundColor(.secondary)          .font(.system(size: 22))
                 Spacer()
             }.padding(.trailing, 8)
             CircularProgressView(color: .label, currentData: CGFloat(item.complete_targets), goal: CGFloat(item.total_targets))
@@ -33,8 +34,8 @@ struct MissionActiveItemView_Previews: PreviewProvider {
                 id: 1,
                 image_url: nil,
                 title: "Blüten",
-                description: "Dies ist eine Beschreibung",
+                description: "Finde alle Blüten in deiner Umgebung",
                 complete_targets: 3,
-                total_targets: 5))
+                total_targets: 5)).previewAsComponent()
     }
 }

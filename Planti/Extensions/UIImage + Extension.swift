@@ -7,6 +7,13 @@
 
 import UIKit
 
+/**
+# Helper to convert Images
+ 
+ Source:
+ https://github.com/handsomecode/iOS11-Demos/blob/coreml_vision/CoreML/CoreMLDemo/UIImage%2BPixelBuffer.swift
+ */
+
 extension UIImage {
     
     func resizeTo(size: CGSize) -> UIImage {

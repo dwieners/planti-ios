@@ -9,10 +9,8 @@ import SwiftUI
 
 struct AchievementItemView: View {
     
-    
     var name: String
     var type: AchievementType
-   
     
     var body: some View {
         VStack(spacing: 0){
@@ -36,6 +34,7 @@ struct AchievementItemView: View {
 
 struct AchievementItemView_Previews: PreviewProvider {
     static var previews: some View {
-        AchievementItemView(name: "Hörner", type: .HORNS_HAT).previewAsComponent()
+        AchievementItemView(name: "Hexenhut", type: .STANDARD)
+            .previewAsComponent()
     }
 }

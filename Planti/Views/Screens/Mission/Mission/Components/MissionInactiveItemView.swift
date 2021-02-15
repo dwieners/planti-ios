@@ -38,5 +38,6 @@ struct MissionInactiveItemView_Previews: PreviewProvider {
     static var previews: some View {
         MissionInactiveItemView(inactiveMissions: myMissionsExample.inactive)
             .environmentObject(MissionsViewModel())
+            .previewAsComponent()
     }
 }
