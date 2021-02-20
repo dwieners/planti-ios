@@ -8,11 +8,20 @@
 import SwiftUI
 import SwiftKeychainWrapper
 
+enum AccountSettingsViewAlert: Identifiable {
+    var id: Int {
+        self.hashValue
+    }
+    case not_available
+}
+
+
+
 struct AccountSettingsView: View {
     
     @Binding var activeSheet: Sheet?
     @EnvironmentObject var auth: AuthViewModel
-    
+    @State private var accountSettingsViewAlert: AccountSettingsViewAlert?
     
     var body: some View {
         List{
@@ -31,9 +40,14 @@ struct AccountSettingsView: View {
                 }
             }
             Section(header: Text("Passwort")){
-                LazyVStack{
-                    Text("Passwort zurücksetzen").foregroundColor(.green)
-                }
+                Button(action: {
+                    accountSettingsViewAlert = .not_available
+                }, label: {
+                    LazyVStack{
+                        Text("Passwort zurücksetzen").foregroundColor(.green)
+                    }
+                })
+            
             }
             Section(header: Text("Konto")){
                 Button(action: {
@@ -45,11 +59,23 @@ struct AccountSettingsView: View {
                     }
                 })
                
-                LazyVStack{
-                    Text("Konto löschen").foregroundColor(.red)
-                }
+                Button(action: {
+                    accountSettingsViewAlert = .not_available
+                }, label: {
+                    LazyVStack{
+                        Text("Konto löschen").foregroundColor(.red)
+                    }
+                })
+              
             }
         }
+        .alert(item: $accountSettingsViewAlert, content: { (item) -> Alert in
+            switch(item){
+                case .not_available:
+                    return Alert(title: Text("Diese Funktion gibt es noch nicht."),
+                                 dismissButton: .default(Text("OK")))
+            }
+        })
         .listStyle(GroupedListStyle())
         .navigationBarTitle("Benutzerkonto")
     }

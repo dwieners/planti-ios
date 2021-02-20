@@ -18,7 +18,7 @@ struct HomePlaceholderView: View {
     
     
     var placeholderText: some View {
-        Text("Du hast noch keine Pflanzen gefunden")
+        Text("Du hast noch keine Pflanzen gefunden.")
             .padding(.top, 16)
             .font(.system(size: 17, weight: .heavy, design: .default))
             .multilineTextAlignment(.center)

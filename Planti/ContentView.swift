@@ -21,6 +21,7 @@ enum Sheet: Identifiable {
     case speech
     case register
     case login
+    case onboarding
 }
 
 

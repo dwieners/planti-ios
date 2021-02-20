@@ -38,6 +38,9 @@ struct HomeView: View {
     
     @State private var isActiveRecordItem: Bool = false
     
+    /**
+         # Actions
+     */
     
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
@@ -51,6 +54,10 @@ struct HomeView: View {
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
         }
+    }
+    
+    private func showOnboarding() -> Bool {
+        return UserDefaults.standard.object(forKey: "onboarding_done") == nil
     }
     
     var body: some View {
@@ -109,6 +116,11 @@ struct HomeView: View {
             }
             .navigationBarTitle("Suche")
             .add(self.searchBar)
+            .onAppear(perform: {
+                if showOnboarding() {
+                    activeSheet = .onboarding
+                }
+            })
             .navigationBarItems(
                 leading:
                     Button(action: {
@@ -160,6 +172,10 @@ struct HomeView: View {
                 
                 if item == .avatar {
                     AvatarView(activeSheet: $activeSheet)
+                }
+                
+                if item == .onboarding {
+                    HomeOnboardingView(activeSheet: $activeSheet)
                 }
             }
         }.accentColor(.green)

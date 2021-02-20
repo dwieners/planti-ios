@@ -78,10 +78,13 @@
 		8F94D43625C6FC56008B532C /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F94D43525C6FC56008B532C /* ProfileModels.swift */; };
 		8F94D43B25C6FEC2008B532C /* MissionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F94D43A25C6FEC2008B532C /* MissionDetailViewModel.swift */; };
 		8FA4D5762576838D006869EA /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA4D5752576838D006869EA /* SelectionView.swift */; };
+		8FA8EF5525DEB5FA00B7867A /* HomeOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA8EF5425DEB5FA00B7867A /* HomeOnboardingView.swift */; };
+		8FA8EF5D25DEB72D00B7867A /* OnboardingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA8EF5C25DEB72D00B7867A /* OnboardingItemView.swift */; };
 		8FAA519D25A07DC500B9FFBA /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAA519C25A07DC500B9FFBA /* FloatingButton.swift */; };
 		8FAA51A225A0807700B9FFBA /* PlantOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAA51A125A0807700B9FFBA /* PlantOverview.swift */; };
 		8FAB8E8425BF64B200A9FA18 /* RegisterFigureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAB8E8325BF64B200A9FA18 /* RegisterFigureView.swift */; };
 		8FAB8E8C25BF68D000A9FA18 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FAB8E8B25BF68D000A9FA18 /* LargeButton.swift */; };
+		8FB4775025E105FB0037CD52 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8FB4774F25E105FB0037CD52 /* Kingfisher */; };
 		8FB6E37F259D403900221EA0 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB6E37E259D403900221EA0 /* SearchBar.swift */; };
 		8FBBDD9E2547221A0054FCED /* PlantiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9D2547221A0054FCED /* PlantiApp.swift */; };
 		8FBBDDA02547221A0054FCED /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBBDD9F2547221A0054FCED /* ContentView.swift */; };
@@ -204,6 +207,8 @@
 		8F94D43525C6FC56008B532C /* ProfileModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
 		8F94D43A25C6FEC2008B532C /* MissionDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailViewModel.swift; sourceTree = "<group>"; };
 		8FA4D5752576838D006869EA /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
+		8FA8EF5425DEB5FA00B7867A /* HomeOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeOnboardingView.swift; sourceTree = "<group>"; };
+		8FA8EF5C25DEB72D00B7867A /* OnboardingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingItemView.swift; sourceTree = "<group>"; };
 		8FAA519C25A07DC500B9FFBA /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		8FAA51A125A0807700B9FFBA /* PlantOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantOverview.swift; sourceTree = "<group>"; };
 		8FAB8E8325BF64B200A9FA18 /* RegisterFigureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterFigureView.swift; sourceTree = "<group>"; };
@@ -252,6 +257,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FB4775025E105FB0037CD52 /* Kingfisher in Frameworks */,
 				8F3B460325B5AF54005982C1 /* SwiftKeychainWrapper in Frameworks */,
 				8FDE3BE025B861EC00A7E8FB /* WaterfallGrid in Frameworks */,
 			);
@@ -548,6 +554,23 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		8FA8EF5325DEB5E900B7867A /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				8FA8EF6125DEB73200B7867A /* Components */,
+				8FA8EF5425DEB5FA00B7867A /* HomeOnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		8FA8EF6125DEB73200B7867A /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8FA8EF5C25DEB72D00B7867A /* OnboardingItemView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		8FAA51A625A080E000B9FFBA /* PlantOverview */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,6 +703,7 @@
 		8FBEBD63257E22F50062C789 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				8FA8EF5325DEB5E900B7867A /* Onboarding */,
 				8FFFA700257BB50000EA3C01 /* Auth */,
 				8F6B5E0925A897B9001902FB /* Plant */,
 				8FAA51A625A080E000B9FFBA /* PlantOverview */,
@@ -858,6 +882,7 @@
 			packageProductDependencies = (
 				8F3B460225B5AF54005982C1 /* SwiftKeychainWrapper */,
 				8FDE3BDF25B861EC00A7E8FB /* WaterfallGrid */,
+				8FB4774F25E105FB0037CD52 /* Kingfisher */,
 			);
 			productName = Planti;
 			productReference = 8FBBDD9A2547221A0054FCED /* Planti.app */;
@@ -933,6 +958,7 @@
 			packageReferences = (
 				8F3B460125B5AF54005982C1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 				8FDE3BDE25B861EC00A7E8FB /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
+				8FB4774E25E105FB0037CD52 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 8FBBDD9B2547221A0054FCED /* Products */;
 			projectDirPath = "";
@@ -997,6 +1023,7 @@
 				8F6A7AF125BF989900622F2D /* KeyVisualView.swift in Sources */,
 				8F5E2AA325AD1C8600B6C402 /* PlantViewModel.swift in Sources */,
 				8F4B8AF6257E3B7F0003CDD7 /* ChallangeRow.swift in Sources */,
+				8FA8EF5D25DEB72D00B7867A /* OnboardingItemView.swift in Sources */,
 				8F3B460825B5B2D3005982C1 /* AuthService.swift in Sources */,
 				8FFFA73F257D309700EA3C01 /* PlantRow.swift in Sources */,
 				8F4850D525C208A900867664 /* RankingRowView.swift in Sources */,
@@ -1046,6 +1073,7 @@
 				8F6A7B3625C1A86000622F2D /* Text + Extension.swift in Sources */,
 				8F6A7B0725BFAA4000622F2D /* RankingView.swift in Sources */,
 				8F5C22DB259FD96E0080FE03 /* DashboardItem.swift in Sources */,
+				8FA8EF5525DEB5FA00B7867A /* HomeOnboardingView.swift in Sources */,
 				8F6A7B1C25C087B800622F2D /* ObservationViewModel.swift in Sources */,
 				8F6A7B1725C0848700622F2D /* PlantiIndicatorView.swift in Sources */,
 				8F78ECC625C21DA1004F1D49 /* PlantDetector.mlmodel in Sources */,
@@ -1235,7 +1263,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Planti/Preview Content\"";
-				DEVELOPMENT_TEAM = N48XQ82EDP;
+				DEVELOPMENT_TEAM = C4LAMRR78X;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Planti/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1257,7 +1285,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Planti/Preview Content\"";
-				DEVELOPMENT_TEAM = N48XQ82EDP;
+				DEVELOPMENT_TEAM = C4LAMRR78X;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Planti/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -1406,6 +1434,14 @@
 				minimumVersion = 4.0.1;
 			};
 		};
+		8FB4774E25E105FB0037CD52 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.1;
+			};
+		};
 		8FDE3BDE25B861EC00A7E8FB /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid";
@@ -1421,6 +1457,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8F3B460125B5AF54005982C1 /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
 			productName = SwiftKeychainWrapper;
+		};
+		8FB4774F25E105FB0037CD52 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8FB4774E25E105FB0037CD52 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 		8FDE3BDF25B861EC00A7E8FB /* WaterfallGrid */ = {
 			isa = XCSwiftPackageProductDependency;

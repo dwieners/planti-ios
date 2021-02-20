@@ -81,7 +81,7 @@ struct SelectionView: View {
                 
             }
         }else{
-            Text("🚧 Hier wird noch gebaut")
+            Text("🚧 Hier wird noch gebaut.")
                 .navigationBarTitle( getTitle(plantShape: selectionViewModel.plantShape) , displayMode: .inline)
         }
         

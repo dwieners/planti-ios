@@ -78,6 +78,6 @@ extension Endpoint {
 
 private extension URL {
     static func makeForEndpoint(_ endpoint: String) -> URL {
-        return URL(string: "http://192.168.0.80:5000/api/\(endpoint)")!
+        return URL(string: "http://64.227.119.182:5000/api/\(endpoint)")!
     }
 }

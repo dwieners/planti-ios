@@ -37,6 +37,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>de</string>
+    </array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

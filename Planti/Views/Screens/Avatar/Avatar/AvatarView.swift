@@ -47,7 +47,7 @@ struct AvatarView: View {
                         
                         VStack{
                             HStack {
-                                Text("Deine Erungenschaften")
+                                Text("Deine Errungenschaften")
                                     .font(.headline)
                                 Spacer()
                                 NavigationLink(
