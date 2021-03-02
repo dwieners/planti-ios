@@ -20,8 +20,8 @@ struct RegisterFigureView: View {
     
     
     @State var figureOptions = [
-        FigureOption(title: "Hexe", type: .WITCH),
-        FigureOption(title: "Zauberer", type: .WIZARD)
+        FigureOption(title: "Kräuterhexe", type: .WITCH),
+        FigureOption(title: "Druide", type: .DRUID)
     ]
     
     @State private var selectedOptionIndex = 0
@@ -30,7 +30,7 @@ struct RegisterFigureView: View {
         NavigationView {
             VStack{
                 InfoCard(
-                    image: Image("magic-wand"), text: "Möchtest du lieber eine Hexe oder ein Zauberer sein?"
+                    image: Image("magic-wand"), text: "Möchtest du lieber eine Kräuterhexe oder ein Druide sein?"
                 )
                 Picker(selection: $selectedOptionIndex, label: Text("Strength")) {
                     ForEach(0 ..< figureOptions.count) {

@@ -39,7 +39,7 @@ func getImage(by figureType: FigureType) -> Image {
     switch figureType {
     case .WITCH:
         return Image("witch_character")
-    case .WIZARD:
+    case .DRUID:
         return Image("wizard_character")
     }
 }

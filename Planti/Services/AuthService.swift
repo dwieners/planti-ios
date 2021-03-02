@@ -17,7 +17,7 @@ enum FigureType: String, CaseIterable, Codable {
         self.hashValue
     }
     case WITCH = "WITCH";
-    case WIZARD = "WIZARD"
+    case DRUID = "DRUID"
 }
 
 class AuthService {
