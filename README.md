@@ -2,6 +2,13 @@
 
 <h1 align="center">Planti-iOS</h1>
 
-Ziel des Projektes ist eine entwicklung ist die Entwicklung einer Anwendung, die insbesonder Schüler bei der Entdecken und Lernen von regionalen Pflnazen unterstützen soll. Zentral wird der Klassifikationsalgorithmus auf Basis von vordefinierten Bildern für Pflanzen evaluiert und untersucht. Als Hilfestellung werden die Veröffentlichungen der [Flora Incognita App](https://floraincognita.com/de/publikationen/) verwendet.
+## Über Planti-iOS
+Die mobile Anwendung Planti ist eine Anwendung für die Klassifikation von Pflanzen. Zielgruppe dieser Anwendung sind interessierte Menschen aller Altersklassen und insbesondere Schüler.
 
-![classification](./docs/image/classification.png)
+In der Anwendung wird die Schnittstelle der *Planti API* genutzt.
+
+## Klassifikation
+
+![classification](./docs/images/classification.png)
+
+Die Klassifikation der *Planti App* gliedert sich in 4 Stufen. In der ersten wählt der Nutzer / die Nutzerin die Pflanzenform der Zielpflanze aus. Es folgt in Stufe 2 der Bestimmungsprozess mit Daten-Upload. Anschließen werden die drei besten Ergebnisse aus der Referenzdatenbank vorgestellt. Zuletzt hat der Nutzer / die Nutzerin die Möglichkeit die Auswahl zu bestätigen. 
