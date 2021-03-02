@@ -3,9 +3,7 @@
 <h1 align="center">Planti-iOS</h1>
 
 ## Über Planti-iOS
-Die mobile Anwendung Planti ist eine Anwendung für die Klassifikation von Pflanzen. Zielgruppe dieser Anwendung sind interessierte Menschen aller Altersklassen und insbesondere Schüler.
-
-In der Anwendung wird die Schnittstelle der *Planti API* genutzt.
+Die mobile Anwendung Planti ist eine Anwendung für die Klassifikation von Pflanzen. Zielgruppe dieser Anwendung sind interessierte Menschen aller Altersklassen und insbesondere Schüler. In der Anwendung wird die Schnittstelle der [Planti API](http://64.227.119.182:5000/api/) genutzt.
 
 ## Klassifikation
 
